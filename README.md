@@ -21,9 +21,9 @@ Be warned that the code is experimental, has no tests, and is provided as-is. Be
 
 - listing the archive contents
 - creating new archives with files/directories inside
+- extracting all/some files from archives to file/memory
 
 ### What it can't do (yet)
 
-- extracting all/some files from archives
 - removing files from archives
 - updating existing archives
