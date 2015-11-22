@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SevenZip/SVZPreamble.h>
 
 typedef NS_OPTIONS(uint32_t, SVZArchiveEntryAttributes) {
     kSVZArchiveEntryAttributeWinReadOnly = 1 << 0,
@@ -16,7 +17,7 @@ typedef NS_OPTIONS(uint32_t, SVZArchiveEntryAttributes) {
     kSVZArchiveEntryAttributeWinArchive = 1 << 5
 };
 
-NS_ASSUME_NONNULL_BEGIN
+SVZ_ASSUME_NONNULL_BEGIN
 
 @interface SVZArchiveEntry : NSObject
 
@@ -32,11 +33,11 @@ NS_ASSUME_NONNULL_BEGIN
 // TODO: remove this hack
 @property (nonatomic, copy, readonly) NSURL* url;
 
-+ (nullable instancetype)archiveEntryWithFileName:(NSString*)aFileName
-                                              url:(NSURL*)aFileURL;
++ (SVZ_NULLABLE instancetype)archiveEntryWithFileName:(NSString*)aFileName
+                                                  url:(NSURL*)aFileURL;
 
-+ (nullable instancetype)archiveEntryWithDirectoryName:(NSString*)aDirName;
++ (SVZ_NULLABLE instancetype)archiveEntryWithDirectoryName:(NSString*)aDirName;
 
 @end
 
-NS_ASSUME_NONNULL_END
+SVZ_ASSUME_NONNULL_END
