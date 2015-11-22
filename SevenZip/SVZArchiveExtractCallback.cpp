@@ -42,11 +42,21 @@ static HRESULT IsArchiveItemFolder(IInArchive *archive, UInt32 index, bool &resu
 
 namespace SVZ {
     
-    void ArchiveExtractCallback::Init(IInArchive *archiveHandler, const FString &directoryPath) {
+    void ArchiveExtractCallback::InitExtractToFile(IInArchive *archiveHandler,
+                                                   const FString &directoryPath) {
         NumErrors = 0;
         _archiveHandler = archiveHandler;
         _directoryPath = directoryPath;
+        _extractToFile = true;
         NWindows::NFile::NName::NormalizeDirPathPrefix(_directoryPath);
+    }
+    
+    void ArchiveExtractCallback::InitExtractToMemory(IInArchive *archiveHandler,
+                                                     std::function<CMyComPtr<IOutStream>(UInt32, UInt64)> outStreamFactory) {
+        NumErrors = 0;
+        _archiveHandler = archiveHandler;
+        _outStreamFactory = outStreamFactory;
+        _extractToFile = false;
     }
     
     STDMETHODIMP ArchiveExtractCallback::SetTotal(UInt64 /* size */) {
@@ -58,11 +68,34 @@ namespace SVZ {
     }
     
     STDMETHODIMP ArchiveExtractCallback::GetStream(UInt32 index,
-                                                   ISequentialOutStream **outStream,
+                                                   ISequentialOutStream **aOutStream,
                                                    Int32 askExtractMode) {
-        *outStream = 0;
-        _outFileStream.Release();
+        *aOutStream = 0;
+        _outStream.Release();
         
+        if (askExtractMode != NArchive::NExtract::NAskMode::kExtract) {
+            return S_OK;
+        }
+
+        if (_extractToFile) {
+            return ExtractToFile(index, aOutStream);
+        }
+
+        return ExtractToMemory(index, aOutStream);
+    }
+
+    HRESULT ArchiveExtractCallback::ExtractToMemory(UInt32 index, ISequentialOutStream **aOutStream) {
+        NWindows::NCOM::CPropVariant prop;
+        RINOK(_archiveHandler->GetProperty(index, kpidSize, &prop));
+        UInt64 fileSize = prop.uhVal.QuadPart;
+
+        CMyComPtr<IOutStream> os = _outStreamFactory(index, fileSize);
+        *aOutStream = os.Detach();
+
+        return S_OK;
+    }
+
+    HRESULT ArchiveExtractCallback::ExtractToFile(UInt32 index, ISequentialOutStream **aOutStream) {
         {
             // Get Name
             NWindows::NCOM::CPropVariant prop;
@@ -80,11 +113,7 @@ namespace SVZ {
             }
             _filePath = fullPath;
         }
-        
-        if (askExtractMode != NArchive::NExtract::NAskMode::kExtract) {
-            return S_OK;
-        }
-        
+
         {
             // Get Attrib
             NWindows::NCOM::CPropVariant prop;
@@ -161,8 +190,8 @@ namespace SVZ {
 //                PrintError("Can not open output file", fullProcessedPath);
                 return E_ABORT;
             }
-            _outFileStream = outStreamLoc;
-            *outStream = outStreamLoc.Detach();
+            _outStream = outStreamLoc;
+            *aOutStream = outStreamLoc.Detach();
         }
         return S_OK;
     }
@@ -184,13 +213,15 @@ namespace SVZ {
             }
         }
         
-        if (_outFileStream) {
+        if (_outFileStreamImpl) {
 //            if (_processedFileInfo.MTimeDefined) {
 //                _outFileStreamImpl->SetMTime(&_processedFileInfo.MTime);
 //            }
             _outFileStreamImpl->Close();
         }
-        _outFileStream.Release();
+        _outStream.Release();
+        _outFileStreamImpl = nullptr;
+        
         if (_extractMode && _processedFileInfo.AttribDefined) {
             NWindows::NFile::NDir::SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
         }

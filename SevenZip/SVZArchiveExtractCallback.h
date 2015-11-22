@@ -9,13 +9,15 @@
 #ifndef SVZArchiveExtractCallback_h
 #define SVZArchiveExtractCallback_h
 
+#include <functional>
+
 #include "StdAfx.h"
 
 #include "CPP/7zip/Archive/IArchive.h"
-#include "IPassword.h"
-#include "MyCom.h"
-#include "MyString.h"
-#include "MyWindows.h"
+#include "CPP/7zip/IPassword.h"
+#include "CPP/Common/MyCom.h"
+#include "CPP/Common/MyString.h"
+#include "CPP/Common/MyWindows.h"
 
 namespace SVZ {
     
@@ -55,11 +57,19 @@ namespace SVZ {
             bool MTimeDefined;
         } _processedFileInfo;
         
-        OutFileStream *_outFileStreamImpl;
-        CMyComPtr<ISequentialOutStream> _outFileStream;
+        bool _extractToFile;
+        OutFileStream* _outFileStreamImpl;
+        std::function<CMyComPtr<IOutStream>(UInt32, UInt64)> _outStreamFactory;
+        CMyComPtr<ISequentialOutStream> _outStream;
         
+        HRESULT ExtractToFile(UInt32 index, ISequentialOutStream **aOutStream);
+        HRESULT ExtractToMemory(UInt32 index, ISequentialOutStream **aOutStream);
+
     public:
-        void Init(IInArchive *archiveHandler, const FString &directoryPath);
+        void InitExtractToFile(IInArchive *archiveHandler,
+                               const FString &directoryPath);
+        void InitExtractToMemory(IInArchive *archiveHandler,
+                                 std::function<CMyComPtr<IOutStream>(UInt32 /*index*/, UInt64 /*filesize*/)> outStreamFactory);
         
         UInt64 NumErrors;
         bool PasswordIsDefined;
