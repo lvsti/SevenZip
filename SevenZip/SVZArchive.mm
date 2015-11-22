@@ -200,11 +200,11 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     return YES;
 }
 
-- (BOOL)updateEntries:(NSArray<SVZArchiveEntry*>*)entries
-                error:(NSError**)error {
+- (BOOL)updateEntries:(NSArray<SVZArchiveEntry*>*)aEntries
+                error:(NSError**)aError {
     CObjectVector<SVZ::CDirItem> dirItems;
     
-    for (SVZArchiveEntry* entry in entries) {
+    for (SVZArchiveEntry* entry in aEntries) {
         SVZ::CDirItem di;
         
         di.Attrib = entry.attributes;
@@ -223,31 +223,25 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     SVZ::OutFileStream* outFileStreamImpl = new SVZ::OutFileStream();
     CMyComPtr<IOutStream> outFileStream = outFileStreamImpl;
     if (!outFileStreamImpl->Open(self.url.path.UTF8String)) {
-        NSLog(@"can't create archive file");
+        SetError(aError, kSVZArchiveErrorCreateFailed, nil);
         return NO;
     }
     
     CMyComPtr<IOutArchive> outArchive;
-    if (CreateArchiver(&CLSIDFormat7z, &IID_IOutArchive, (void **)&outArchive) != S_OK) {
-        NSLog(@"Can not get class object");
-        return NO;
-    }
-    
+    HRESULT result = CreateArchiver(&CLSIDFormat7z, &IID_IOutArchive, (void **)&outArchive);
+    NSAssert(result == S_OK, @"cannot instantiate archiver");
+
     SVZ::ArchiveUpdateCallback* updateCallbackImpl = new SVZ::ArchiveUpdateCallback();
     CMyComPtr<IArchiveUpdateCallback2> updateCallback(updateCallbackImpl);
     updateCallbackImpl->PasswordIsDefined = false;
     updateCallbackImpl->Init(&dirItems);
     
-    HRESULT result = outArchive->UpdateItems(outFileStream, dirItems.Size(), updateCallback);
+    result = outArchive->UpdateItems(outFileStream, dirItems.Size(), updateCallback);
     
     updateCallbackImpl->Finalize();
     
-    if (result != S_OK) {
-        NSLog(@"Update Error");
-        return NO;
-    }
-    
-    if (updateCallbackImpl->FailedFiles.Size() != 0) {
+    if (result != S_OK || updateCallbackImpl->FailedFiles.Size() != 0) {
+        SetError(aError, kSVZArchiveErrorUpdateFailed, nil);
         return NO;
     }
     

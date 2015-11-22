@@ -18,7 +18,9 @@ extern NSString* const kSVZArchiveErrorDomain;
 typedef NS_ENUM(NSInteger, SVZArchiveError) {
     kSVZArchiveErrorFileNotFound = -1,
     kSVZArchiveErrorInvalidArchive = -2,
-    kSVZArchiveErrorOpenFailed = -3
+    kSVZArchiveErrorOpenFailed = -3,
+    kSVZArchiveErrorCreateFailed = -4,
+    kSVZArchiveErrorUpdateFailed = -5
 };
 
 
