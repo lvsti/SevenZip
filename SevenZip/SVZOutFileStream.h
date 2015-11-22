@@ -11,7 +11,8 @@
 
 #include "StdAfx.h"
 
-#include "FileStreams.h"
+#include "CPP/Common/MyCom.h"
+#include "CPP/7zip/IStream.h"
 
 namespace SVZ {
 

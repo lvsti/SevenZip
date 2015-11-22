@@ -162,6 +162,8 @@
 		E8BA35051C022B12006BDF06 /* SVZStoredArchiveEntry.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35031C022B12006BDF06 /* SVZStoredArchiveEntry.mm */; };
 		E8BA35071C0232E0006BDF06 /* SVZArchive_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35061C0232E0006BDF06 /* SVZArchive_Private.h */; };
 		E8BA35081C02354A006BDF06 /* TimeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA32091C00FD10006BDF06 /* TimeUtils.cpp */; };
+		E8BA350B1C023C32006BDF06 /* SVZOutMemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35091C023C32006BDF06 /* SVZOutMemoryStream.cpp */; };
+		E8BA350C1C023C32006BDF06 /* SVZOutMemoryStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA350A1C023C32006BDF06 /* SVZOutMemoryStream.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1733,6 +1735,8 @@
 		E8BA35021C022B12006BDF06 /* SVZStoredArchiveEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZStoredArchiveEntry.h; sourceTree = "<group>"; };
 		E8BA35031C022B12006BDF06 /* SVZStoredArchiveEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZStoredArchiveEntry.mm; sourceTree = "<group>"; };
 		E8BA35061C0232E0006BDF06 /* SVZArchive_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZArchive_Private.h; sourceTree = "<group>"; };
+		E8BA35091C023C32006BDF06 /* SVZOutMemoryStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVZOutMemoryStream.cpp; sourceTree = "<group>"; };
+		E8BA350A1C023C32006BDF06 /* SVZOutMemoryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZOutMemoryStream.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4279,6 +4283,8 @@
 				E8BA34DA1C0123F1006BDF06 /* SVZInFileStream.h */,
 				E8BA34DB1C0123F1006BDF06 /* SVZOutFileStream.cpp */,
 				E8BA34DC1C0123F1006BDF06 /* SVZOutFileStream.h */,
+				E8BA35091C023C32006BDF06 /* SVZOutMemoryStream.cpp */,
+				E8BA350A1C023C32006BDF06 /* SVZOutMemoryStream.h */,
 			);
 			path = SevenZip;
 			sourceTree = "<group>";
@@ -4305,6 +4311,7 @@
 				E8BA34441C011B48006BDF06 /* SevenZip.h in Headers */,
 				E8BA34E01C0123F1006BDF06 /* SVZArchiveExtractCallback.h in Headers */,
 				E8BA34E21C0123F1006BDF06 /* SVZArchiveOpenCallback.h in Headers */,
+				E8BA350C1C023C32006BDF06 /* SVZOutMemoryStream.h in Headers */,
 				E8BA34CB1C011EA5006BDF06 /* SVZArchive.h in Headers */,
 				E8BA34E81C0123F1006BDF06 /* SVZOutFileStream.h in Headers */,
 				E8BA35071C0232E0006BDF06 /* SVZArchive_Private.h in Headers */,
@@ -4433,6 +4440,7 @@
 				E8BA34591C011BCE006BDF06 /* LzFind.c in Sources */,
 				E8BA34861C011BF7006BDF06 /* ItemNameUtils.cpp in Sources */,
 				E8BA34891C011BF7006BDF06 /* OutStreamWithSha1.cpp in Sources */,
+				E8BA350B1C023C32006BDF06 /* SVZOutMemoryStream.cpp in Sources */,
 				E8BA34541C011BCE006BDF06 /* BraIA64.c in Sources */,
 				E8BA34AF1C011C68006BDF06 /* MyAes.cpp in Sources */,
 				E8BA34CE1C011FE6006BDF06 /* UTFConvert.cpp in Sources */,
