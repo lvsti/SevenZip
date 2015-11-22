@@ -11,17 +11,11 @@
 #import "SVZArchiveEntry_Private.h"
 #import "SVZArchiveExtractCallback.h"
 #import "SVZOutMemoryStream.h"
+#import "SVZUtils.h"
 
 #include "CPP/Windows/PropVariant.h"
 #include "CPP/Windows/TimeUtils.h"
 
-
-static NSString* FromUString(const UString& ustr) {
-    NSData* ustrBuf = [NSData dataWithBytesNoCopy:(void*)ustr.Ptr()
-                                           length:ustr.Len()*sizeof(wchar_t)
-                                     freeWhenDone:NO];
-    return [[NSString alloc] initWithData:ustrBuf encoding:NSUTF32LittleEndianStringEncoding];
-}
 
 
 @implementation SVZStoredArchiveEntry

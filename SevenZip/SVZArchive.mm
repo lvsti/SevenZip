@@ -9,18 +9,19 @@
 #import "SVZArchive.h"
 #import "SVZArchive_Private.h"
 
-#include "IDecl.h"
+#include "CPP/7zip/IDecl.h"
+#include "CPP/Windows/PropVariantConv.h"
+#include "CPP/Windows/TimeUtils.h"
+#include "CPP/Common/UTFConvert.h"
+
 #include "SVZArchiveOpenCallback.h"
 #include "SVZArchiveUpdateCallback.h"
 #include "SVZInFileStream.h"
 #include "SVZOutFileStream.h"
 
-#include "CPP/Windows/PropVariantConv.h"
-#include "CPP/Windows/TimeUtils.h"
-#include "CPP/Common/UTFConvert.h"
-
 #import "SVZArchiveEntry_Private.h"
 #import "SVZStoredArchiveEntry.h"
+#import "SVZUtils.h"
 
 int g_CodePage = -1;
 
@@ -33,23 +34,6 @@ DEFINE_GUID(CLSIDFormat7z, 0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0
 
 STDAPI CreateArchiver(const GUID *clsid, const GUID *iid, void **outObject);
 
-
-static UString ToUString(NSString* str) {
-    NSUInteger byteCount = [str lengthOfBytesUsingEncoding:NSUTF32LittleEndianStringEncoding];
-    wchar_t* buf = (wchar_t*)malloc(byteCount + sizeof(wchar_t));
-    buf[str.length] = 0;
-    [str getBytes:buf
-        maxLength:byteCount
-       usedLength:NULL
-         encoding:NSUTF32LittleEndianStringEncoding
-          options:0
-            range:NSMakeRange(0, str.length)
-   remainingRange:NULL];
-    UString ustr(buf);
-    free(buf);
-
-    return ustr;
-}
 
 static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* userInfo) {
     if (!aError) {
