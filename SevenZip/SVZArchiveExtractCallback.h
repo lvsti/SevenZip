@@ -1,6 +1,6 @@
 //
 //  SVZArchiveExtractCallback.h
-//  ObjC7z
+//  SevenZip
 //
 //  Created by Tamas Lustyik on 2015. 11. 21..
 //  Copyright © 2015. Tamas Lustyik. All rights reserved.
