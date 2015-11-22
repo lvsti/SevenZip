@@ -16,4 +16,5 @@ FOUNDATION_EXPORT const unsigned char SevenZipVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <SevenZip/PublicHeader.h>
 #import <SevenZip/SVZArchive.h>
+#import <SevenZip/SVZArchiveEntry.h>
 

@@ -14,17 +14,15 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SVZArchive : NSObject
 
-@property (nonatomic, readonly) NSURL* url;
+@property (nonatomic, copy, readonly) NSURL* url;
 
 + (nullable instancetype)archiveWithURL:(NSURL*)url
                                   error:(NSError**)error;
 
-@property (nonatomic, readonly) NSArray<SVZArchiveEntry*>* entries;
+@property (nonatomic, copy, readonly) NSArray<SVZArchiveEntry*>* entries;
 
 - (BOOL)updateEntries:(NSArray<SVZArchiveEntry*>*)entries
                 error:(NSError**)error;
-
-- (BOOL)addFileAtURL:(NSURL*)url;
 
 @end
 

@@ -139,7 +139,7 @@
 		E8BA34CD1C011FD9006BDF06 /* StdOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31B91C00FD10006BDF06 /* StdOutStream.cpp */; };
 		E8BA34CE1C011FE6006BDF06 /* UTFConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31C11C00FD10006BDF06 /* UTFConvert.cpp */; };
 		E8BA34D01C012026006BDF06 /* ArchiveExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DCF1C00FD0F006BDF06 /* ArchiveExports.cpp */; };
-		E8BA34DD1C0123F1006BDF06 /* SVZArchiveEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34D11C0123F1006BDF06 /* SVZArchiveEntry.h */; };
+		E8BA34DD1C0123F1006BDF06 /* SVZArchiveEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34D11C0123F1006BDF06 /* SVZArchiveEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8BA34DE1C0123F1006BDF06 /* SVZArchiveEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34D21C0123F1006BDF06 /* SVZArchiveEntry.m */; };
 		E8BA34DF1C0123F1006BDF06 /* SVZArchiveExtractCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34D31C0123F1006BDF06 /* SVZArchiveExtractCallback.cpp */; };
 		E8BA34E01C0123F1006BDF06 /* SVZArchiveExtractCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34D41C0123F1006BDF06 /* SVZArchiveExtractCallback.h */; };

@@ -30,11 +30,28 @@ DEFINE_GUID(CLSIDFormat7z, 0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0
 
 STDAPI CreateArchiver(const GUID *clsid, const GUID *iid, void **outObject);
 
-void UnixTimeToFileTime(time_t t, FILETIME* pft)
+static void UnixTimeToFileTime(time_t t, FILETIME* pft)
 {
     LONGLONG ll = t * 10000000LL + 116444736000000000LL;
     pft->dwLowDateTime = (DWORD)ll;
     pft->dwHighDateTime = ll >> 32;
+}
+
+static UString ToUString(NSString* str) {
+    NSUInteger byteCount = [str lengthOfBytesUsingEncoding:NSUTF32LittleEndianStringEncoding];
+    wchar_t* buf = (wchar_t*)malloc(byteCount + sizeof(wchar_t));
+    buf[str.length] = 0;
+    [str getBytes:buf
+        maxLength:byteCount
+       usedLength:NULL
+         encoding:NSUTF32LittleEndianStringEncoding
+          options:0
+            range:NSMakeRange(0, str.length)
+   remainingRange:NULL];
+    UString ustr(buf);
+    free(buf);
+
+    return ustr;
 }
 
 @interface SVZArchive ()
@@ -117,13 +134,6 @@ void UnixTimeToFileTime(time_t t, FILETIME* pft)
     return YES;
 }
 
-- (BOOL)addFileAtURL:(NSURL*)url {
-    SVZArchiveEntry* entry = [SVZArchiveEntry new];
-    entry.name = url.lastPathComponent;
-    return [self updateEntries:@[entry]
-                         error:NULL];
-}
-
 - (BOOL)updateEntries:(NSArray<SVZArchiveEntry*>*)entries
                 error:(NSError**)error {
     CObjectVector<SVZ::CDirItem> dirItems;
@@ -131,34 +141,15 @@ void UnixTimeToFileTime(time_t t, FILETIME* pft)
     for (SVZArchiveEntry* entry in entries) {
         SVZ::CDirItem di;
         
-        NSDictionary* attributes = [self.fileManager attributesOfItemAtPath:entry.name error:error];
-        if (!attributes) {
-            return NO;
-        }
+        di.Attrib = entry.attributes;
+        di.Size = entry.uncompressedSize;
         
-        di.Attrib = 0;
-        di.Size = [attributes[NSFileSize] unsignedLongLongValue];
+        UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], &di.CTime);
+        UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], &di.MTime);
+        UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], &di.ATime);
         
-        UnixTimeToFileTime([attributes[NSFileCreationDate] timeIntervalSince1970], &di.CTime);
-        UnixTimeToFileTime([attributes[NSFileModificationDate] timeIntervalSince1970], &di.MTime);
-        UnixTimeToFileTime([attributes[NSFileModificationDate] timeIntervalSince1970], &di.ATime);
-        
-        NSUInteger byteCount = [entry.name lengthOfBytesUsingEncoding:NSUTF32LittleEndianStringEncoding];
-        wchar_t* buf = (wchar_t*)malloc(byteCount + sizeof(wchar_t));
-        buf[entry.name.length] = 0;
-        [entry.name getBytes:buf
-                   maxLength:byteCount
-                  usedLength:NULL
-                    encoding:NSUTF32LittleEndianStringEncoding
-                     options:0
-                       range:NSMakeRange(0, entry.name.length)
-              remainingRange:NULL];
-//        [entry.name getCharacters:buf range:NSMakeRange(0, entry.name.length)];
-        di.Name = UString((const wchar_t*)buf);
-        free(buf);
-        
-        di.FullPath = us2fs(di.Name);
-//        ConvertUTF8ToUnicode(entry.name.UTF8String, di.FullPath);
+        di.Name = ToUString(entry.name);
+        di.FullPath = us2fs(ToUString(entry.url.path));
         
         dirItems.Add(di);
     }
