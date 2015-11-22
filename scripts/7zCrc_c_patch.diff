@@ -1,0 +1,13 @@
+diff --git a/External/p7zip/C/7zCrc.c b/External/p7zip/C/7zCrc.c
+index dc6d6ab..566ffa5 100644
+--- a/External/p7zip/C/7zCrc.c
++++ b/External/p7zip/C/7zCrc.c
+@@ -6,6 +6,8 @@
+ #include "7zCrc.h"
+ #include "CpuArch.h"
+ 
++Bool CPU_Is_InOrder();
++
+ #define kCrcPoly 0xEDB88320
+ 
+ #ifdef MY_CPU_LE

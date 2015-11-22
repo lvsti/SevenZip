@@ -1,0 +1,15 @@
+diff --git a/External/p7zip/CPP/include_windows/windows.h b/External/p7zip/CPP/include_windows/windows.h
+index 3f4b1e0..7b6bb5e 100644
+--- a/External/p7zip/CPP/include_windows/windows.h
++++ b/External/p7zip/CPP/include_windows/windows.h
+@@ -35,8 +35,10 @@
+ 
+ #define WINAPI 
+ 
++#ifndef __OBJC__
+ #undef BOOL
+ typedef int BOOL;
++#endif
+ 
+ 
+ #define CREATE_NEW	  1
