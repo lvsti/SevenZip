@@ -65,6 +65,11 @@
     return nil;
 }
 
+- (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
+                          error:(NSError**)aError {
+    return NO;
+}
+
 - (NSString*)description {
     return [NSString stringWithFormat:@"<%@:%p> kind:%@ path:%@%@",
             [self class],

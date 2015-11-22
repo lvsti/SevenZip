@@ -41,6 +41,9 @@ SVZ_ASSUME_NONNULL_BEGIN
 - (NSData*)newDataWithPassword:(NSString* SVZ_NULLABLE_ARG)aPassword
                          error:(NSError**)aError;
 
+- (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
+                          error:(NSError**)aError;
+
 @end
 
 SVZ_ASSUME_NONNULL_END

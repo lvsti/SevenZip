@@ -97,4 +97,40 @@
     return data;
 }
 
+- (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
+                          error:(NSError**)aError {
+    NSParameterAssert([aDirURL isFileURL]);
+    BOOL isDir = NO;
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:aDirURL.path
+                                                       isDirectory:&isDir];
+    if (exists && !isDir) {
+        return NO;
+    }
+    
+    if (![[NSFileManager defaultManager] createDirectoryAtURL:aDirURL
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:aError]) {
+        return NO;
+    }
+    
+    SVZArchive* archive = self.archive;
+    if (!archive || !archive.archive) {
+        return NO;
+    }
+    
+    SVZ::ArchiveExtractCallback* extractCallbackImpl = new SVZ::ArchiveExtractCallback();
+    CMyComPtr<IArchiveExtractCallback> extractCallback(extractCallbackImpl);
+    extractCallbackImpl->InitExtractToFile(archive.archive, us2fs(ToUString(aDirURL.path)));
+    extractCallbackImpl->PasswordIsDefined = false;
+    
+    UInt32 indices[] = {(UInt32)self.index};
+    HRESULT result = archive.archive->Extract(indices, 1, false, extractCallback);
+    if (result != S_OK) {
+        return NO;
+    }
+
+    return YES;
+}
+
 @end
