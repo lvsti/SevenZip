@@ -7,6 +7,7 @@
 //
 
 #import "SVZArchive.h"
+#import "SVZArchive_Private.h"
 
 #include "IDecl.h"
 #include "SVZArchiveOpenCallback.h"
@@ -14,11 +15,12 @@
 #include "SVZInFileStream.h"
 #include "SVZOutFileStream.h"
 
-#include "CPP/Windows/PropVariant.h"
 #include "CPP/Windows/PropVariantConv.h"
+#include "CPP/Windows/TimeUtils.h"
 #include "CPP/Common/UTFConvert.h"
 
 #import "SVZArchiveEntry_Private.h"
+#import "SVZStoredArchiveEntry.h"
 
 int g_CodePage = -1;
 
@@ -30,19 +32,6 @@ DEFINE_GUID(CLSIDFormat7z, 0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0
 #undef INITGUID
 
 STDAPI CreateArchiver(const GUID *clsid, const GUID *iid, void **outObject);
-
-static void UnixTimeToFileTime(time_t t, FILETIME* pft) {
-    LONGLONG ll = t * 10000000LL + 116444736000000000LL;
-    pft->dwLowDateTime = (DWORD)ll;
-    pft->dwHighDateTime = ll >> 32;
-}
-
-static time_t FileTimeToUnixTime(const FILETIME* pft) {
-    LONGLONG ll = (((time_t)pft->dwHighDateTime) << 32) | pft->dwLowDateTime;
-    ll -= 116444736000000000LL;
-    ll /= 10000000LL;
-    return (time_t)ll;
-}
 
 
 static UString ToUString(NSString* str) {
@@ -62,13 +51,6 @@ static UString ToUString(NSString* str) {
     return ustr;
 }
 
-static NSString* FromUString(const UString& ustr) {
-    NSData* ustrBuf = [NSData dataWithBytesNoCopy:(void*)ustr.Ptr()
-                                           length:ustr.Len()*sizeof(wchar_t)
-                                     freeWhenDone:NO];
-    return [[NSString alloc] initWithData:ustrBuf encoding:NSUTF32LittleEndianStringEncoding];
-}
-
 static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* userInfo) {
     if (!aError) {
         return;
@@ -83,8 +65,6 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 @interface SVZArchive ()
 
 @property (nonatomic, strong, readonly) NSFileManager* fileManager;
-
-@property (nonatomic, copy, readwrite) NSArray* entries;
 
 @end
 
@@ -133,10 +113,15 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     return self;
 }
 
+- (void)dealloc {
+    _archive = nullptr;
+}
+
 - (BOOL)readEntries:(NSError**)aError {
     CMyComPtr<IInArchive> archive;
     HRESULT result = CreateArchiver(&CLSIDFormat7z, &IID_IInArchive, (void **)&archive);
     NSAssert(result == S_OK, @"cannot instantiate archiver");
+    self.archive = archive;
     
     SVZ::InFileStream* inputStreamImpl = new SVZ::InFileStream();
     CMyComPtr<IInStream> inputStream(inputStreamImpl);
@@ -153,49 +138,22 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     // openCallbackSpec->Password = L"1";
     
     const UInt64 scanSize = 1 << 23;
-    if (archive->Open(inputStream, &scanSize, openCallback) != S_OK) {
+    if (self.archive->Open(inputStream, &scanSize, openCallback) != S_OK) {
         SetError(aError, kSVZArchiveErrorInvalidArchive, nil);
+        self.archive = nullptr;
         return NO;
     }
     
     UInt32 numItems = 0;
-    archive->GetNumberOfItems(&numItems);
+    self.archive->GetNumberOfItems(&numItems);
     NSMutableArray* storedEntries = [NSMutableArray arrayWithCapacity:numItems];
-    NWindows::NCOM::CPropVariant prop;
         
     for (UInt32 i = 0; i < numItems; i++) {
-        SVZArchiveEntry* entry = [SVZArchiveEntry new];
-
-        archive->GetProperty(i, kpidPath, &prop);
-        entry.name = FromUString(UString(prop.bstrVal));
-        
-        archive->GetProperty(i, kpidAttrib, &prop);
-        entry.attributes = prop.ulVal;
-        
-        archive->GetProperty(i, kpidCTime, &prop);
-        entry.creationDate = [NSDate dateWithTimeIntervalSince1970:FileTimeToUnixTime(&prop.filetime)];
-
-        archive->GetProperty(i, kpidMTime, &prop);
-        entry.modificationDate = [NSDate dateWithTimeIntervalSince1970:FileTimeToUnixTime(&prop.filetime)];
-        
-        archive->GetProperty(i, kpidATime, &prop);
-        entry.accessDate = [NSDate dateWithTimeIntervalSince1970:FileTimeToUnixTime(&prop.filetime)];
-        
-        archive->GetProperty(i, kpidIsDir, &prop);
-        BOOL isDir = prop.boolVal;
-        
-        if (!isDir) {
-            archive->GetProperty(i, kpidSize, &prop);
-            entry.uncompressedSize = prop.uhVal.QuadPart;
-            
-            archive->GetProperty(i, kpidPackSize, &prop);
-            entry.compressedSize = prop.uhVal.QuadPart;
-        }
-        
+        SVZStoredArchiveEntry* entry = [[SVZStoredArchiveEntry alloc] initWithIndex:i inArchive:self];
         [storedEntries addObject:entry];
     }
     
-    self.entries = storedEntries;
+    _entries = [storedEntries copy];
     
     return YES;
 }
@@ -210,9 +168,9 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         di.Attrib = entry.attributes;
         di.Size = entry.uncompressedSize;
         
-        UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], &di.CTime);
-        UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], &di.MTime);
-        UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], &di.ATime);
+        NWindows::NTime::UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], di.CTime);
+        NWindows::NTime::UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], di.MTime);
+        NWindows::NTime::UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], di.ATime);
         
         di.Name = ToUString(entry.name);
         di.FullPath = us2fs(ToUString(entry.url.path));

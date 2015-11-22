@@ -158,6 +158,10 @@
 		E8BA34F91C01C58D006BDF06 /* CRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31941C00FD10006BDF06 /* CRC.cpp */; };
 		E8BA34FF1C020D82006BDF06 /* SVZPreamble.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8BA35011C020F33006BDF06 /* SVZArchiveEntry_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */; };
+		E8BA35041C022B12006BDF06 /* SVZStoredArchiveEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35021C022B12006BDF06 /* SVZStoredArchiveEntry.h */; };
+		E8BA35051C022B12006BDF06 /* SVZStoredArchiveEntry.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35031C022B12006BDF06 /* SVZStoredArchiveEntry.mm */; };
+		E8BA35071C0232E0006BDF06 /* SVZArchive_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35061C0232E0006BDF06 /* SVZArchive_Private.h */; };
+		E8BA35081C02354A006BDF06 /* TimeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA32091C00FD10006BDF06 /* TimeUtils.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1726,6 +1730,9 @@
 		E8BA34F11C01C38A006BDF06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVZPreamble.h; sourceTree = "<group>"; };
 		E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZArchiveEntry_Private.h; sourceTree = "<group>"; };
+		E8BA35021C022B12006BDF06 /* SVZStoredArchiveEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZStoredArchiveEntry.h; sourceTree = "<group>"; };
+		E8BA35031C022B12006BDF06 /* SVZStoredArchiveEntry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZStoredArchiveEntry.mm; sourceTree = "<group>"; };
+		E8BA35061C0232E0006BDF06 /* SVZArchive_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZArchive_Private.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4256,8 +4263,11 @@
 				E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */,
 				E8BA34C91C011EA5006BDF06 /* SVZArchive.h */,
 				E8BA34CA1C011EA5006BDF06 /* SVZArchive.mm */,
+				E8BA35061C0232E0006BDF06 /* SVZArchive_Private.h */,
 				E8BA34D11C0123F1006BDF06 /* SVZArchiveEntry.h */,
 				E8BA34D21C0123F1006BDF06 /* SVZArchiveEntry.m */,
+				E8BA35021C022B12006BDF06 /* SVZStoredArchiveEntry.h */,
+				E8BA35031C022B12006BDF06 /* SVZStoredArchiveEntry.mm */,
 				E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */,
 				E8BA34D31C0123F1006BDF06 /* SVZArchiveExtractCallback.cpp */,
 				E8BA34D41C0123F1006BDF06 /* SVZArchiveExtractCallback.h */,
@@ -4297,7 +4307,9 @@
 				E8BA34E21C0123F1006BDF06 /* SVZArchiveOpenCallback.h in Headers */,
 				E8BA34CB1C011EA5006BDF06 /* SVZArchive.h in Headers */,
 				E8BA34E81C0123F1006BDF06 /* SVZOutFileStream.h in Headers */,
+				E8BA35071C0232E0006BDF06 /* SVZArchive_Private.h in Headers */,
 				E8BA35011C020F33006BDF06 /* SVZArchiveEntry_Private.h in Headers */,
+				E8BA35041C022B12006BDF06 /* SVZStoredArchiveEntry.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4392,6 +4404,7 @@
 			files = (
 				E8BA34C71C011E2A006BDF06 /* FileName.cpp in Sources */,
 				E8BA346C1C011BCE006BDF06 /* XzCrc64Opt.c in Sources */,
+				E8BA35081C02354A006BDF06 /* TimeUtils.cpp in Sources */,
 				E8BA34841C011BF7006BDF06 /* HandlerOut.cpp in Sources */,
 				E8BA34851C011BF7006BDF06 /* InStreamWithCRC.cpp in Sources */,
 				E8BA34651C011BCE006BDF06 /* Ppmd8Enc.c in Sources */,
@@ -4434,6 +4447,7 @@
 				E8BA34571C011BCE006BDF06 /* Delta.c in Sources */,
 				E8BA348B1C011BFF006BDF06 /* HandlerCont.cpp in Sources */,
 				E8BA34BF1C011DB3006BDF06 /* MyString.cpp in Sources */,
+				E8BA35051C022B12006BDF06 /* SVZStoredArchiveEntry.mm in Sources */,
 				E8BA34811C011BF7006BDF06 /* CrossThreadProgress.cpp in Sources */,
 				E8BA34991C011C35006BDF06 /* ProgressMt.cpp in Sources */,
 				E8BA347C1C011BDE006BDF06 /* 7zRegister.cpp in Sources */,
