@@ -73,7 +73,7 @@ int TestReadArchive(int argc, const char * argv[]) {
     return 0;
 }
 
-int TestExtractFile(int argc, const char * argv[]) {
+int TestExtractToMemory(int argc, const char * argv[]) {
     if (argc < 2) {
         return 1;
     }
@@ -89,11 +89,27 @@ int TestExtractFile(int argc, const char * argv[]) {
     return 0;
 }
 
+int TestExtractToFile(int argc, const char * argv[]) {
+    if (argc < 2) {
+        return 1;
+    }
+    
+    NSString* archiveName = [NSString stringWithUTF8String:argv[1]];
+    SVZArchive* archive = [SVZArchive archiveWithURL:[NSURL fileURLWithPath:archiveName]
+                                     createIfMissing:NO
+                                               error:NULL];
+    SVZArchiveEntry* entry = archive.entries.firstObject;
+    BOOL success = [entry extractToDirectoryAtURL:[NSURL fileURLWithPath:@"/Users/lvsti/x"]
+                                            error:NULL];
+    return success? 0: 1;
+}
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        return TestCreateArchive(argc, argv);
 //        return TestReadArchive(argc, argv);
-        return TestExtractFile(argc, argv);
+//        return TestExtractToMemory(argc, argv);
+        return TestExtractToFile(argc, argv);
     }
 }
