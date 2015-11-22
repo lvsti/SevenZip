@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SVZArchiveEntry : NSObject
 
 @property (nonatomic, copy, readonly) NSString* name;
-@property (nonatomic, assign, readonly) size_t compressedSize;
-@property (nonatomic, assign, readonly) size_t uncompressedSize;
+@property (nonatomic, assign, readonly) uint64_t compressedSize;
+@property (nonatomic, assign, readonly) uint64_t uncompressedSize;
 @property (nonatomic, copy, readonly) NSDate* creationDate;
 @property (nonatomic, copy, readonly) NSDate* modificationDate;
 @property (nonatomic, copy, readonly) NSDate* accessDate;

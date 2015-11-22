@@ -7,6 +7,7 @@
 //
 
 #import "SVZArchiveEntry.h"
+#import "SVZArchiveEntry_Private.h"
 
 @implementation SVZArchiveEntry
 
@@ -57,6 +58,15 @@
 
 - (BOOL)isDirectory {
     return self.attributes & kSVZArchiveEntryAttributeWinDirectory;
+}
+
+- (NSString*)description {
+    return [NSString stringWithFormat:@"<%@:%p> kind:%@ path:%@%@",
+            [self class],
+            self,
+            self.isDirectory? @"DIR": @"FILE",
+            self.name,
+            self.isDirectory? @"": [NSString stringWithFormat:@" size:%lld", self.uncompressedSize]];
 }
 
 @end

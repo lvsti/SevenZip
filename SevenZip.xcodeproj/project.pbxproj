@@ -157,6 +157,7 @@
 		E8BA34F81C01C3AF006BDF06 /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA34411C011B48006BDF06 /* SevenZip.framework */; };
 		E8BA34F91C01C58D006BDF06 /* CRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31941C00FD10006BDF06 /* CRC.cpp */; };
 		E8BA34FF1C020D82006BDF06 /* SVZPreamble.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8BA35011C020F33006BDF06 /* SVZArchiveEntry_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1724,6 +1725,7 @@
 		E8BA34EF1C01C38A006BDF06 /* SVZTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SVZTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BA34F11C01C38A006BDF06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVZPreamble.h; sourceTree = "<group>"; };
+		E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZArchiveEntry_Private.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4256,6 +4258,7 @@
 				E8BA34CA1C011EA5006BDF06 /* SVZArchive.mm */,
 				E8BA34D11C0123F1006BDF06 /* SVZArchiveEntry.h */,
 				E8BA34D21C0123F1006BDF06 /* SVZArchiveEntry.m */,
+				E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */,
 				E8BA34D31C0123F1006BDF06 /* SVZArchiveExtractCallback.cpp */,
 				E8BA34D41C0123F1006BDF06 /* SVZArchiveExtractCallback.h */,
 				E8BA34D51C0123F1006BDF06 /* SVZArchiveOpenCallback.cpp */,
@@ -4294,6 +4297,7 @@
 				E8BA34E21C0123F1006BDF06 /* SVZArchiveOpenCallback.h in Headers */,
 				E8BA34CB1C011EA5006BDF06 /* SVZArchive.h in Headers */,
 				E8BA34E81C0123F1006BDF06 /* SVZOutFileStream.h in Headers */,
+				E8BA35011C020F33006BDF06 /* SVZArchiveEntry_Private.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4746,6 +4750,7 @@
 				E8BA34481C011B48006BDF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E8BA34F31C01C38A006BDF06 /* Build configuration list for PBXNativeTarget "SVZTest" */ = {
 			isa = XCConfigurationList;
@@ -4754,6 +4759,7 @@
 				E8BA34F51C01C38A006BDF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
