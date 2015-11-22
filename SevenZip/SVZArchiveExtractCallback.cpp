@@ -90,6 +90,9 @@ namespace SVZ {
         UInt64 fileSize = prop.uhVal.QuadPart;
 
         CMyComPtr<IOutStream> os = _outStreamFactory(index, fileSize);
+        if (!os) {
+            return E_ABORT;
+        }
         *aOutStream = os.Detach();
 
         return S_OK;
