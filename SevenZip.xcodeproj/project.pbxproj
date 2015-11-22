@@ -156,6 +156,7 @@
 		E8BA34F21C01C38A006BDF06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34F11C01C38A006BDF06 /* main.m */; };
 		E8BA34F81C01C3AF006BDF06 /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA34411C011B48006BDF06 /* SevenZip.framework */; };
 		E8BA34F91C01C58D006BDF06 /* CRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31941C00FD10006BDF06 /* CRC.cpp */; };
+		E8BA34FF1C020D82006BDF06 /* SVZPreamble.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1722,6 +1723,7 @@
 		E8BA34DC1C0123F1006BDF06 /* SVZOutFileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZOutFileStream.h; sourceTree = "<group>"; };
 		E8BA34EF1C01C38A006BDF06 /* SVZTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SVZTest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BA34F11C01C38A006BDF06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVZPreamble.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4249,6 +4251,7 @@
 			children = (
 				E8BA34451C011B48006BDF06 /* Info.plist */,
 				E8BA34431C011B48006BDF06 /* SevenZip.h */,
+				E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */,
 				E8BA34C91C011EA5006BDF06 /* SVZArchive.h */,
 				E8BA34CA1C011EA5006BDF06 /* SVZArchive.mm */,
 				E8BA34D11C0123F1006BDF06 /* SVZArchiveEntry.h */,
@@ -4284,6 +4287,7 @@
 			files = (
 				E8BA34E61C0123F1006BDF06 /* SVZInFileStream.h in Headers */,
 				E8BA34DD1C0123F1006BDF06 /* SVZArchiveEntry.h in Headers */,
+				E8BA34FF1C020D82006BDF06 /* SVZPreamble.h in Headers */,
 				E8BA34E41C0123F1006BDF06 /* SVZArchiveUpdateCallback.h in Headers */,
 				E8BA34441C011B48006BDF06 /* SevenZip.h in Headers */,
 				E8BA34E01C0123F1006BDF06 /* SVZArchiveExtractCallback.h in Headers */,

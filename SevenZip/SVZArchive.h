@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <SevenZip/SVZPreamble.h>
 
-NS_ASSUME_NONNULL_BEGIN
+SVZ_ASSUME_NONNULL_BEGIN
 
 @class SVZArchiveEntry;
 
@@ -16,14 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, copy, readonly) NSURL* url;
 
-+ (nullable instancetype)archiveWithURL:(NSURL*)url
-                                  error:(NSError**)error;
++ (SVZ_NULLABLE instancetype)archiveWithURL:(NSURL*)aURL
+                                      error:(NSError**)aError;
 
-@property (nonatomic, copy, readonly) NSArray<SVZArchiveEntry*>* entries;
+@property (nonatomic, copy, readonly) SVZ_GENERIC(NSArray, SVZArchiveEntry*)* entries;
 
-- (BOOL)updateEntries:(NSArray<SVZArchiveEntry*>*)entries
-                error:(NSError**)error;
+- (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
+                error:(NSError**)aError;
 
 @end
 
-NS_ASSUME_NONNULL_END
+SVZ_ASSUME_NONNULL_END
