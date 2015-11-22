@@ -32,8 +32,9 @@ namespace SVZ {
 
         const unsigned char* Buffer() const { return _buffer; }
         UInt64 Size() const { return _size; }
+        void SetCapacity(UInt64 capacity);
         
-        OutMemoryStream();
+        OutMemoryStream(UInt64 capacity = 0);
         virtual ~OutMemoryStream();
     };
     

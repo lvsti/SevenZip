@@ -59,21 +59,30 @@ namespace SVZ {
     }
     
     STDMETHODIMP OutMemoryStream::SetSize(UInt64 newCapacity) {
-        if (newCapacity > _capacity) {
-            unsigned char* newBuffer = new unsigned char[newCapacity];
-            memcpy(newBuffer, _buffer, _capacity);
-            delete [] _buffer;
-            _buffer = newBuffer;
-            _capacity = newCapacity;
-        }
+        SetCapacity(newCapacity);
         return S_OK;
     }
     
-    OutMemoryStream::OutMemoryStream():
+    void OutMemoryStream::SetCapacity(UInt64 newCapacity) {
+        if (newCapacity <= _capacity) {
+            return;
+        }
+
+        unsigned char* newBuffer = new unsigned char[newCapacity];
+        if (_buffer) {
+            memcpy(newBuffer, _buffer, _capacity);
+            delete [] _buffer;
+        }
+        _buffer = newBuffer;
+        _capacity = newCapacity;
+    }
+    
+    OutMemoryStream::OutMemoryStream(UInt64 capacity):
         _buffer(nullptr),
         _capacity(0),
         _size(0),
         _offset(0) {
+        SetCapacity(capacity);
     }
     
     OutMemoryStream::~OutMemoryStream() {
