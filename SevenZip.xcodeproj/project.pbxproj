@@ -151,7 +151,6 @@
 		E8BA34E61C0123F1006BDF06 /* SVZInFileStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34DA1C0123F1006BDF06 /* SVZInFileStream.h */; };
 		E8BA34E71C0123F1006BDF06 /* SVZOutFileStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34DB1C0123F1006BDF06 /* SVZOutFileStream.cpp */; };
 		E8BA34E81C0123F1006BDF06 /* SVZOutFileStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34DC1C0123F1006BDF06 /* SVZOutFileStream.h */; };
-		E8BA34E91C01C1AB006BDF06 /* DLL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31EB1C00FD10006BDF06 /* DLL.cpp */; };
 		E8BA34EA1C01C2F0006BDF06 /* DllExports2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DFF1C00FD0F006BDF06 /* DllExports2.cpp */; };
 		E8BA34F21C01C38A006BDF06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34F11C01C38A006BDF06 /* main.m */; };
 		E8BA34F81C01C3AF006BDF06 /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA34411C011B48006BDF06 /* SevenZip.framework */; };
@@ -166,6 +165,162 @@
 		E8BA350C1C023C32006BDF06 /* SVZOutMemoryStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA350A1C023C32006BDF06 /* SVZOutMemoryStream.h */; };
 		E8BA350F1C026100006BDF06 /* SVZUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA350D1C026100006BDF06 /* SVZUtils.h */; };
 		E8BA35101C026100006BDF06 /* SVZUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8BA350E1C026100006BDF06 /* SVZUtils.mm */; };
+		E8BA35131C0266EE006BDF06 /* FileName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31F51C00FD10006BDF06 /* FileName.cpp */; };
+		E8BA35141C0266EE006BDF06 /* SVZUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8BA350E1C026100006BDF06 /* SVZUtils.mm */; };
+		E8BA35151C0266EE006BDF06 /* XzCrc64Opt.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D811C00FD0F006BDF06 /* XzCrc64Opt.c */; };
+		E8BA35161C0266EE006BDF06 /* TimeUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA32091C00FD10006BDF06 /* TimeUtils.cpp */; };
+		E8BA35171C0266EE006BDF06 /* HandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DED1C00FD0F006BDF06 /* HandlerOut.cpp */; };
+		E8BA35181C0266EE006BDF06 /* InStreamWithCRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DEF1C00FD0F006BDF06 /* InStreamWithCRC.cpp */; };
+		E8BA35191C0266EE006BDF06 /* Ppmd8Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D721C00FD0F006BDF06 /* Ppmd8Enc.c */; };
+		E8BA351A1C0266EE006BDF06 /* OutMemStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FA11C00FD10006BDF06 /* OutMemStream.cpp */; };
+		E8BA351B1C0266EE006BDF06 /* 7zEncode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DB61C00FD0F006BDF06 /* 7zEncode.cpp */; };
+		E8BA351C1C0266EE006BDF06 /* LzmaEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FE81C00FD10006BDF06 /* LzmaEncoder.cpp */; };
+		E8BA351D1C0266EE006BDF06 /* 7zHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DBD1C00FD0F006BDF06 /* 7zHandler.cpp */; };
+		E8BA351E1C0266EE006BDF06 /* Ppmd7.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D6B1C00FD0F006BDF06 /* Ppmd7.c */; };
+		E8BA351F1C0266EE006BDF06 /* CpuArch.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D4F1C00FD0F006BDF06 /* CpuArch.c */; };
+		E8BA35201C0266EE006BDF06 /* ParseProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DF91C00FD0F006BDF06 /* ParseProperties.cpp */; };
+		E8BA35211C0266EE006BDF06 /* RarAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30281C00FD10006BDF06 /* RarAes.cpp */; };
+		E8BA35221C0266EE006BDF06 /* XzEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D831C00FD0F006BDF06 /* XzEnc.c */; };
+		E8BA35231C0266EE006BDF06 /* Blake2s.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D471C00FD0F006BDF06 /* Blake2s.c */; };
+		E8BA35241C0266EE006BDF06 /* Synchronization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA32031C00FD10006BDF06 /* Synchronization.cpp */; };
+		E8BA35251C0266EE006BDF06 /* Ppmd7Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D6D1C00FD0F006BDF06 /* Ppmd7Dec.c */; };
+		E8BA35261C0266EE006BDF06 /* Sha256.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D771C00FD0F006BDF06 /* Sha256.c */; };
+		E8BA35271C0266EE006BDF06 /* 7zFolderInStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DB91C00FD0F006BDF06 /* 7zFolderInStream.cpp */; };
+		E8BA35281C0266EE006BDF06 /* Bra.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D481C00FD0F006BDF06 /* Bra.c */; };
+		E8BA35291C0266EE006BDF06 /* ProgressUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FA51C00FD10006BDF06 /* ProgressUtils.cpp */; };
+		E8BA352A1C0266EE006BDF06 /* Ppmd7Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D6E1C00FD0F006BDF06 /* Ppmd7Enc.c */; };
+		E8BA352B1C0266EE006BDF06 /* HmacSha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30191C00FD10006BDF06 /* HmacSha1.cpp */; };
+		E8BA352C1C0266EE006BDF06 /* 7zStream.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D3C1C00FD0F006BDF06 /* 7zStream.c */; };
+		E8BA352D1C0266EE006BDF06 /* MethodProps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F9B1C00FD10006BDF06 /* MethodProps.cpp */; };
+		E8BA352E1C0266EE006BDF06 /* FileFind.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31F11C00FD10006BDF06 /* FileFind.cpp */; };
+		E8BA352F1C0266EE006BDF06 /* wine_date_and_time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31D51C00FD10006BDF06 /* wine_date_and_time.cpp */; };
+		E8BA35301C0266EE006BDF06 /* LzFind.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D551C00FD0F006BDF06 /* LzFind.c */; };
+		E8BA35311C0266EE006BDF06 /* ItemNameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DF11C00FD0F006BDF06 /* ItemNameUtils.cpp */; };
+		E8BA35321C0266EE006BDF06 /* OutStreamWithSha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DF71C00FD0F006BDF06 /* OutStreamWithSha1.cpp */; };
+		E8BA35331C0266EE006BDF06 /* SVZOutMemoryStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35091C023C32006BDF06 /* SVZOutMemoryStream.cpp */; };
+		E8BA35341C0266EE006BDF06 /* BraIA64.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D4B1C00FD0F006BDF06 /* BraIA64.c */; };
+		E8BA35351C0266EE006BDF06 /* MyAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA301D1C00FD10006BDF06 /* MyAes.cpp */; };
+		E8BA35361C0266EE006BDF06 /* UTFConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31C11C00FD10006BDF06 /* UTFConvert.cpp */; };
+		E8BA35371C0266EE006BDF06 /* 7zHandlerOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DBF1C00FD0F006BDF06 /* 7zHandlerOut.cpp */; };
+		E8BA35381C0266EE006BDF06 /* ByteSwap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC31C00FD10006BDF06 /* ByteSwap.cpp */; };
+		E8BA35391C0266EE006BDF06 /* HmacSha256.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA301B1C00FD10006BDF06 /* HmacSha256.cpp */; };
+		E8BA353A1C0266EE006BDF06 /* Lzma2Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FE31C00FD10006BDF06 /* Lzma2Encoder.cpp */; };
+		E8BA353B1C0266EE006BDF06 /* 7zIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DC21C00FD0F006BDF06 /* 7zIn.cpp */; };
+		E8BA353C1C0266EE006BDF06 /* LzmaDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FE61C00FD10006BDF06 /* LzmaDecoder.cpp */; };
+		E8BA353D1C0266EE006BDF06 /* Sha1.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D751C00FD0F006BDF06 /* Sha1.c */; };
+		E8BA353E1C0266EE006BDF06 /* Bcj2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D451C00FD0F006BDF06 /* Bcj2Enc.c */; };
+		E8BA353F1C0266EE006BDF06 /* Delta.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D511C00FD0F006BDF06 /* Delta.c */; };
+		E8BA35401C0266EE006BDF06 /* HandlerCont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2E071C00FD0F006BDF06 /* HandlerCont.cpp */; };
+		E8BA35411C0266EE006BDF06 /* MyString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31A81C00FD10006BDF06 /* MyString.cpp */; };
+		E8BA35421C0266EE006BDF06 /* SVZStoredArchiveEntry.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35031C022B12006BDF06 /* SVZStoredArchiveEntry.mm */; };
+		E8BA35431C0266EE006BDF06 /* CrossThreadProgress.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DE71C00FD0F006BDF06 /* CrossThreadProgress.cpp */; };
+		E8BA35441C0266EE006BDF06 /* ProgressMt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FA31C00FD10006BDF06 /* ProgressMt.cpp */; };
+		E8BA35451C0266EE006BDF06 /* 7zRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DC91C00FD0F006BDF06 /* 7zRegister.cpp */; };
+		E8BA35461C0266EE006BDF06 /* XzHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2E521C00FD0F006BDF06 /* XzHandler.cpp */; };
+		E8BA35471C0266EE006BDF06 /* 7zOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DC51C00FD0F006BDF06 /* 7zOut.cpp */; };
+		E8BA35481C0266EE006BDF06 /* StringToInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31BD1C00FD10006BDF06 /* StringToInt.cpp */; };
+		E8BA35491C0266EE006BDF06 /* CopyRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FCF1C00FD10006BDF06 /* CopyRegister.cpp */; };
+		E8BA354A1C0266EE006BDF06 /* 7zExtract.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DB81C00FD0F006BDF06 /* 7zExtract.cpp */; };
+		E8BA354B1C0266EE006BDF06 /* OutStreamWithCRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DF51C00FD0F006BDF06 /* OutStreamWithCRC.cpp */; };
+		E8BA354C1C0266EE006BDF06 /* StdOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31B91C00FD10006BDF06 /* StdOutStream.cpp */; };
+		E8BA354D1C0266EE006BDF06 /* 7zBuf2.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D381C00FD0F006BDF06 /* 7zBuf2.c */; };
+		E8BA354E1C0266EE006BDF06 /* MultiStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DF31C00FD0F006BDF06 /* MultiStream.cpp */; };
+		E8BA354F1C0266EE006BDF06 /* 7zAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30161C00FD10006BDF06 /* 7zAes.cpp */; };
+		E8BA35501C0266EE006BDF06 /* LimitedStreams.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F951C00FD10006BDF06 /* LimitedStreams.cpp */; };
+		E8BA35511C0266EE006BDF06 /* CodecExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FCC1C00FD10006BDF06 /* CodecExports.cpp */; };
+		E8BA35521C0266EE006BDF06 /* StreamUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FAE1C00FD10006BDF06 /* StreamUtils.cpp */; };
+		E8BA35531C0266EE006BDF06 /* OffsetStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F9D1C00FD10006BDF06 /* OffsetStream.cpp */; };
+		E8BA35541C0266EE006BDF06 /* SVZArchiveOpenCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34D51C0123F1006BDF06 /* SVZArchiveOpenCallback.cpp */; };
+		E8BA35551C0266EE006BDF06 /* StreamObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FAC1C00FD10006BDF06 /* StreamObjects.cpp */; };
+		E8BA35561C0266EE006BDF06 /* Bra86.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D4A1C00FD0F006BDF06 /* Bra86.c */; };
+		E8BA35571C0266EE006BDF06 /* 7zProperties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DC71C00FD0F006BDF06 /* 7zProperties.cpp */; };
+		E8BA35581C0266EE006BDF06 /* CoderMixer2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DE51C00FD0F006BDF06 /* CoderMixer2.cpp */; };
+		E8BA35591C0266EE006BDF06 /* PropVariant.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31F91C00FD10006BDF06 /* PropVariant.cpp */; };
+		E8BA355A1C0266EE006BDF06 /* SVZArchiveExtractCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34D31C0123F1006BDF06 /* SVZArchiveExtractCallback.cpp */; };
+		E8BA355B1C0266EE006BDF06 /* LzmaRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FEA1C00FD10006BDF06 /* LzmaRegister.cpp */; };
+		E8BA355C1C0266EE006BDF06 /* MemBlocks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F971C00FD10006BDF06 /* MemBlocks.cpp */; };
+		E8BA355D1C0266EE006BDF06 /* ArchiveExports.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DCF1C00FD0F006BDF06 /* ArchiveExports.cpp */; };
+		E8BA355E1C0266EE006BDF06 /* Rar5Aes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30261C00FD10006BDF06 /* Rar5Aes.cpp */; };
+		E8BA355F1C0266EE006BDF06 /* SVZInFileStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34D91C0123F1006BDF06 /* SVZInFileStream.cpp */; };
+		E8BA35601C0266EE006BDF06 /* 7zSpecStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DCA1C00FD0F006BDF06 /* 7zSpecStream.cpp */; };
+		E8BA35611C0266EE006BDF06 /* FileDir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31EF1C00FD10006BDF06 /* FileDir.cpp */; };
+		E8BA35621C0266EE006BDF06 /* PropId.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FA71C00FD10006BDF06 /* PropId.cpp */; };
+		E8BA35631C0266EE006BDF06 /* Pbkdf2HmacSha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30201C00FD10006BDF06 /* Pbkdf2HmacSha1.cpp */; };
+		E8BA35641C0266EE006BDF06 /* 7zHeader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DC01C00FD0F006BDF06 /* 7zHeader.cpp */; };
+		E8BA35651C0266EE006BDF06 /* Wildcard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31C31C00FD10006BDF06 /* Wildcard.cpp */; };
+		E8BA35661C0266EE006BDF06 /* IntToString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA319A1C00FD10006BDF06 /* IntToString.cpp */; };
+		E8BA35671C0266EE006BDF06 /* 7zUpdate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DCC1C00FD0F006BDF06 /* 7zUpdate.cpp */; };
+		E8BA35681C0266EE006BDF06 /* HuffEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D531C00FD0F006BDF06 /* HuffEnc.c */; };
+		E8BA35691C0266EE006BDF06 /* Xz.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D7D1C00FD0F006BDF06 /* Xz.c */; };
+		E8BA356A1C0266EE006BDF06 /* LzmaDec.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D611C00FD0F006BDF06 /* LzmaDec.c */; };
+		E8BA356B1C0266EE006BDF06 /* CRC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31941C00FD10006BDF06 /* CRC.cpp */; };
+		E8BA356C1C0266EE006BDF06 /* CWrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F891C00FD10006BDF06 /* CWrappers.cpp */; };
+		E8BA356D1C0266EE006BDF06 /* Rar20Crypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30241C00FD10006BDF06 /* Rar20Crypto.cpp */; };
+		E8BA356E1C0266EE006BDF06 /* InBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F911C00FD10006BDF06 /* InBuffer.cpp */; };
+		E8BA356F1C0266EE006BDF06 /* 7zAesRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30181C00FD10006BDF06 /* 7zAesRegister.cpp */; };
+		E8BA35701C0266EE006BDF06 /* MyWindows.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31AE1C00FD10006BDF06 /* MyWindows.cpp */; };
+		E8BA35711C0266EE006BDF06 /* Ppmd8.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D6F1C00FD0F006BDF06 /* Ppmd8.c */; };
+		E8BA35721C0266EE006BDF06 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA32061C00FD10006BDF06 /* System.cpp */; };
+		E8BA35731C0266EE006BDF06 /* Lzma2Enc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D5C1C00FD0F006BDF06 /* Lzma2Enc.c */; };
+		E8BA35741C0266EE006BDF06 /* 7zFolderOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DBB1C00FD0F006BDF06 /* 7zFolderOutStream.cpp */; };
+		E8BA35751C0266EE006BDF06 /* WzAes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA302B1C00FD10006BDF06 /* WzAes.cpp */; };
+		E8BA35761C0266EE006BDF06 /* VirtThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB21C00FD10006BDF06 /* VirtThread.cpp */; };
+		E8BA35771C0266EE006BDF06 /* ZipStrong.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA302F1C00FD10006BDF06 /* ZipStrong.cpp */; };
+		E8BA35781C0266EE006BDF06 /* CreateCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F871C00FD10006BDF06 /* CreateCoder.cpp */; };
+		E8BA35791C0266EE006BDF06 /* RandGen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30221C00FD10006BDF06 /* RandGen.cpp */; };
+		E8BA357A1C0266EE006BDF06 /* Lzma2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FE51C00FD10006BDF06 /* Lzma2Register.cpp */; };
+		E8BA357B1C0266EE006BDF06 /* Lzma2Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D5A1C00FD0F006BDF06 /* Lzma2Dec.c */; };
+		E8BA357C1C0266EE006BDF06 /* DllExports2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DFF1C00FD0F006BDF06 /* DllExports2.cpp */; };
+		E8BA357D1C0266EE006BDF06 /* SVZArchiveEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34D21C0123F1006BDF06 /* SVZArchiveEntry.m */; };
+		E8BA357E1C0266EE006BDF06 /* UniqBlocks.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB01C00FD10006BDF06 /* UniqBlocks.cpp */; };
+		E8BA357F1C0266EE006BDF06 /* LzFindMt.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D571C00FD0F006BDF06 /* LzFindMt.c */; };
+		E8BA35801C0266EE006BDF06 /* Bcj2.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D431C00FD0F006BDF06 /* Bcj2.c */; };
+		E8BA35811C0266EE006BDF06 /* FindSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DEB1C00FD0F006BDF06 /* FindSignature.cpp */; };
+		E8BA35821C0266EE006BDF06 /* StringConvert.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31BB1C00FD10006BDF06 /* StringConvert.cpp */; };
+		E8BA35831C0266EE006BDF06 /* 7zDecode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DB41C00FD0F006BDF06 /* 7zDecode.cpp */; };
+		E8BA35841C0266EE006BDF06 /* FileIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA31F31C00FD10006BDF06 /* FileIO.cpp */; };
+		E8BA35851C0266EE006BDF06 /* XzIn.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D851C00FD0F006BDF06 /* XzIn.c */; };
+		E8BA35861C0266EE006BDF06 /* SVZArchiveUpdateCallback.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34D71C0123F1006BDF06 /* SVZArchiveUpdateCallback.cpp */; };
+		E8BA35871C0266EE006BDF06 /* Ppmd8Dec.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D711C00FD0F006BDF06 /* Ppmd8Dec.c */; };
+		E8BA35881C0266EE006BDF06 /* LzmaEnc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D661C00FD0F006BDF06 /* LzmaEnc.c */; };
+		E8BA35891C0266EE006BDF06 /* XzDec.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D821C00FD0F006BDF06 /* XzDec.c */; };
+		E8BA358A1C0266EE006BDF06 /* 7zCompressionMode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DB21C00FD0F006BDF06 /* 7zCompressionMode.cpp */; };
+		E8BA358B1C0266EE006BDF06 /* SVZArchive.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34CA1C011EA5006BDF06 /* SVZArchive.mm */; };
+		E8BA358C1C0266EE006BDF06 /* FilterCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F8F1C00FD10006BDF06 /* FilterCoder.cpp */; };
+		E8BA358D1C0266EE006BDF06 /* ZipCrypto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA302D1C00FD10006BDF06 /* ZipCrypto.cpp */; };
+		E8BA358E1C0266EE006BDF06 /* Aes.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D3F1C00FD0F006BDF06 /* Aes.c */; };
+		E8BA358F1C0266EE006BDF06 /* SVZOutFileStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA34DB1C0123F1006BDF06 /* SVZOutFileStream.cpp */; };
+		E8BA35901C0266EE006BDF06 /* DummyOutStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2DE91C00FD0F006BDF06 /* DummyOutStream.cpp */; };
+		E8BA35911C0266EE006BDF06 /* Alloc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D411C00FD0F006BDF06 /* Alloc.c */; };
+		E8BA35921C0266EE006BDF06 /* StreamBinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FAA1C00FD10006BDF06 /* StreamBinder.cpp */; };
+		E8BA35931C0266EE006BDF06 /* 7zCrc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D391C00FD0F006BDF06 /* 7zCrc.c */; };
+		E8BA35941C0266EE006BDF06 /* BwtSort.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D4C1C00FD0F006BDF06 /* BwtSort.c */; };
+		E8BA35961C0266EE006BDF06 /* 7zCrcOpt.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D3B1C00FD0F006BDF06 /* 7zCrcOpt.c */; };
+		E8BA35971C0266EE006BDF06 /* OutBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F9F1C00FD10006BDF06 /* OutBuffer.cpp */; };
+		E8BA35981C0266EE006BDF06 /* CopyCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FCD1C00FD10006BDF06 /* CopyCoder.cpp */; };
+		E8BA35991C0266EE006BDF06 /* Threads.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D7B1C00FD0F006BDF06 /* Threads.c */; };
+		E8BA359A1C0266EE006BDF06 /* InOutTempBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F931C00FD10006BDF06 /* InOutTempBuffer.cpp */; };
+		E8BA359B1C0266EE006BDF06 /* MyAesReg.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA301F1C00FD10006BDF06 /* MyAesReg.cpp */; };
+		E8BA359C1C0266EE006BDF06 /* MtCoder.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D681C00FD0F006BDF06 /* MtCoder.c */; };
+		E8BA359D1C0266EE006BDF06 /* XzCrc64.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D7F1C00FD0F006BDF06 /* XzCrc64.c */; };
+		E8BA359E1C0266EE006BDF06 /* Lzma2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FE11C00FD10006BDF06 /* Lzma2Decoder.cpp */; };
+		E8BA359F1C0266EE006BDF06 /* Sort.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D791C00FD0F006BDF06 /* Sort.c */; };
+		E8BA35A01C0266EE006BDF06 /* MethodId.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2F991C00FD10006BDF06 /* MethodId.cpp */; };
+		E8BA35A21C0266EE006BDF06 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA34371C0111F4006BDF06 /* CoreFoundation.framework */; };
+		E8BA35A41C0266EE006BDF06 /* SVZInFileStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34DA1C0123F1006BDF06 /* SVZInFileStream.h */; };
+		E8BA35A51C0266EE006BDF06 /* SVZArchiveEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34D11C0123F1006BDF06 /* SVZArchiveEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8BA35A61C0266EE006BDF06 /* SVZPreamble.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8BA35A71C0266EE006BDF06 /* SVZArchiveUpdateCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34D81C0123F1006BDF06 /* SVZArchiveUpdateCallback.h */; };
+		E8BA35A81C0266EE006BDF06 /* SevenZip.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34431C011B48006BDF06 /* SevenZip.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8BA35A91C0266EE006BDF06 /* SVZArchiveExtractCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34D41C0123F1006BDF06 /* SVZArchiveExtractCallback.h */; };
+		E8BA35AA1C0266EE006BDF06 /* SVZArchiveOpenCallback.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34D61C0123F1006BDF06 /* SVZArchiveOpenCallback.h */; };
+		E8BA35AB1C0266EE006BDF06 /* SVZOutMemoryStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA350A1C023C32006BDF06 /* SVZOutMemoryStream.h */; };
+		E8BA35AC1C0266EE006BDF06 /* SVZArchive.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34C91C011EA5006BDF06 /* SVZArchive.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8BA35AD1C0266EE006BDF06 /* SVZOutFileStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34DC1C0123F1006BDF06 /* SVZOutFileStream.h */; };
+		E8BA35AE1C0266EE006BDF06 /* SVZArchive_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35061C0232E0006BDF06 /* SVZArchive_Private.h */; };
+		E8BA35AF1C0266EE006BDF06 /* SVZArchiveEntry_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */; };
+		E8BA35B01C0266EE006BDF06 /* SVZUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA350D1C026100006BDF06 /* SVZUtils.h */; };
+		E8BA35B11C0266EE006BDF06 /* SVZStoredArchiveEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35021C022B12006BDF06 /* SVZStoredArchiveEntry.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1741,6 +1896,7 @@
 		E8BA350A1C023C32006BDF06 /* SVZOutMemoryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZOutMemoryStream.h; sourceTree = "<group>"; };
 		E8BA350D1C026100006BDF06 /* SVZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZUtils.h; sourceTree = "<group>"; };
 		E8BA350E1C026100006BDF06 /* SVZUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZUtils.mm; sourceTree = "<group>"; };
+		E8BA35B61C0266EE006BDF06 /* SevenZip_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SevenZip_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1757,6 +1913,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8BA34F81C01C3AF006BDF06 /* SevenZip.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8BA35A11C0266EE006BDF06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8BA35A21C0266EE006BDF06 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1779,6 +1943,7 @@
 			children = (
 				E8BA34411C011B48006BDF06 /* SevenZip.framework */,
 				E8BA34EF1C01C38A006BDF06 /* SVZTest */,
+				E8BA35B61C0266EE006BDF06 /* SevenZip_iOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4327,6 +4492,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E8BA35A31C0266EE006BDF06 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8BA35A41C0266EE006BDF06 /* SVZInFileStream.h in Headers */,
+				E8BA35A51C0266EE006BDF06 /* SVZArchiveEntry.h in Headers */,
+				E8BA35A61C0266EE006BDF06 /* SVZPreamble.h in Headers */,
+				E8BA35A71C0266EE006BDF06 /* SVZArchiveUpdateCallback.h in Headers */,
+				E8BA35A81C0266EE006BDF06 /* SevenZip.h in Headers */,
+				E8BA35A91C0266EE006BDF06 /* SVZArchiveExtractCallback.h in Headers */,
+				E8BA35AA1C0266EE006BDF06 /* SVZArchiveOpenCallback.h in Headers */,
+				E8BA35AB1C0266EE006BDF06 /* SVZOutMemoryStream.h in Headers */,
+				E8BA35AC1C0266EE006BDF06 /* SVZArchive.h in Headers */,
+				E8BA35AD1C0266EE006BDF06 /* SVZOutFileStream.h in Headers */,
+				E8BA35AE1C0266EE006BDF06 /* SVZArchive_Private.h in Headers */,
+				E8BA35AF1C0266EE006BDF06 /* SVZArchiveEntry_Private.h in Headers */,
+				E8BA35B01C0266EE006BDF06 /* SVZUtils.h in Headers */,
+				E8BA35B11C0266EE006BDF06 /* SVZStoredArchiveEntry.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -4366,6 +4552,24 @@
 			productReference = E8BA34EF1C01C38A006BDF06 /* SVZTest */;
 			productType = "com.apple.product-type.tool";
 		};
+		E8BA35111C0266EE006BDF06 /* SevenZip_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8BA35B31C0266EE006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip_iOS" */;
+			buildPhases = (
+				E8BA35121C0266EE006BDF06 /* Sources */,
+				E8BA35A11C0266EE006BDF06 /* Frameworks */,
+				E8BA35A31C0266EE006BDF06 /* Headers */,
+				E8BA35B21C0266EE006BDF06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SevenZip_iOS;
+			productName = SevenZip;
+			productReference = E8BA35B61C0266EE006BDF06 /* SevenZip_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -4396,6 +4600,7 @@
 			projectRoot = "";
 			targets = (
 				E8BA34401C011B48006BDF06 /* SevenZip */,
+				E8BA35111C0266EE006BDF06 /* SevenZip_iOS */,
 				E8BA34EE1C01C38A006BDF06 /* SVZTest */,
 			);
 		};
@@ -4403,6 +4608,13 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		E8BA343F1C011B48006BDF06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8BA35B21C0266EE006BDF06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -4546,7 +4758,6 @@
 				E8BA349C1C011C35006BDF06 /* StreamBinder.cpp in Sources */,
 				E8BA344A1C011BCE006BDF06 /* 7zCrc.c in Sources */,
 				E8BA34551C011BCE006BDF06 /* BwtSort.c in Sources */,
-				E8BA34E91C01C1AB006BDF06 /* DLL.cpp in Sources */,
 				E8BA344B1C011BCE006BDF06 /* 7zCrcOpt.c in Sources */,
 				E8BA34971C011C35006BDF06 /* OutBuffer.cpp in Sources */,
 				E8BA34A31C011C44006BDF06 /* CopyCoder.cpp in Sources */,
@@ -4566,6 +4777,154 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8BA34F21C01C38A006BDF06 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8BA35121C0266EE006BDF06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8BA35131C0266EE006BDF06 /* FileName.cpp in Sources */,
+				E8BA35141C0266EE006BDF06 /* SVZUtils.mm in Sources */,
+				E8BA35151C0266EE006BDF06 /* XzCrc64Opt.c in Sources */,
+				E8BA35161C0266EE006BDF06 /* TimeUtils.cpp in Sources */,
+				E8BA35171C0266EE006BDF06 /* HandlerOut.cpp in Sources */,
+				E8BA35181C0266EE006BDF06 /* InStreamWithCRC.cpp in Sources */,
+				E8BA35191C0266EE006BDF06 /* Ppmd8Enc.c in Sources */,
+				E8BA351A1C0266EE006BDF06 /* OutMemStream.cpp in Sources */,
+				E8BA351B1C0266EE006BDF06 /* 7zEncode.cpp in Sources */,
+				E8BA351C1C0266EE006BDF06 /* LzmaEncoder.cpp in Sources */,
+				E8BA351D1C0266EE006BDF06 /* 7zHandler.cpp in Sources */,
+				E8BA351E1C0266EE006BDF06 /* Ppmd7.c in Sources */,
+				E8BA351F1C0266EE006BDF06 /* CpuArch.c in Sources */,
+				E8BA35201C0266EE006BDF06 /* ParseProperties.cpp in Sources */,
+				E8BA35211C0266EE006BDF06 /* RarAes.cpp in Sources */,
+				E8BA35221C0266EE006BDF06 /* XzEnc.c in Sources */,
+				E8BA35231C0266EE006BDF06 /* Blake2s.c in Sources */,
+				E8BA35241C0266EE006BDF06 /* Synchronization.cpp in Sources */,
+				E8BA35251C0266EE006BDF06 /* Ppmd7Dec.c in Sources */,
+				E8BA35261C0266EE006BDF06 /* Sha256.c in Sources */,
+				E8BA35271C0266EE006BDF06 /* 7zFolderInStream.cpp in Sources */,
+				E8BA35281C0266EE006BDF06 /* Bra.c in Sources */,
+				E8BA35291C0266EE006BDF06 /* ProgressUtils.cpp in Sources */,
+				E8BA352A1C0266EE006BDF06 /* Ppmd7Enc.c in Sources */,
+				E8BA352B1C0266EE006BDF06 /* HmacSha1.cpp in Sources */,
+				E8BA352C1C0266EE006BDF06 /* 7zStream.c in Sources */,
+				E8BA352D1C0266EE006BDF06 /* MethodProps.cpp in Sources */,
+				E8BA352E1C0266EE006BDF06 /* FileFind.cpp in Sources */,
+				E8BA352F1C0266EE006BDF06 /* wine_date_and_time.cpp in Sources */,
+				E8BA35301C0266EE006BDF06 /* LzFind.c in Sources */,
+				E8BA35311C0266EE006BDF06 /* ItemNameUtils.cpp in Sources */,
+				E8BA35321C0266EE006BDF06 /* OutStreamWithSha1.cpp in Sources */,
+				E8BA35331C0266EE006BDF06 /* SVZOutMemoryStream.cpp in Sources */,
+				E8BA35341C0266EE006BDF06 /* BraIA64.c in Sources */,
+				E8BA35351C0266EE006BDF06 /* MyAes.cpp in Sources */,
+				E8BA35361C0266EE006BDF06 /* UTFConvert.cpp in Sources */,
+				E8BA35371C0266EE006BDF06 /* 7zHandlerOut.cpp in Sources */,
+				E8BA35381C0266EE006BDF06 /* ByteSwap.cpp in Sources */,
+				E8BA35391C0266EE006BDF06 /* HmacSha256.cpp in Sources */,
+				E8BA353A1C0266EE006BDF06 /* Lzma2Encoder.cpp in Sources */,
+				E8BA353B1C0266EE006BDF06 /* 7zIn.cpp in Sources */,
+				E8BA353C1C0266EE006BDF06 /* LzmaDecoder.cpp in Sources */,
+				E8BA353D1C0266EE006BDF06 /* Sha1.c in Sources */,
+				E8BA353E1C0266EE006BDF06 /* Bcj2Enc.c in Sources */,
+				E8BA353F1C0266EE006BDF06 /* Delta.c in Sources */,
+				E8BA35401C0266EE006BDF06 /* HandlerCont.cpp in Sources */,
+				E8BA35411C0266EE006BDF06 /* MyString.cpp in Sources */,
+				E8BA35421C0266EE006BDF06 /* SVZStoredArchiveEntry.mm in Sources */,
+				E8BA35431C0266EE006BDF06 /* CrossThreadProgress.cpp in Sources */,
+				E8BA35441C0266EE006BDF06 /* ProgressMt.cpp in Sources */,
+				E8BA35451C0266EE006BDF06 /* 7zRegister.cpp in Sources */,
+				E8BA35461C0266EE006BDF06 /* XzHandler.cpp in Sources */,
+				E8BA35471C0266EE006BDF06 /* 7zOut.cpp in Sources */,
+				E8BA35481C0266EE006BDF06 /* StringToInt.cpp in Sources */,
+				E8BA35491C0266EE006BDF06 /* CopyRegister.cpp in Sources */,
+				E8BA354A1C0266EE006BDF06 /* 7zExtract.cpp in Sources */,
+				E8BA354B1C0266EE006BDF06 /* OutStreamWithCRC.cpp in Sources */,
+				E8BA354C1C0266EE006BDF06 /* StdOutStream.cpp in Sources */,
+				E8BA354D1C0266EE006BDF06 /* 7zBuf2.c in Sources */,
+				E8BA354E1C0266EE006BDF06 /* MultiStream.cpp in Sources */,
+				E8BA354F1C0266EE006BDF06 /* 7zAes.cpp in Sources */,
+				E8BA35501C0266EE006BDF06 /* LimitedStreams.cpp in Sources */,
+				E8BA35511C0266EE006BDF06 /* CodecExports.cpp in Sources */,
+				E8BA35521C0266EE006BDF06 /* StreamUtils.cpp in Sources */,
+				E8BA35531C0266EE006BDF06 /* OffsetStream.cpp in Sources */,
+				E8BA35541C0266EE006BDF06 /* SVZArchiveOpenCallback.cpp in Sources */,
+				E8BA35551C0266EE006BDF06 /* StreamObjects.cpp in Sources */,
+				E8BA35561C0266EE006BDF06 /* Bra86.c in Sources */,
+				E8BA35571C0266EE006BDF06 /* 7zProperties.cpp in Sources */,
+				E8BA35581C0266EE006BDF06 /* CoderMixer2.cpp in Sources */,
+				E8BA35591C0266EE006BDF06 /* PropVariant.cpp in Sources */,
+				E8BA355A1C0266EE006BDF06 /* SVZArchiveExtractCallback.cpp in Sources */,
+				E8BA355B1C0266EE006BDF06 /* LzmaRegister.cpp in Sources */,
+				E8BA355C1C0266EE006BDF06 /* MemBlocks.cpp in Sources */,
+				E8BA355D1C0266EE006BDF06 /* ArchiveExports.cpp in Sources */,
+				E8BA355E1C0266EE006BDF06 /* Rar5Aes.cpp in Sources */,
+				E8BA355F1C0266EE006BDF06 /* SVZInFileStream.cpp in Sources */,
+				E8BA35601C0266EE006BDF06 /* 7zSpecStream.cpp in Sources */,
+				E8BA35611C0266EE006BDF06 /* FileDir.cpp in Sources */,
+				E8BA35621C0266EE006BDF06 /* PropId.cpp in Sources */,
+				E8BA35631C0266EE006BDF06 /* Pbkdf2HmacSha1.cpp in Sources */,
+				E8BA35641C0266EE006BDF06 /* 7zHeader.cpp in Sources */,
+				E8BA35651C0266EE006BDF06 /* Wildcard.cpp in Sources */,
+				E8BA35661C0266EE006BDF06 /* IntToString.cpp in Sources */,
+				E8BA35671C0266EE006BDF06 /* 7zUpdate.cpp in Sources */,
+				E8BA35681C0266EE006BDF06 /* HuffEnc.c in Sources */,
+				E8BA35691C0266EE006BDF06 /* Xz.c in Sources */,
+				E8BA356A1C0266EE006BDF06 /* LzmaDec.c in Sources */,
+				E8BA356B1C0266EE006BDF06 /* CRC.cpp in Sources */,
+				E8BA356C1C0266EE006BDF06 /* CWrappers.cpp in Sources */,
+				E8BA356D1C0266EE006BDF06 /* Rar20Crypto.cpp in Sources */,
+				E8BA356E1C0266EE006BDF06 /* InBuffer.cpp in Sources */,
+				E8BA356F1C0266EE006BDF06 /* 7zAesRegister.cpp in Sources */,
+				E8BA35701C0266EE006BDF06 /* MyWindows.cpp in Sources */,
+				E8BA35711C0266EE006BDF06 /* Ppmd8.c in Sources */,
+				E8BA35721C0266EE006BDF06 /* System.cpp in Sources */,
+				E8BA35731C0266EE006BDF06 /* Lzma2Enc.c in Sources */,
+				E8BA35741C0266EE006BDF06 /* 7zFolderOutStream.cpp in Sources */,
+				E8BA35751C0266EE006BDF06 /* WzAes.cpp in Sources */,
+				E8BA35761C0266EE006BDF06 /* VirtThread.cpp in Sources */,
+				E8BA35771C0266EE006BDF06 /* ZipStrong.cpp in Sources */,
+				E8BA35781C0266EE006BDF06 /* CreateCoder.cpp in Sources */,
+				E8BA35791C0266EE006BDF06 /* RandGen.cpp in Sources */,
+				E8BA357A1C0266EE006BDF06 /* Lzma2Register.cpp in Sources */,
+				E8BA357B1C0266EE006BDF06 /* Lzma2Dec.c in Sources */,
+				E8BA357C1C0266EE006BDF06 /* DllExports2.cpp in Sources */,
+				E8BA357D1C0266EE006BDF06 /* SVZArchiveEntry.m in Sources */,
+				E8BA357E1C0266EE006BDF06 /* UniqBlocks.cpp in Sources */,
+				E8BA357F1C0266EE006BDF06 /* LzFindMt.c in Sources */,
+				E8BA35801C0266EE006BDF06 /* Bcj2.c in Sources */,
+				E8BA35811C0266EE006BDF06 /* FindSignature.cpp in Sources */,
+				E8BA35821C0266EE006BDF06 /* StringConvert.cpp in Sources */,
+				E8BA35831C0266EE006BDF06 /* 7zDecode.cpp in Sources */,
+				E8BA35841C0266EE006BDF06 /* FileIO.cpp in Sources */,
+				E8BA35851C0266EE006BDF06 /* XzIn.c in Sources */,
+				E8BA35861C0266EE006BDF06 /* SVZArchiveUpdateCallback.cpp in Sources */,
+				E8BA35871C0266EE006BDF06 /* Ppmd8Dec.c in Sources */,
+				E8BA35881C0266EE006BDF06 /* LzmaEnc.c in Sources */,
+				E8BA35891C0266EE006BDF06 /* XzDec.c in Sources */,
+				E8BA358A1C0266EE006BDF06 /* 7zCompressionMode.cpp in Sources */,
+				E8BA358B1C0266EE006BDF06 /* SVZArchive.mm in Sources */,
+				E8BA358C1C0266EE006BDF06 /* FilterCoder.cpp in Sources */,
+				E8BA358D1C0266EE006BDF06 /* ZipCrypto.cpp in Sources */,
+				E8BA358E1C0266EE006BDF06 /* Aes.c in Sources */,
+				E8BA358F1C0266EE006BDF06 /* SVZOutFileStream.cpp in Sources */,
+				E8BA35901C0266EE006BDF06 /* DummyOutStream.cpp in Sources */,
+				E8BA35911C0266EE006BDF06 /* Alloc.c in Sources */,
+				E8BA35921C0266EE006BDF06 /* StreamBinder.cpp in Sources */,
+				E8BA35931C0266EE006BDF06 /* 7zCrc.c in Sources */,
+				E8BA35941C0266EE006BDF06 /* BwtSort.c in Sources */,
+				E8BA35961C0266EE006BDF06 /* 7zCrcOpt.c in Sources */,
+				E8BA35971C0266EE006BDF06 /* OutBuffer.cpp in Sources */,
+				E8BA35981C0266EE006BDF06 /* CopyCoder.cpp in Sources */,
+				E8BA35991C0266EE006BDF06 /* Threads.c in Sources */,
+				E8BA359A1C0266EE006BDF06 /* InOutTempBuffer.cpp in Sources */,
+				E8BA359B1C0266EE006BDF06 /* MyAesReg.cpp in Sources */,
+				E8BA359C1C0266EE006BDF06 /* MtCoder.c in Sources */,
+				E8BA359D1C0266EE006BDF06 /* XzCrc64.c in Sources */,
+				E8BA359E1C0266EE006BDF06 /* Lzma2Decoder.cpp in Sources */,
+				E8BA359F1C0266EE006BDF06 /* Sort.c in Sources */,
+				E8BA35A01C0266EE006BDF06 /* MethodId.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4620,7 +4979,8 @@
 					"$(SRCROOT)/External/p7zip/C",
 					"$(SRCROOT)/External/p7zip/CPP",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -4661,7 +5021,8 @@
 					"$(SRCROOT)/External/p7zip/C",
 					"$(SRCROOT)/External/p7zip/CPP",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -4761,6 +5122,82 @@
 			};
 			name = Release;
 		};
+		E8BA35B41C0266EE006BDF06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SevenZip/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-DENV_MACOSX",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGEFILE_SOURCE",
+					"-D_REENTRANT",
+					"-DENV_UNIX",
+					"-DRegisterArc=DllRegisterArc",
+					"-DRegisterCodec=DllRegisterCodec",
+					"-DBREAK_HANDLER",
+					"-DUNICODE",
+					"-D_UNICODE",
+					"-DUNIX_USE_WIN_FILE",
+					"-DWINAPI=",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E8BA35B51C0266EE006BDF06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = SevenZip/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-DENV_MACOSX",
+					"-D_FILE_OFFSET_BITS=64",
+					"-D_LARGEFILE_SOURCE",
+					"-D_REENTRANT",
+					"-DENV_UNIX",
+					"-DRegisterArc=DllRegisterArc",
+					"-DRegisterCodec=DllRegisterCodec",
+					"-DBREAK_HANDLER",
+					"-DUNICODE",
+					"-D_UNICODE",
+					"-DUNIX_USE_WIN_FILE",
+					"-DWINAPI=",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -4787,6 +5224,15 @@
 			buildConfigurations = (
 				E8BA34F41C01C38A006BDF06 /* Debug */,
 				E8BA34F51C01C38A006BDF06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8BA35B31C0266EE006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8BA35B41C0266EE006BDF06 /* Debug */,
+				E8BA35B51C0266EE006BDF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
