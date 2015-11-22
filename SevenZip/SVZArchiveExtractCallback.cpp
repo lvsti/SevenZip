@@ -213,19 +213,22 @@ namespace SVZ {
             }
         }
         
-        if (_outFileStreamImpl) {
-//            if (_processedFileInfo.MTimeDefined) {
-//                _outFileStreamImpl->SetMTime(&_processedFileInfo.MTime);
-//            }
-            _outFileStreamImpl->Close();
+        if (_extractToFile) {
+            if (_outFileStreamImpl) {
+    //            if (_processedFileInfo.MTimeDefined) {
+    //                _outFileStreamImpl->SetMTime(&_processedFileInfo.MTime);
+    //            }
+                _outFileStreamImpl->Close();
+                _outFileStreamImpl = nullptr;
+            }
+            
+            if (_extractMode && _processedFileInfo.AttribDefined) {
+                NWindows::NFile::NDir::SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
+            }
         }
+
         _outStream.Release();
-        _outFileStreamImpl = nullptr;
-        
-        if (_extractMode && _processedFileInfo.AttribDefined) {
-            NWindows::NFile::NDir::SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
-        }
-        
+
         return S_OK;
     }
     
