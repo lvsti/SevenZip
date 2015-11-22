@@ -146,7 +146,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     
     UInt32 numItems = 0;
     self.archive->GetNumberOfItems(&numItems);
-    NSMutableArray* storedEntries = [NSMutableArray arrayWithCapacity:numItems];
+    SVZ_GENERIC(NSMutableArray, SVZArchiveEntry*)* storedEntries = [NSMutableArray arrayWithCapacity:numItems];
         
     for (UInt32 i = 0; i < numItems; i++) {
         SVZStoredArchiveEntry* entry = [[SVZStoredArchiveEntry alloc] initWithIndex:i inArchive:self];
@@ -158,7 +158,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     return YES;
 }
 
-- (BOOL)updateEntries:(NSArray<SVZArchiveEntry*>*)aEntries
+- (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
                 error:(NSError**)aError {
     CObjectVector<SVZ::CDirItem> dirItems;
     
