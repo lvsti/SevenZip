@@ -21,16 +21,18 @@
 
 static const wchar_t *kEmptyFileAlias = L"[Content]";
 
-static HRESULT IsArchiveItemProp(IInArchive *archive, UInt32 index, PROPID propID, bool &result)
-{
+static HRESULT IsArchiveItemProp(IInArchive *archive, UInt32 index, PROPID propID, bool &result) {
     NWindows::NCOM::CPropVariant prop;
     RINOK(archive->GetProperty(index, propID, &prop));
-    if (prop.vt == VT_BOOL)
+    if (prop.vt == VT_BOOL) {
         result = VARIANT_BOOLToBool(prop.boolVal);
-    else if (prop.vt == VT_EMPTY)
+    }
+    else if (prop.vt == VT_EMPTY) {
         result = false;
-    else
+    }
+    else {
         return E_FAIL;
+    }
     return S_OK;
 }
 
@@ -67,31 +69,31 @@ namespace SVZ {
             RINOK(_archiveHandler->GetProperty(index, kpidPath, &prop));
             
             UString fullPath;
-            if (prop.vt == VT_EMPTY)
+            if (prop.vt == VT_EMPTY) {
                 fullPath = kEmptyFileAlias;
-            else
-            {
-                if (prop.vt != VT_BSTR)
+            }
+            else {
+                if (prop.vt != VT_BSTR) {
                     return E_FAIL;
+                }
                 fullPath = prop.bstrVal;
             }
             _filePath = fullPath;
         }
         
-        if (askExtractMode != NArchive::NExtract::NAskMode::kExtract)
+        if (askExtractMode != NArchive::NExtract::NAskMode::kExtract) {
             return S_OK;
+        }
         
         {
             // Get Attrib
             NWindows::NCOM::CPropVariant prop;
             RINOK(_archiveHandler->GetProperty(index, kpidAttrib, &prop));
-            if (prop.vt == VT_EMPTY)
-            {
+            if (prop.vt == VT_EMPTY) {
                 _processedFileInfo.Attrib = 0;
                 _processedFileInfo.AttribDefined = false;
             }
-            else
-            {
+            else {
                 if (prop.vt != VT_UI4)
                     return E_FAIL;
                 _processedFileInfo.Attrib = prop.ulVal;
@@ -106,8 +108,7 @@ namespace SVZ {
             NWindows::NCOM::CPropVariant prop;
             RINOK(_archiveHandler->GetProperty(index, kpidMTime, &prop));
             _processedFileInfo.MTimeDefined = false;
-            switch (prop.vt)
-            {
+            switch (prop.vt) {
                 case VT_EMPTY:
                     // _processedFileInfo.MTime = _utcMTimeDefault;
                     break;
@@ -140,17 +141,13 @@ namespace SVZ {
         FString fullProcessedPath = _directoryPath + us2fs(_filePath);
         _diskFilePath = fullProcessedPath;
         
-        if (_processedFileInfo.isDir)
-        {
+        if (_processedFileInfo.isDir) {
             NWindows::NFile::NDir::CreateComplexDir(fullProcessedPath);
         }
-        else
-        {
+        else {
             NWindows::NFile::NFind::CFileInfo fi;
-            if (fi.Find(fullProcessedPath))
-            {
-                if (!NWindows::NFile::NDir::DeleteFileAlways(fullProcessedPath))
-                {
+            if (fi.Find(fullProcessedPath)) {
+                if (!NWindows::NFile::NDir::DeleteFileAlways(fullProcessedPath)) {
 //                    PrintError("Can not delete output file", fullProcessedPath);
                     return E_ABORT;
                 }
@@ -160,8 +157,7 @@ namespace SVZ {
             CMyComPtr<ISequentialOutStream> outStreamLoc(_outFileStreamImpl);
             AString utf8Path;
             ConvertUnicodeToUTF8(fs2us(fullProcessedPath), utf8Path);
-            if (!_outFileStreamImpl->Open(utf8Path.Ptr()))
-            {
+            if (!_outFileStreamImpl->Open(utf8Path.Ptr())) {
 //                PrintError("Can not open output file", fullProcessedPath);
                 return E_ABORT;
             }
@@ -173,34 +169,32 @@ namespace SVZ {
     
     STDMETHODIMP ArchiveExtractCallback::PrepareOperation(Int32 askExtractMode) {
         _extractMode = false;
-        switch (askExtractMode)
-        {
+        switch (askExtractMode) {
             case NArchive::NExtract::NAskMode::kExtract:  _extractMode = true; break;
         }
         return S_OK;
     }
     
     STDMETHODIMP ArchiveExtractCallback::SetOperationResult(Int32 operationResult) {
-        switch (operationResult)
-        {
+        switch (operationResult) {
             case NArchive::NExtract::NOperationResult::kOK:
                 break;
-            default:
-            {
+            default: {
                 NumErrors++;
             }
         }
         
-        if (_outFileStream)
-        {
+        if (_outFileStream) {
 //            if (_processedFileInfo.MTimeDefined) {
 //                _outFileStreamImpl->SetMTime(&_processedFileInfo.MTime);
 //            }
             _outFileStreamImpl->Close();
         }
         _outFileStream.Release();
-        if (_extractMode && _processedFileInfo.AttribDefined)
+        if (_extractMode && _processedFileInfo.AttribDefined) {
             NWindows::NFile::NDir::SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
+        }
+        
         return S_OK;
     }
     
