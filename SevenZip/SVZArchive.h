@@ -13,11 +13,21 @@ SVZ_ASSUME_NONNULL_BEGIN
 
 @class SVZArchiveEntry;
 
+extern NSString* const kSVZArchiveErrorDomain;
+
+typedef NS_ENUM(NSInteger, SVZArchiveError) {
+    kSVZArchiveErrorFileNotFound = -1,
+    kSVZArchiveErrorInvalidArchive = -2,
+    kSVZArchiveErrorOpenFailed = -3
+};
+
+
 @interface SVZArchive : NSObject
 
 @property (nonatomic, copy, readonly) NSURL* url;
 
 + (SVZ_NULLABLE instancetype)archiveWithURL:(NSURL*)aURL
+                            createIfMissing:(BOOL)aShouldCreate
                                       error:(NSError**)aError;
 
 @property (nonatomic, copy, readonly) SVZ_GENERIC(NSArray, SVZArchiveEntry*)* entries;
