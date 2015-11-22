@@ -9,6 +9,8 @@
 #import "SVZStoredArchiveEntry.h"
 #import "SVZArchive_Private.h"
 #import "SVZArchiveEntry_Private.h"
+#import "SVZArchiveExtractCallback.h"
+#import "SVZOutMemoryStream.h"
 
 #include "CPP/Windows/PropVariant.h"
 #include "CPP/Windows/TimeUtils.h"
@@ -69,6 +71,36 @@ static NSString* FromUString(const UString& ustr) {
         self.archive.archive->GetProperty(idx, kpidPackSize, &prop);
         self.compressedSize = prop.uhVal.QuadPart;
     }
+}
+
+- (NSData*)newDataWithPassword:(NSString*)aPassword
+                         error:(NSError**)aError {
+    SVZArchive* archive = self.archive;
+    if (!archive || !archive.archive) {
+        return nil;
+    }
+    
+    SVZ::OutMemoryStream* memoryStreamImpl = new SVZ::OutMemoryStream();
+    CMyComPtr<IOutStream> memoryStream(memoryStreamImpl);
+    
+    SVZ::ArchiveExtractCallback* extractCallbackImpl = new SVZ::ArchiveExtractCallback();
+    CMyComPtr<IArchiveExtractCallback> extractCallback(extractCallbackImpl);
+    extractCallbackImpl->InitExtractToMemory(archive.archive, [&] (UInt32 index, UInt64 size) -> CMyComPtr<IOutStream> {
+        memoryStreamImpl->SetCapacity(size);
+        return memoryStream;
+    });
+    extractCallbackImpl->PasswordIsDefined = false;
+
+    UInt32 indices[] = {(UInt32)self.index};
+    HRESULT result = archive.archive->Extract(indices, 1, false, extractCallback);
+    if (result != S_OK) {
+        return nil;
+    }
+    
+    NSData* data = [NSData dataWithBytes:memoryStreamImpl->Buffer()
+                                  length:memoryStreamImpl->Size()];
+    
+    return data;
 }
 
 @end

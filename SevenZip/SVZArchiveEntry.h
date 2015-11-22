@@ -38,6 +38,9 @@ SVZ_ASSUME_NONNULL_BEGIN
 
 + (SVZ_NULLABLE instancetype)archiveEntryWithDirectoryName:(NSString*)aDirName;
 
+- (NSData*)newDataWithPassword:(NSString* SVZ_NULLABLE_ARG)aPassword
+                         error:(NSError**)aError;
+
 @end
 
 SVZ_ASSUME_NONNULL_END

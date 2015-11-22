@@ -60,6 +60,11 @@
     return self.attributes & kSVZArchiveEntryAttributeWinDirectory;
 }
 
+- (NSData*)newDataWithPassword:(NSString*)aPassword
+                         error:(NSError**)aError {
+    return nil;
+}
+
 - (NSString*)description {
     return [NSString stringWithFormat:@"<%@:%p> kind:%@ path:%@%@",
             [self class],

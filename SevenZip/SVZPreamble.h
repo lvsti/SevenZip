@@ -11,13 +11,13 @@
 #   define SVZ_ASSUME_NONNULL_BEGIN      NS_ASSUME_NONNULL_BEGIN
 #   define SVZ_ASSUME_NONNULL_END        NS_ASSUME_NONNULL_END
 #   define SVZ_NULLABLE                  nullable
-#   define SVZ_NULLABLE_X                _Nullable
+#   define SVZ_NULLABLE_ARG              _Nullable
 #   define SVZ_NONNULL                   nonnull
 #else
 #   define SVZ_ASSUME_NONNULL_BEGIN
 #   define SVZ_ASSUME_NONNULL_END
 #   define SVZ_NULLABLE
-#   define SVZ_NULLABLE_X
+#   define SVZ_NULLABLE_ARG
 #   define SVZ_NONNULL
 #endif
 
