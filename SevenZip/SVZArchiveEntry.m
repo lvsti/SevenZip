@@ -18,7 +18,7 @@
 }
 
 - (instancetype)initWithName:(NSString*)aFileName
-                         url:(NSURL* _Nullable)aFileURL {
+                         url:(NSURL* SVZ_NULLABLE_ARG)aFileURL {
     NSParameterAssert(aFileName);
     NSAssert(!aFileURL || [aFileURL isFileURL], @"fileURL must point to a local file");
     
