@@ -55,17 +55,17 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 
 @implementation SVZArchive
 
-+ (nullable instancetype)archiveWithURL:(NSURL*)aURL
-                        createIfMissing:(BOOL)aShouldCreate
-                                  error:(NSError**)aError {
++ (SVZ_NULLABLE instancetype)archiveWithURL:(NSURL*)aURL
+                            createIfMissing:(BOOL)aShouldCreate
+                                      error:(NSError**)aError {
     return [[self alloc] initWithURL:aURL
                      createIfMissing:aShouldCreate
                                error:aError];
 }
 
-- (nullable instancetype)initWithURL:(NSURL*)aURL
-                     createIfMissing:(BOOL)aShouldCreate
-                               error:(NSError**)aError {
+- (SVZ_NULLABLE instancetype)initWithURL:(NSURL*)aURL
+                         createIfMissing:(BOOL)aShouldCreate
+                                   error:(NSError**)aError {
     NSParameterAssert(aURL);
     NSAssert([aURL isFileURL], @"url must point to a local file");
     
