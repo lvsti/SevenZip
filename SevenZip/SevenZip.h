@@ -6,6 +6,8 @@
 //  Copyright © 2015. Tamas Lustyik. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 //! Project version number for SevenZip.
 FOUNDATION_EXPORT double SevenZipVersionNumber;
 

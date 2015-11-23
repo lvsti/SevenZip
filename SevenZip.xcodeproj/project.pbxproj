@@ -321,6 +321,13 @@
 		E8BA35AF1C0266EE006BDF06 /* SVZArchiveEntry_Private.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */; };
 		E8BA35B01C0266EE006BDF06 /* SVZUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA350D1C026100006BDF06 /* SVZUtils.h */; };
 		E8BA35B11C0266EE006BDF06 /* SVZStoredArchiveEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA35021C022B12006BDF06 /* SVZStoredArchiveEntry.h */; };
+		E8BA35C01C027D6B006BDF06 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35BF1C027D6B006BDF06 /* main.m */; };
+		E8BA35C31C027D6B006BDF06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35C21C027D6B006BDF06 /* AppDelegate.m */; };
+		E8BA35C61C027D6B006BDF06 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8BA35C51C027D6B006BDF06 /* ViewController.m */; };
+		E8BA35C91C027D6B006BDF06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BA35C71C027D6B006BDF06 /* Main.storyboard */; };
+		E8BA35CB1C027D6B006BDF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8BA35CA1C027D6B006BDF06 /* Assets.xcassets */; };
+		E8BA35CE1C027D6B006BDF06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BA35CC1C027D6B006BDF06 /* LaunchScreen.storyboard */; };
+		E8F424AE1C03C386004F7D5F /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA35B61C0266EE006BDF06 /* SevenZip.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,6 +337,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = E8BA34401C011B48006BDF06;
 			remoteInfo = SevenZip;
+		};
+		E8F424AC1C03C37C004F7D5F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8BA2D1E1C00FCF0006BDF06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8BA35111C0266EE006BDF06;
+			remoteInfo = "SevenZip (iOS)";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1896,7 +1910,17 @@
 		E8BA350A1C023C32006BDF06 /* SVZOutMemoryStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZOutMemoryStream.h; sourceTree = "<group>"; };
 		E8BA350D1C026100006BDF06 /* SVZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZUtils.h; sourceTree = "<group>"; };
 		E8BA350E1C026100006BDF06 /* SVZUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZUtils.mm; sourceTree = "<group>"; };
-		E8BA35B61C0266EE006BDF06 /* SevenZip_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SevenZip_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8BA35B61C0266EE006BDF06 /* SevenZip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SevenZip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8BA35BC1C027D6B006BDF06 /* SVZTestiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVZTestiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8BA35BF1C027D6B006BDF06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E8BA35C11C027D6B006BDF06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		E8BA35C21C027D6B006BDF06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		E8BA35C41C027D6B006BDF06 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		E8BA35C51C027D6B006BDF06 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		E8BA35C81C027D6B006BDF06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E8BA35CA1C027D6B006BDF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E8BA35CD1C027D6B006BDF06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E8BA35CF1C027D6B006BDF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1924,6 +1948,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E8BA35B91C027D6B006BDF06 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8F424AE1C03C386004F7D5F /* SevenZip.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -1934,6 +1966,7 @@
 				E8BA2D2D1C00FD0F006BDF06 /* External */,
 				E8BA34421C011B48006BDF06 /* SevenZip */,
 				E8BA34F01C01C38A006BDF06 /* SVZTest */,
+				E8BA35BD1C027D6B006BDF06 /* SVZTestiOS */,
 				E8BA2D271C00FCF0006BDF06 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1943,7 +1976,8 @@
 			children = (
 				E8BA34411C011B48006BDF06 /* SevenZip.framework */,
 				E8BA34EF1C01C38A006BDF06 /* SVZTest */,
-				E8BA35B61C0266EE006BDF06 /* SevenZip_iOS.framework */,
+				E8BA35B61C0266EE006BDF06 /* SevenZip.framework */,
+				E8BA35BC1C027D6B006BDF06 /* SVZTestiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4468,6 +4502,30 @@
 			path = SVZTest;
 			sourceTree = "<group>";
 		};
+		E8BA35BD1C027D6B006BDF06 /* SVZTestiOS */ = {
+			isa = PBXGroup;
+			children = (
+				E8BA35C11C027D6B006BDF06 /* AppDelegate.h */,
+				E8BA35C21C027D6B006BDF06 /* AppDelegate.m */,
+				E8BA35C41C027D6B006BDF06 /* ViewController.h */,
+				E8BA35C51C027D6B006BDF06 /* ViewController.m */,
+				E8BA35C71C027D6B006BDF06 /* Main.storyboard */,
+				E8BA35CA1C027D6B006BDF06 /* Assets.xcassets */,
+				E8BA35CC1C027D6B006BDF06 /* LaunchScreen.storyboard */,
+				E8BA35CF1C027D6B006BDF06 /* Info.plist */,
+				E8BA35BE1C027D6B006BDF06 /* Supporting Files */,
+			);
+			path = SVZTestiOS;
+			sourceTree = "<group>";
+		};
+		E8BA35BE1C027D6B006BDF06 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E8BA35BF1C027D6B006BDF06 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -4516,9 +4574,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		E8BA34401C011B48006BDF06 /* SevenZip */ = {
+		E8BA34401C011B48006BDF06 /* SevenZip (OSX) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8BA34461C011B48006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip" */;
+			buildConfigurationList = E8BA34461C011B48006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip (OSX)" */;
 			buildPhases = (
 				E8BA343C1C011B48006BDF06 /* Sources */,
 				E8BA343D1C011B48006BDF06 /* Frameworks */,
@@ -4529,7 +4587,7 @@
 			);
 			dependencies = (
 			);
-			name = SevenZip;
+			name = "SevenZip (OSX)";
 			productName = SevenZip;
 			productReference = E8BA34411C011B48006BDF06 /* SevenZip.framework */;
 			productType = "com.apple.product-type.framework";
@@ -4552,9 +4610,9 @@
 			productReference = E8BA34EF1C01C38A006BDF06 /* SVZTest */;
 			productType = "com.apple.product-type.tool";
 		};
-		E8BA35111C0266EE006BDF06 /* SevenZip_iOS */ = {
+		E8BA35111C0266EE006BDF06 /* SevenZip (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8BA35B31C0266EE006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip_iOS" */;
+			buildConfigurationList = E8BA35B31C0266EE006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip (iOS)" */;
 			buildPhases = (
 				E8BA35121C0266EE006BDF06 /* Sources */,
 				E8BA35A11C0266EE006BDF06 /* Frameworks */,
@@ -4565,10 +4623,28 @@
 			);
 			dependencies = (
 			);
-			name = SevenZip_iOS;
+			name = "SevenZip (iOS)";
 			productName = SevenZip;
-			productReference = E8BA35B61C0266EE006BDF06 /* SevenZip_iOS.framework */;
+			productReference = E8BA35B61C0266EE006BDF06 /* SevenZip.framework */;
 			productType = "com.apple.product-type.framework";
+		};
+		E8BA35BB1C027D6B006BDF06 /* SVZTestiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E8BA35D01C027D6C006BDF06 /* Build configuration list for PBXNativeTarget "SVZTestiOS" */;
+			buildPhases = (
+				E8BA35B81C027D6B006BDF06 /* Sources */,
+				E8BA35B91C027D6B006BDF06 /* Frameworks */,
+				E8BA35BA1C027D6B006BDF06 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E8F424AD1C03C37C004F7D5F /* PBXTargetDependency */,
+			);
+			name = SVZTestiOS;
+			productName = SVZTestiOS;
+			productReference = E8BA35BC1C027D6B006BDF06 /* SVZTestiOS.app */;
+			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
@@ -4585,6 +4661,9 @@
 					E8BA34EE1C01C38A006BDF06 = {
 						CreatedOnToolsVersion = 7.1;
 					};
+					E8BA35BB1C027D6B006BDF06 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 				};
 			};
 			buildConfigurationList = E8BA2D211C00FCF0006BDF06 /* Build configuration list for PBXProject "SevenZip" */;
@@ -4593,15 +4672,17 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = E8BA2D1D1C00FCF0006BDF06;
 			productRefGroup = E8BA2D271C00FCF0006BDF06 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E8BA34401C011B48006BDF06 /* SevenZip */,
-				E8BA35111C0266EE006BDF06 /* SevenZip_iOS */,
+				E8BA34401C011B48006BDF06 /* SevenZip (OSX) */,
+				E8BA35111C0266EE006BDF06 /* SevenZip (iOS) */,
 				E8BA34EE1C01C38A006BDF06 /* SVZTest */,
+				E8BA35BB1C027D6B006BDF06 /* SVZTestiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -4618,6 +4699,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8BA35BA1C027D6B006BDF06 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8BA35CE1C027D6B006BDF06 /* LaunchScreen.storyboard in Resources */,
+				E8BA35CB1C027D6B006BDF06 /* Assets.xcassets in Resources */,
+				E8BA35C91C027D6B006BDF06 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4928,15 +5019,49 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E8BA35B81C027D6B006BDF06 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8BA35C61C027D6B006BDF06 /* ViewController.m in Sources */,
+				E8BA35C31C027D6B006BDF06 /* AppDelegate.m in Sources */,
+				E8BA35C01C027D6B006BDF06 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		E8BA34F71C01C3AA006BDF06 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = E8BA34401C011B48006BDF06 /* SevenZip */;
+			target = E8BA34401C011B48006BDF06 /* SevenZip (OSX) */;
 			targetProxy = E8BA34F61C01C3AA006BDF06 /* PBXContainerItemProxy */;
 		};
+		E8F424AD1C03C37C004F7D5F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8BA35111C0266EE006BDF06 /* SevenZip (iOS) */;
+			targetProxy = E8F424AC1C03C37C004F7D5F /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E8BA35C71C027D6B006BDF06 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8BA35C81C027D6B006BDF06 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E8BA35CC1C027D6B006BDF06 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E8BA35CD1C027D6B006BDF06 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E8BA2D281C00FCF0006BDF06 /* Debug */ = {
@@ -5031,7 +5156,6 @@
 		E8BA34471C011B48006BDF06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5058,7 +5182,7 @@
 					"-DWINAPI=",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SevenZip;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -5068,7 +5192,6 @@
 		E8BA34481C011B48006BDF06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5095,7 +5218,7 @@
 					"-DWINAPI=",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SevenZip;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -5106,7 +5229,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -5116,7 +5238,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -5125,7 +5246,6 @@
 		E8BA35B41C0266EE006BDF06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5152,7 +5272,7 @@
 					"-DWINAPI=",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SevenZip;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -5163,7 +5283,6 @@
 		E8BA35B51C0266EE006BDF06 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -5190,11 +5309,46 @@
 					"-DWINAPI=",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZip;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SevenZip;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		E8BA35D11C027D6C006BDF06 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SVZTestiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SVZTestiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E8BA35D21C027D6C006BDF06 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SVZTestiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SVZTestiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -5210,7 +5364,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8BA34461C011B48006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip" */ = {
+		E8BA34461C011B48006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip (OSX)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8BA34471C011B48006BDF06 /* Debug */,
@@ -5228,11 +5382,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8BA35B31C0266EE006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip_iOS" */ = {
+		E8BA35B31C0266EE006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8BA35B41C0266EE006BDF06 /* Debug */,
 				E8BA35B51C0266EE006BDF06 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8BA35D01C027D6C006BDF06 /* Build configuration list for PBXNativeTarget "SVZTestiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8BA35D11C027D6C006BDF06 /* Debug */,
+				E8BA35D21C027D6C006BDF06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
