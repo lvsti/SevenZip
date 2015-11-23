@@ -13,3 +13,10 @@ if [ ! -f External/p7zip/C/7zCrc.c ]; then
 fi
 
 patch -p1 < scripts/7zCrc_c_patch.diff
+
+if [ ! -f External/p7zip/C/7zTypes.h ]; then
+    echo "error: 7zTypes.h not found, make sure you have the p7zip source in place."
+    exit 1
+fi
+
+patch -p1 < scripts/7zTypes_h_patch.diff
