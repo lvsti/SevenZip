@@ -19,8 +19,7 @@
 
 namespace SVZ {
 
-    struct CDirItem
-    {
+    struct ArchiveItem {
         UInt64 Size;
         FILETIME CTime;
         FILETIME ATime;
@@ -33,9 +32,8 @@ namespace SVZ {
     };
     
     class ArchiveUpdateCallback: public IArchiveUpdateCallback2,
-    public ICryptoGetTextPassword2,
-    public CMyUnknownImp
-    {
+                                 public ICryptoGetTextPassword2,
+                                 public CMyUnknownImp {
     public:
         MY_UNKNOWN_IMP2(IArchiveUpdateCallback2, ICryptoGetTextPassword2)
         
@@ -60,7 +58,7 @@ namespace SVZ {
         UString VolExt;
         
         FString DirPrefix;
-        const CObjectVector<CDirItem> *DirItems;
+        const CObjectVector<ArchiveItem> *ArchiveItems;
         
         bool PasswordIsDefined;
         UString Password;
@@ -71,14 +69,14 @@ namespace SVZ {
         FStringVector FailedFiles;
         CRecordVector<HRESULT> FailedCodes;
         
-        ArchiveUpdateCallback(): PasswordIsDefined(false), AskPassword(false), DirItems(0) {};
+        ArchiveUpdateCallback(): PasswordIsDefined(false), AskPassword(false), ArchiveItems(0) {};
         
         ~ArchiveUpdateCallback() { Finalize(); }
         HRESULT Finalize();
         
-        void Init(const CObjectVector<CDirItem> *dirItems)
+        void Init(const CObjectVector<ArchiveItem> *archiveItems)
         {
-            DirItems = dirItems;
+            ArchiveItems = archiveItems;
             m_NeedBeClosed = false;
             FailedFiles.Clear();
             FailedCodes.Clear();

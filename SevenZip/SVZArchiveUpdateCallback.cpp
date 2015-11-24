@@ -52,18 +52,17 @@ namespace SVZ {
             return S_OK;
         }
         
-        {
-            const CDirItem &dirItem = (*DirItems)[index];
-            switch (propID) {
-                case kpidPath:  prop = dirItem.Name; break;
-                case kpidIsDir:  prop = dirItem.isDir(); break;
-                case kpidSize:  prop = dirItem.Size; break;
-                case kpidAttrib:  prop = dirItem.Attrib; break;
-                case kpidCTime:  prop = dirItem.CTime; break;
-                case kpidATime:  prop = dirItem.ATime; break;
-                case kpidMTime:  prop = dirItem.MTime; break;
-            }
+        const ArchiveItem &item = (*ArchiveItems)[index];
+        switch (propID) {
+            case kpidPath: prop = item.Name; break;
+            case kpidIsDir: prop = item.isDir(); break;
+            case kpidSize: prop = item.Size; break;
+            case kpidAttrib: prop = item.Attrib; break;
+            case kpidCTime: prop = item.CTime; break;
+            case kpidATime: prop = item.ATime; break;
+            case kpidMTime: prop = item.MTime; break;
         }
+
         prop.Detach(value);
         return S_OK;
     }
@@ -78,16 +77,16 @@ namespace SVZ {
     STDMETHODIMP ArchiveUpdateCallback::GetStream(UInt32 index, ISequentialInStream **inStream) {
         RINOK(Finalize());
         
-        const CDirItem &dirItem = (*DirItems)[index];
+        const ArchiveItem& item = (*ArchiveItems)[index];
         
-        if (dirItem.isDir()) {
+        if (item.isDir()) {
             return S_OK;
         }
         
         {
             SVZ::InFileStream *inStreamImpl = new SVZ::InFileStream();
             CMyComPtr<ISequentialInStream> inStreamLoc(inStreamImpl);
-            FString path = DirPrefix + dirItem.FullPath;
+            FString path = DirPrefix + item.FullPath;
             AString utf8Path;
             ConvertUnicodeToUTF8(fs2us(path), utf8Path);
             if (!inStreamImpl->Open(utf8Path.Ptr())) {

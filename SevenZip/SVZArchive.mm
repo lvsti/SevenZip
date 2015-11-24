@@ -144,22 +144,22 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
                 error:(NSError**)aError {
-    CObjectVector<SVZ::CDirItem> dirItems;
+    CObjectVector<SVZ::ArchiveItem> archiveItems;
     
     for (SVZArchiveEntry* entry in aEntries) {
-        SVZ::CDirItem di;
+        SVZ::ArchiveItem item;
         
-        di.Attrib = entry.attributes;
-        di.Size = entry.uncompressedSize;
+        item.Attrib = entry.attributes;
+        item.Size = entry.uncompressedSize;
         
-        NWindows::NTime::UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], di.CTime);
-        NWindows::NTime::UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], di.MTime);
-        NWindows::NTime::UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], di.ATime);
+        NWindows::NTime::UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], item.CTime);
+        NWindows::NTime::UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], item.MTime);
+        NWindows::NTime::UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], item.ATime);
         
-        di.Name = ToUString(entry.name);
-        di.FullPath = us2fs(ToUString(entry.url.path));
+        item.Name = ToUString(entry.name);
+        item.FullPath = us2fs(ToUString(entry.url.path));
         
-        dirItems.Add(di);
+        archiveItems.Add(item);
     }
     
     SVZ::OutFileStream* outFileStreamImpl = new SVZ::OutFileStream();
@@ -176,9 +176,9 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     SVZ::ArchiveUpdateCallback* updateCallbackImpl = new SVZ::ArchiveUpdateCallback();
     CMyComPtr<IArchiveUpdateCallback2> updateCallback(updateCallbackImpl);
     updateCallbackImpl->PasswordIsDefined = false;
-    updateCallbackImpl->Init(&dirItems);
+    updateCallbackImpl->Init(&archiveItems);
     
-    result = outArchive->UpdateItems(outFileStream, dirItems.Size(), updateCallback);
+    result = outArchive->UpdateItems(outFileStream, archiveItems.Size(), updateCallback);
     
     updateCallbackImpl->Finalize();
     
