@@ -104,12 +104,37 @@ int TestExtractToFile(int argc, const char * argv[]) {
     return success? 0: 1;
 }
 
+int TestUpdateArchive(int argc, const char* argv[]) {
+    if (argc < 2) {
+        return 1;
+    }
+    
+    NSString* archiveName = [NSString stringWithUTF8String:argv[1]];
+    SVZArchive* archive = [SVZArchive archiveWithURL:[NSURL fileURLWithPath:archiveName]
+                                     createIfMissing:NO
+                                               error:NULL];
+    if (!archive) {
+        return 1;
+    }
+    
+    NSMutableArray* entries = [archive.entries mutableCopy];
+    [entries removeObjectAtIndex:0];
+    [entries addObject:[SVZArchiveEntry archiveEntryWithFileName:@"stuff.txt"
+                                                             url:[NSURL fileURLWithPath:@"/Users/lvsti/stuff.txt"]]];
+    if (![archive updateEntries:entries error:NULL]) {
+        return 1;
+    }
+    
+    return 0;
+}
+
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
 //        return TestCreateArchive(argc, argv);
 //        return TestReadArchive(argc, argv);
 //        return TestExtractToMemory(argc, argv);
-        return TestExtractToFile(argc, argv);
+//        return TestExtractToFile(argc, argv);
+        return TestUpdateArchive(argc, argv);
     }
 }
