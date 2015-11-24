@@ -101,47 +101,6 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     _archive = nullptr;
 }
 
-- (BOOL)readEntries:(NSError**)aError {
-    CMyComPtr<IInArchive> archive;
-    HRESULT result = CreateArchiver(&CLSIDFormat7z, &IID_IInArchive, (void **)&archive);
-    NSAssert(result == S_OK, @"cannot instantiate archiver");
-    self.archive = archive;
-    
-    SVZ::InFileStream* inputStreamImpl = new SVZ::InFileStream();
-    CMyComPtr<IInStream> inputStream(inputStreamImpl);
-    
-    if (!inputStreamImpl->Open(self.url.path.UTF8String)) {
-        SetError(aError, kSVZArchiveErrorOpenFailed, nil);
-        return NO;
-    }
-    
-    SVZ::ArchiveOpenCallback* openCallbackImpl = new SVZ::ArchiveOpenCallback();
-    CMyComPtr<IArchiveOpenCallback> openCallback(openCallbackImpl);
-    openCallbackImpl->PasswordIsDefined = false;
-    // openCallbackSpec->PasswordIsDefined = true;
-    // openCallbackSpec->Password = L"1";
-    
-    const UInt64 scanSize = 1 << 23;
-    if (self.archive->Open(inputStream, &scanSize, openCallback) != S_OK) {
-        SetError(aError, kSVZArchiveErrorInvalidArchive, nil);
-        self.archive = nullptr;
-        return NO;
-    }
-    
-    UInt32 numItems = 0;
-    self.archive->GetNumberOfItems(&numItems);
-    SVZ_GENERIC(NSMutableArray, SVZArchiveEntry*)* storedEntries = [NSMutableArray arrayWithCapacity:numItems];
-        
-    for (UInt32 i = 0; i < numItems; i++) {
-        SVZStoredArchiveEntry* entry = [[SVZStoredArchiveEntry alloc] initWithIndex:i inArchive:self];
-        [storedEntries addObject:entry];
-    }
-    
-    _entries = [storedEntries copy];
-    
-    return YES;
-}
-
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
                 error:(NSError**)aError {
     CObjectVector<SVZ::ArchiveItem> archiveItems;
@@ -187,6 +146,52 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         return NO;
     }
     
+    return YES;
+}
+
+#pragma mark - private methods:
+
+- (BOOL)readEntries:(NSError**)aError {
+    if (![self openArchive:aError]) {
+        return NO;
+    }
+    
+    UInt32 numItems = 0;
+    self.archive->GetNumberOfItems(&numItems);
+    SVZ_GENERIC(NSMutableArray, SVZArchiveEntry*)* storedEntries = [NSMutableArray arrayWithCapacity:numItems];
+    
+    for (UInt32 i = 0; i < numItems; i++) {
+        SVZStoredArchiveEntry* entry = [[SVZStoredArchiveEntry alloc] initWithIndex:i inArchive:self];
+        [storedEntries addObject:entry];
+    }
+    
+    _entries = [storedEntries copy];
+    
+    return YES;
+}
+
+- (BOOL)openArchive:(NSError**)aError {
+    CMyComPtr<IInArchive> archive;
+    HRESULT result = CreateArchiver(&CLSIDFormat7z, &IID_IInArchive, (void **)&archive);
+    NSAssert(result == S_OK, @"cannot instantiate archiver");
+    
+    SVZ::InFileStream* inputStreamImpl = new SVZ::InFileStream();
+    CMyComPtr<IInStream> inputStream(inputStreamImpl);
+    
+    if (!inputStreamImpl->Open(self.url.path.UTF8String)) {
+        SetError(aError, kSVZArchiveErrorOpenFailed, nil);
+        return NO;
+    }
+    
+    SVZ::ArchiveOpenCallback* openCallbackImpl = new SVZ::ArchiveOpenCallback();
+    CMyComPtr<IArchiveOpenCallback> openCallback(openCallbackImpl);
+    
+    if (archive->Open(inputStream, nullptr, openCallback) != S_OK) {
+        SetError(aError, kSVZArchiveErrorInvalidArchive, nil);
+        return NO;
+    }
+
+    self.archive = archive;
     return YES;
 }
 
