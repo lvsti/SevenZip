@@ -104,9 +104,26 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
                 error:(NSError**)aError {
     CObjectVector<SVZ::ArchiveItem> archiveItems;
+    BOOL isUpdating = NO;
     
     for (SVZArchiveEntry* entry in aEntries) {
         SVZ::ArchiveItem item;
+
+        if ([entry isKindOfClass:[SVZStoredArchiveEntry class]]) {
+            SVZStoredArchiveEntry* storedEntry = (SVZStoredArchiveEntry*)entry;
+            SVZArchive* hostArchive = storedEntry.archive;
+            
+            if (!hostArchive || hostArchive.archive != self.archive) {
+                // foreign entries are not supported
+                SetError(aError, kSVZArchiveErrorForeignEntry, @{@"entry": entry});
+                return NO;
+            }
+            
+            item.CurrentIndex = (Int32)storedEntry.index;
+            isUpdating = YES;
+        } else {
+            item.CurrentIndex = SVZ::ArchiveItem::kNewItemIndex;
+        }
         
         item.Attrib = entry.attributes;
         item.Size = entry.uncompressedSize;
@@ -129,8 +146,17 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     }
     
     CMyComPtr<IOutArchive> outArchive;
-    HRESULT result = CreateArchiver(&CLSIDFormat7z, &IID_IOutArchive, (void **)&outArchive);
-    NSAssert(result == S_OK, @"cannot instantiate archiver");
+    HRESULT result;
+    
+    if (isUpdating) {
+        result = self.archive->QueryInterface(IID_IOutArchive, (void**)&outArchive);
+        NSAssert(result == S_OK, @"archiver object does not support updates");
+    }
+    
+    if (!outArchive) {
+        result = CreateArchiver(&CLSIDFormat7z, &IID_IOutArchive, (void**)&outArchive);
+        NSAssert(result == S_OK, @"cannot instantiate archiver");
+    }
 
     SVZ::ArchiveUpdateCallback* updateCallbackImpl = new SVZ::ArchiveUpdateCallback();
     CMyComPtr<IArchiveUpdateCallback2> updateCallback(updateCallbackImpl);

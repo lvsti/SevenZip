@@ -20,6 +20,10 @@
 namespace SVZ {
 
     struct ArchiveItem {
+        static const Int32 kNewItemIndex = -1;
+        
+        Int32 CurrentIndex;
+        
         UInt64 Size;
         FILETIME CTime;
         FILETIME ATime;

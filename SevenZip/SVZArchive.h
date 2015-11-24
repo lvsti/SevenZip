@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger, SVZArchiveError) {
     kSVZArchiveErrorFileOpenFailed = -3,
     kSVZArchiveErrorFileCreateFailed = -4,
     kSVZArchiveErrorUpdateFailed = -5,
+    kSVZArchiveErrorForeignEntry = -6
 };
 
 

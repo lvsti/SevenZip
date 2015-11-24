@@ -27,18 +27,21 @@ namespace SVZ {
         return S_OK;
     }
     
-    STDMETHODIMP ArchiveUpdateCallback::GetUpdateItemInfo(UInt32 /* index */,
+    STDMETHODIMP ArchiveUpdateCallback::GetUpdateItemInfo(UInt32 index,
                                                           Int32 *newData,
                                                           Int32 *newProperties,
                                                           UInt32 *indexInArchive) {
+        const ArchiveItem &item = (*ArchiveItems)[index];
+        bool isNewItem = item.CurrentIndex == ArchiveItem::kNewItemIndex;
+        
         if (newData) {
-            *newData = BoolToInt(true);
+            *newData = BoolToInt(isNewItem);
         }
         if (newProperties) {
-            *newProperties = BoolToInt(true);
+            *newProperties = BoolToInt(isNewItem);
         }
         if (indexInArchive) {
-            *indexInArchive = (UInt32)(Int32)-1;
+            *indexInArchive = (UInt32)item.CurrentIndex;
         }
         return S_OK;
     }
