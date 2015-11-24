@@ -122,9 +122,9 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     }
     
     SVZ::OutFileStream* outFileStreamImpl = new SVZ::OutFileStream();
-    CMyComPtr<IOutStream> outFileStream = outFileStreamImpl;
+    CMyComPtr<IOutStream> outputStream = outFileStreamImpl;
     if (!outFileStreamImpl->Open(self.url.path.UTF8String)) {
-        SetError(aError, kSVZArchiveErrorCreateFailed, nil);
+        SetError(aError, kSVZArchiveErrorFileOpenFailed, nil);
         return NO;
     }
     
@@ -137,7 +137,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     updateCallbackImpl->PasswordIsDefined = false;
     updateCallbackImpl->Init(&archiveItems);
     
-    result = outArchive->UpdateItems(outFileStream, archiveItems.Size(), updateCallback);
+    result = outArchive->UpdateItems(outputStream, archiveItems.Size(), updateCallback);
     
     updateCallbackImpl->Finalize();
     
@@ -175,11 +175,11 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     HRESULT result = CreateArchiver(&CLSIDFormat7z, &IID_IInArchive, (void **)&archive);
     NSAssert(result == S_OK, @"cannot instantiate archiver");
     
-    SVZ::InFileStream* inputStreamImpl = new SVZ::InFileStream();
-    CMyComPtr<IInStream> inputStream(inputStreamImpl);
+    SVZ::InFileStream* inFileStreamImpl = new SVZ::InFileStream();
+    CMyComPtr<IInStream> inputStream(inFileStreamImpl);
     
-    if (!inputStreamImpl->Open(self.url.path.UTF8String)) {
-        SetError(aError, kSVZArchiveErrorOpenFailed, nil);
+    if (!inFileStreamImpl->Open(self.url.path.UTF8String)) {
+        SetError(aError, kSVZArchiveErrorFileOpenFailed, nil);
         return NO;
     }
     
