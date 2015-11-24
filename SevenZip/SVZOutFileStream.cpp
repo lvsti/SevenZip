@@ -43,8 +43,11 @@ namespace SVZ {
         return S_OK;
     }
     
-    bool OutFileStream::Open(const char* path) {
-        _file = fopen(path, "w+b");
+    bool OutFileStream::Open(const char* path, bool overwriteExisting) {
+        _file = fopen(path, overwriteExisting? "w+b": "r+b");
+        if (!_file) {
+            _file = fopen(path, "w+b");
+        }
         return (_file != nullptr);
     }
     

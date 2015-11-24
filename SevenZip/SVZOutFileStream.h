@@ -27,7 +27,7 @@ namespace SVZ {
         STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64* newPosition);
         STDMETHOD(SetSize)(UInt64 newSize);
         
-        bool Open(const char* path);
+        bool Open(const char* path, bool overwriteExisting = false);
         void Close();
         
         OutFileStream();
