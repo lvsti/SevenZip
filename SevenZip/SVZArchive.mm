@@ -172,7 +172,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         return NO;
     }
     
-    return YES;
+    return [self readEntries:aError];
 }
 
 #pragma mark - private methods:
