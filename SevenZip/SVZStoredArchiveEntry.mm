@@ -67,6 +67,10 @@
     }
 }
 
+- (void)invalidate {
+    _archive = nil;
+}
+
 - (NSData*)newDataWithPassword:(NSString*)aPassword
                          error:(NSError**)aError {
     SVZArchive* archive = self.archive;
@@ -100,6 +104,11 @@
 - (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
                           error:(NSError**)aError {
     NSParameterAssert([aDirURL isFileURL]);
+    SVZArchive* archive = self.archive;
+    if (!archive || !archive.archive) {
+        return NO;
+    }
+    
     BOOL isDir = NO;
     BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:aDirURL.path
                                                        isDirectory:&isDir];
@@ -111,11 +120,6 @@
                                   withIntermediateDirectories:YES
                                                    attributes:nil
                                                         error:aError]) {
-        return NO;
-    }
-    
-    SVZArchive* archive = self.archive;
-    if (!archive || !archive.archive) {
         return NO;
     }
     

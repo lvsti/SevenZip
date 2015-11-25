@@ -104,7 +104,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
                 error:(NSError**)aError {
     CObjectVector<SVZ::ArchiveItem> archiveItems;
-    BOOL isUpdating = NO;
+    SVZ_GENERIC(NSMutableArray, SVZStoredArchiveEntry*)* storedEntries = [NSMutableArray arrayWithCapacity:aEntries.count];
     
     for (SVZArchiveEntry* entry in aEntries) {
         SVZ::ArchiveItem item;
@@ -120,7 +120,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
             }
             
             item.CurrentIndex = (Int32)storedEntry.index;
-            isUpdating = YES;
+            [storedEntries addObject:storedEntry];
         } else {
             item.CurrentIndex = SVZ::ArchiveItem::kNewItemIndex;
         }
@@ -148,7 +148,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     CMyComPtr<IOutArchive> outArchive;
     HRESULT result;
     
-    if (isUpdating) {
+    if (storedEntries.count > 0) {
         result = self.archive->QueryInterface(IID_IOutArchive, (void**)&outArchive);
         NSAssert(result == S_OK, @"archiver object does not support updates");
     }
@@ -171,6 +171,8 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         SetError(aError, kSVZArchiveErrorUpdateFailed, nil);
         return NO;
     }
+    
+    [storedEntries makeObjectsPerformSelector:@selector(invalidate)];
     
     return [self readEntries:aError];
 }

@@ -20,6 +20,8 @@ SVZ_ASSUME_NONNULL_BEGIN
 - (SVZ_NULLABLE instancetype)initWithIndex:(NSUInteger)aIndex
                                  inArchive:(SVZArchive*)aArchive;
 
+- (void)invalidate;
+
 @end
 
 SVZ_ASSUME_NONNULL_END
