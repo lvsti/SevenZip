@@ -52,8 +52,9 @@ SVZ_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSDate* creationDate;
 @property (nonatomic, copy, readonly) NSDate* modificationDate;
 @property (nonatomic, copy, readonly) NSDate* accessDate;
-@property (nonatomic, assign, readonly) BOOL isDirectory;
 @property (nonatomic, assign, readonly) SVZArchiveEntryAttributes attributes;
+
+@property (nonatomic, assign, readonly) BOOL isDirectory;
 @property (nonatomic, assign, readonly) mode_t mode;
 
 // TODO: remove this hack

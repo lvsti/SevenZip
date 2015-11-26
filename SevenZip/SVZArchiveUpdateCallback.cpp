@@ -58,7 +58,7 @@ namespace SVZ {
         const ArchiveItem &item = (*ArchiveItems)[index];
         switch (propID) {
             case kpidPath: prop = item.Name; break;
-            case kpidIsDir: prop = item.isDir(); break;
+            case kpidIsDir: prop = item.IsDir; break;
             case kpidSize: prop = item.Size; break;
             case kpidAttrib: prop = item.Attrib; break;
             case kpidCTime: prop = item.CTime; break;
@@ -77,12 +77,12 @@ namespace SVZ {
         return S_OK;
     }
     
-    STDMETHODIMP ArchiveUpdateCallback::GetStream(UInt32 index, ISequentialInStream **inStream) {
+    STDMETHODIMP ArchiveUpdateCallback::GetStream(UInt32 aIndex, ISequentialInStream **aInStream) {
         RINOK(Finalize());
         
-        const ArchiveItem& item = (*ArchiveItems)[index];
+        const ArchiveItem& item = (*ArchiveItems)[aIndex];
         
-        if (item.isDir()) {
+        if (item.IsDir) {
             return S_OK;
         }
         

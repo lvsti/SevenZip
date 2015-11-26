@@ -127,12 +127,13 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         
         item.Attrib = entry.attributes;
         item.Size = entry.uncompressedSize;
+        item.Name = ToUString(entry.name);
+        item.IsDir = entry.isDirectory;
         
         NWindows::NTime::UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], item.CTime);
         NWindows::NTime::UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], item.MTime);
         NWindows::NTime::UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], item.ATime);
         
-        item.Name = ToUString(entry.name);
         item.FullPath = us2fs(ToUString(entry.url.path));
         
         archiveItems.Add(item);

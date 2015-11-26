@@ -31,8 +31,7 @@ namespace SVZ {
         UString Name;
         FString FullPath;
         UInt32 Attrib;
-        
-        bool isDir() const { return (Attrib & FILE_ATTRIBUTE_DIRECTORY) != 0 ; }
+        bool IsDir;
     };
     
     class ArchiveUpdateCallback: public IArchiveUpdateCallback2,
