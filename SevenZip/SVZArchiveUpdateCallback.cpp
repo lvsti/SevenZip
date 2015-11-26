@@ -130,14 +130,14 @@ namespace SVZ {
         fileName += L'.';
         fileName += res;
         fileName += VolExt;
-        SVZ::OutFileStream *streamImpl = new SVZ::OutFileStream();
-        CMyComPtr<ISequentialOutStream> streamLoc(streamImpl);
+        SVZ::OutFileStream *outFileStreamImpl = new SVZ::OutFileStream();
+        CMyComPtr<ISequentialOutStream> outStream(outFileStreamImpl);
         AString utf8Path;
         ConvertUnicodeToUTF8(fileName, utf8Path);
-        if (!streamImpl->Open(utf8Path.Ptr())) {
+        if (!outFileStreamImpl->Open(utf8Path.Ptr())) {
             return ::GetLastError();
         }
-        *volumeStream = streamLoc.Detach();
+        *volumeStream = outStream.Detach();
         return S_OK;
     }
     
