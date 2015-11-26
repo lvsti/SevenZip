@@ -57,7 +57,12 @@
 }
 
 - (BOOL)isDirectory {
-    return self.attributes & kSVZArchiveEntryAttributeWinDirectory;
+    return self.attributes & kSVZArchiveEntryAttributeWinDirectory ||
+           self.attributes & kSVZArchiveEntryAttributeUnixDirectory;
+}
+
+- (mode_t)mode {
+    return self.attributes >> 16;
 }
 
 - (NSData*)newDataWithPassword:(NSString*)aPassword
