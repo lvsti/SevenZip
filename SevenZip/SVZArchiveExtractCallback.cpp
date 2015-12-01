@@ -52,10 +52,10 @@ namespace SVZ {
     }
     
     void ArchiveExtractCallback::InitExtractToMemory(IInArchive *archiveHandler,
-                                                     std::function<CMyComPtr<IOutStream>(UInt32, UInt64)> outStreamFactory) {
+                                                     OutStreamProvider outStreamProvider) {
         NumErrors = 0;
         _archiveHandler = archiveHandler;
-        _outStreamFactory = outStreamFactory;
+        _outStreamProvider = outStreamProvider;
         _extractToFile = false;
     }
     
@@ -89,7 +89,7 @@ namespace SVZ {
         RINOK(_archiveHandler->GetProperty(index, kpidSize, &prop));
         UInt64 fileSize = prop.uhVal.QuadPart;
 
-        CMyComPtr<IOutStream> os = _outStreamFactory(index, fileSize);
+        CMyComPtr<ISequentialOutStream> os = _outStreamProvider(index, fileSize);
         if (!os) {
             return E_ABORT;
         }

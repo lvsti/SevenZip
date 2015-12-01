@@ -23,6 +23,8 @@ namespace SVZ {
     
     class OutFileStream;
     
+    typedef std::function<CMyComPtr<ISequentialOutStream>(UInt32 /*index*/, UInt64 /*filesize*/)> OutStreamProvider;
+    
     class ArchiveExtractCallback: public IArchiveExtractCallback,
                                   public ICryptoGetTextPassword,
                                   public CMyUnknownImp
@@ -59,7 +61,7 @@ namespace SVZ {
         
         bool _extractToFile;
         OutFileStream* _outFileStreamImpl;
-        std::function<CMyComPtr<IOutStream>(UInt32, UInt64)> _outStreamFactory;
+        OutStreamProvider _outStreamProvider;
         CMyComPtr<ISequentialOutStream> _outStream;
         
         HRESULT ExtractToFile(UInt32 index, ISequentialOutStream **aOutStream);
@@ -69,7 +71,7 @@ namespace SVZ {
         void InitExtractToFile(IInArchive *archiveHandler,
                                const FString &directoryPath);
         void InitExtractToMemory(IInArchive *archiveHandler,
-                                 std::function<CMyComPtr<IOutStream>(UInt32 /*index*/, UInt64 /*filesize*/)> outStreamFactory);
+                                 OutStreamProvider outStreamProvider);
         
         UInt64 NumErrors;
         bool PasswordIsDefined;
