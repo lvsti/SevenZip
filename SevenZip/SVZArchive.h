@@ -25,16 +25,47 @@ typedef NS_ENUM(NSInteger, SVZArchiveError) {
 };
 
 
+/**
+ * Class representing a 7-zip archive file.
+ */
 @interface SVZArchive : NSObject
 
+/// The (future) URL of the file backing this archive
 @property (nonatomic, copy, readonly) NSURL* url;
 
+/// The entries within this archive.
+@property (nonatomic, copy, readonly) SVZ_GENERIC(NSArray, SVZArchiveEntry*)* entries;
+
+/**
+ * Opens a 7-zip archive with the given URL.
+ *
+ * If the file specified by the URL already exists, it is assumed to be a 7-zip archive 
+ * and is subsequently opened.
+ * If there is no file at the given URL, a new archive object is created in memory 
+ * if the `aShouldCreate` flag is set.
+ *
+ * @param aURL The location of the 7-zip archive to be created at/read from.
+ * @param aShouldCreate If set, a new archive is created when `aURL` doesn't point to an existing entry.
+ * @param aError Error information in case of failure. May be NULL.
+ *
+ * @return An initialized archive object, or nil in case of any failure.
+ */
 + (SVZ_NULLABLE instancetype)archiveWithURL:(NSURL*)aURL
                             createIfMissing:(BOOL)aShouldCreate
                                       error:(NSError**)aError;
 
-@property (nonatomic, copy, readonly) SVZ_GENERIC(NSArray, SVZArchiveEntry*)* entries;
-
+/**
+ * Commits the given entries to the file backing this archive.
+ *
+ * This method replaces ALL current entries in the receiver with the ones in `aEntries`.
+ * To update only part of the archive, make a mutable copy of the `entries` property, apply
+ * the necessary changes, then pass it back to this method.
+ *
+ * @param aEntries The entries that should be written to the archive file.
+ * @param aError Error information in case of failure. May be NULL.
+ *
+ * @return YES on success, otherwise NO.
+ */
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
                 error:(NSError**)aError;
 
