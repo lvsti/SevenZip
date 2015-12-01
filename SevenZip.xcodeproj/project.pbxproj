@@ -330,10 +330,10 @@
 		E8BA35CB1C027D6B006BDF06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8BA35CA1C027D6B006BDF06 /* Assets.xcassets */; };
 		E8BA35CE1C027D6B006BDF06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8BA35CC1C027D6B006BDF06 /* LaunchScreen.storyboard */; };
 		E8F424AE1C03C386004F7D5F /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA35B61C0266EE006BDF06 /* SevenZip.framework */; };
-		E8F424B11C07BF14004F7D5F /* SVZForwardingStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8F424AF1C07BF14004F7D5F /* SVZForwardingStream.h */; };
-		E8F424B21C07BF14004F7D5F /* SVZForwardingStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8F424AF1C07BF14004F7D5F /* SVZForwardingStream.h */; };
-		E8F424B31C07BF14004F7D5F /* SVZForwardingStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8F424B01C07BF14004F7D5F /* SVZForwardingStream.mm */; };
-		E8F424B41C07BF14004F7D5F /* SVZForwardingStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8F424B01C07BF14004F7D5F /* SVZForwardingStream.mm */; };
+		E8F424B11C07BF14004F7D5F /* SVZBridgedInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8F424AF1C07BF14004F7D5F /* SVZBridgedInputStream.h */; };
+		E8F424B21C07BF14004F7D5F /* SVZBridgedInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E8F424AF1C07BF14004F7D5F /* SVZBridgedInputStream.h */; };
+		E8F424B31C07BF14004F7D5F /* SVZBridgedInputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8F424B01C07BF14004F7D5F /* SVZBridgedInputStream.mm */; };
+		E8F424B41C07BF14004F7D5F /* SVZBridgedInputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = E8F424B01C07BF14004F7D5F /* SVZBridgedInputStream.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1928,8 +1928,8 @@
 		E8BA35CA1C027D6B006BDF06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E8BA35CD1C027D6B006BDF06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E8BA35CF1C027D6B006BDF06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E8F424AF1C07BF14004F7D5F /* SVZForwardingStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZForwardingStream.h; sourceTree = "<group>"; };
-		E8F424B01C07BF14004F7D5F /* SVZForwardingStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZForwardingStream.mm; sourceTree = "<group>"; };
+		E8F424AF1C07BF14004F7D5F /* SVZBridgedInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZBridgedInputStream.h; sourceTree = "<group>"; };
+		E8F424B01C07BF14004F7D5F /* SVZBridgedInputStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZBridgedInputStream.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4489,8 +4489,8 @@
 				E8BA34D61C0123F1006BDF06 /* SVZArchiveOpenCallback.h */,
 				E8BA34D71C0123F1006BDF06 /* SVZArchiveUpdateCallback.cpp */,
 				E8BA34D81C0123F1006BDF06 /* SVZArchiveUpdateCallback.h */,
-				E8F424AF1C07BF14004F7D5F /* SVZForwardingStream.h */,
-				E8F424B01C07BF14004F7D5F /* SVZForwardingStream.mm */,
+				E8F424AF1C07BF14004F7D5F /* SVZBridgedInputStream.h */,
+				E8F424B01C07BF14004F7D5F /* SVZBridgedInputStream.mm */,
 				E8BA34D91C0123F1006BDF06 /* SVZInFileStream.cpp */,
 				E8BA34DA1C0123F1006BDF06 /* SVZInFileStream.h */,
 				E8BA34DB1C0123F1006BDF06 /* SVZOutFileStream.cpp */,
@@ -4545,7 +4545,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8F424B11C07BF14004F7D5F /* SVZForwardingStream.h in Headers */,
+				E8F424B11C07BF14004F7D5F /* SVZBridgedInputStream.h in Headers */,
 				E8BA34E61C0123F1006BDF06 /* SVZInFileStream.h in Headers */,
 				E8BA34DD1C0123F1006BDF06 /* SVZArchiveEntry.h in Headers */,
 				E8BA34FF1C020D82006BDF06 /* SVZPreamble.h in Headers */,
@@ -4568,7 +4568,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8F424B21C07BF14004F7D5F /* SVZForwardingStream.h in Headers */,
+				E8F424B21C07BF14004F7D5F /* SVZBridgedInputStream.h in Headers */,
 				E8BA35A41C0266EE006BDF06 /* SVZInFileStream.h in Headers */,
 				E8BA35A51C0266EE006BDF06 /* SVZArchiveEntry.h in Headers */,
 				E8BA35A61C0266EE006BDF06 /* SVZPreamble.h in Headers */,
@@ -4762,7 +4762,7 @@
 				E8BA34AD1C011C68006BDF06 /* HmacSha1.cpp in Sources */,
 				E8BA344C1C011BCE006BDF06 /* 7zStream.c in Sources */,
 				E8BA34951C011C35006BDF06 /* MethodProps.cpp in Sources */,
-				E8F424B31C07BF14004F7D5F /* SVZForwardingStream.mm in Sources */,
+				E8F424B31C07BF14004F7D5F /* SVZBridgedInputStream.mm in Sources */,
 				E8BA34C31C011DF1006BDF06 /* FileFind.cpp in Sources */,
 				E8BA34BA1C011D4B006BDF06 /* wine_date_and_time.cpp in Sources */,
 				E8BA34591C011BCE006BDF06 /* LzFind.c in Sources */,
@@ -4919,7 +4919,7 @@
 				E8BA352B1C0266EE006BDF06 /* HmacSha1.cpp in Sources */,
 				E8BA352C1C0266EE006BDF06 /* 7zStream.c in Sources */,
 				E8BA352D1C0266EE006BDF06 /* MethodProps.cpp in Sources */,
-				E8F424B41C07BF14004F7D5F /* SVZForwardingStream.mm in Sources */,
+				E8F424B41C07BF14004F7D5F /* SVZBridgedInputStream.mm in Sources */,
 				E8BA352E1C0266EE006BDF06 /* FileFind.cpp in Sources */,
 				E8BA352F1C0266EE006BDF06 /* wine_date_and_time.cpp in Sources */,
 				E8BA35301C0266EE006BDF06 /* LzFind.c in Sources */,

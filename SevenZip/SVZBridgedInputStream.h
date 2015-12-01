@@ -1,13 +1,13 @@
 //
-//  SVZForwardingStream.h
+//  SVZBridgedInputStream.h
 //  SevenZip
 //
 //  Created by Tamas Lustyik on 2015. 11. 26..
 //  Copyright © 2015. Tamas Lustyik. All rights reserved.
 //
 
-#ifndef SVZForwardingStream_h
-#define SVZForwardingStream_h
+#ifndef SVZBridgedInputStream_h
+#define SVZBridgedInputStream_h
 
 #include "StdAfx.h"
 #include "CPP/7zip/IStream.h"
@@ -17,7 +17,7 @@
 
 namespace SVZ {
     
-    class ForwardingStream : public ISequentialInStream, public CMyUnknownImp {
+    class BridgedInputStream : public ISequentialInStream, public CMyUnknownImp {
     private:
         NSInputStream* _source;
         
@@ -26,9 +26,9 @@ namespace SVZ {
         
         STDMETHOD(Read)(void* data, UInt32 size, UInt32* processedSize);
         
-        ForwardingStream(NSInputStream* source);
-        virtual ~ForwardingStream();
+        BridgedInputStream(NSInputStream* source);
+        virtual ~BridgedInputStream();
     };
 }
 
-#endif /* SVZForwardingStream_h */
+#endif /* SVZBridgedInputStream_h */

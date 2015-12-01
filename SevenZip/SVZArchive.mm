@@ -20,7 +20,7 @@
 #include "SVZOutFileStream.h"
 
 #import "SVZArchiveEntry_Private.h"
-#import "SVZForwardingStream.h"
+#import "SVZBridgedInputStream.h"
 #import "SVZStoredArchiveEntry.h"
 #import "SVZUtils.h"
 
@@ -166,7 +166,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     updateCallbackImpl->Init(&archiveItems, [&] (Int32 itemID) -> CMyComPtr<ISequentialInStream> {
         @autoreleasepool {
             SVZArchiveEntry* entry = aEntries[itemID];
-            CMyComPtr<ISequentialInStream> inStream = new SVZ::ForwardingStream(entry.dataStream);
+            CMyComPtr<ISequentialInStream> inStream = new SVZ::BridgedInputStream(entry.dataStream);
             return inStream;
         }
     });
