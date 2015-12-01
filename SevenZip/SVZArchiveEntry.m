@@ -139,6 +139,10 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
     return self.attributes >> 16;
 }
 
+- (NSData*)newDataWithError:(NSError**)aError {
+    return [self newDataWithPassword:nil error:aError];
+}
+
 - (NSData*)newDataWithPassword:(NSString*)aPassword
                          error:(NSError**)aError {
     return nil;

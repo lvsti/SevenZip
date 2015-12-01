@@ -128,6 +128,15 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
 /**
  * Extracts the archive entry data.
  *
+ * @param aError Error information in case of failure. May be NULL.
+ *
+ * @return The extracted data, or nil for new entries and in case of failure.
+ */
+- (SVZ_NULLABLE NSData*)newDataWithError:(NSError**)aError;
+
+/**
+ * Extracts the archive entry data.
+ *
  * @param aPassword A password for when the archive is password protected. May be nil.
  * @param aError Error information in case of failure. May be NULL.
  *
