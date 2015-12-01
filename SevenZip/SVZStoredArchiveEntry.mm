@@ -87,7 +87,11 @@
         memoryStreamImpl->SetCapacity(size);
         return memoryStream;
     });
-    extractCallbackImpl->PasswordIsDefined = false;
+    
+    if (aPassword) {
+        extractCallbackImpl->PasswordIsDefined = true;
+        extractCallbackImpl->Password = ToUString(aPassword);
+    }
 
     UInt32 indices[] = {(UInt32)self.index};
     HRESULT result = archive.archive->Extract(indices, 1, false, extractCallback);

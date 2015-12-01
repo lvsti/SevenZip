@@ -238,10 +238,6 @@ namespace SVZ {
     
     STDMETHODIMP ArchiveExtractCallback::CryptoGetTextPassword(BSTR *password) {
         if (!PasswordIsDefined) {
-            // You can ask real password here from user
-            // Password = GetPassword(OutStream);
-            // PasswordIsDefined = true;
-//            PrintError("Password is not defined");
             return E_ABORT;
         }
         return StringToBstr(Password, password);
