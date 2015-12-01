@@ -39,13 +39,13 @@ int TestCreateArchive(int argc, const char* argv[]) {
                 }
                 else {
                     [entries addObject:[SVZArchiveEntry archiveEntryWithFileName:fullName
-                                                                             url:[NSURL fileURLWithPath:fullPath]]];
+                                                                   contentsOfURL:[NSURL fileURLWithPath:fullPath]]];
                 }
             }
         }
         else {
             [entries addObject:[SVZArchiveEntry archiveEntryWithFileName:fileArg.lastPathComponent
-                                                                     url:[NSURL fileURLWithPath:fileArg]]];
+                                                           contentsOfURL:[NSURL fileURLWithPath:fileArg]]];
         }
     }
 
@@ -120,7 +120,7 @@ int TestUpdateArchive(int argc, const char* argv[]) {
     NSMutableArray* entries = [archive.entries mutableCopy];
     [entries removeObjectAtIndex:0];
     [entries addObject:[SVZArchiveEntry archiveEntryWithFileName:@"stuff.txt"
-                                                             url:[NSURL fileURLWithPath:@"/Users/lvsti/stuff.txt"]]];
+                                                   contentsOfURL:[NSURL fileURLWithPath:@"/Users/lvsti/stuff.txt"]]];
     if (![archive updateEntries:entries error:NULL]) {
         return 1;
     }
