@@ -9,13 +9,14 @@
 #ifndef SVZArchiveUpdateCallback_h
 #define SVZArchiveUpdateCallback_h
 
-#include "StdAfx.h"
+#include <functional>
 
-#include "IArchive.h"
-#include "IPassword.h"
-#include "MyCom.h"
-#include "MyString.h"
-#include "MyWindows.h"
+#include "CPP/myWindows/StdAfx.h"
+#include "CPP/7zip/Archive/IArchive.h"
+#include "CPP/7zip/IPassword.h"
+#include "CPP/Common/MyCom.h"
+#include "CPP/Common/MyString.h"
+#include "CPP/Common/MyWindows.h"
 
 namespace SVZ {
 
@@ -24,12 +25,13 @@ namespace SVZ {
         
         Int32 CurrentIndex;
         
+        Int32 ID;
+        
         UInt64 Size;
         FILETIME CTime;
         FILETIME ATime;
         FILETIME MTime;
         UString Name;
-        FString FullPath;
         UInt32 Attrib;
         bool IsDir;
     };
@@ -71,15 +73,20 @@ namespace SVZ {
         
         FStringVector FailedFiles;
         CRecordVector<HRESULT> FailedCodes;
-        
+
+    private:
+        std::function<CMyComPtr<ISequentialInStream>(Int32)> _streamProvider;
+
+    public:
         ArchiveUpdateCallback(): PasswordIsDefined(false), AskPassword(false), ArchiveItems(0) {};
         
         ~ArchiveUpdateCallback() { Finalize(); }
         HRESULT Finalize();
         
-        void Init(const CObjectVector<ArchiveItem> *archiveItems)
-        {
+        void Init(const CObjectVector<ArchiveItem> *archiveItems,
+                  std::function<CMyComPtr<ISequentialInStream>(Int32)> streamProvider) {
             ArchiveItems = archiveItems;
+            _streamProvider = streamProvider;
             m_NeedBeClosed = false;
             FailedFiles.Clear();
             FailedCodes.Clear();

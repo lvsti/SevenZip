@@ -20,6 +20,7 @@
 #include "SVZOutFileStream.h"
 
 #import "SVZArchiveEntry_Private.h"
+#import "SVZForwardingStream.h"
 #import "SVZStoredArchiveEntry.h"
 #import "SVZUtils.h"
 
@@ -106,6 +107,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     CObjectVector<SVZ::ArchiveItem> archiveItems;
     SVZ_GENERIC(NSMutableArray, SVZStoredArchiveEntry*)* storedEntries = [NSMutableArray arrayWithCapacity:aEntries.count];
     
+    int index = 0;
     for (SVZArchiveEntry* entry in aEntries) {
         SVZ::ArchiveItem item;
 
@@ -125,6 +127,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
             item.CurrentIndex = SVZ::ArchiveItem::kNewItemIndex;
         }
         
+        item.ID = index++;
         item.Attrib = entry.attributes;
         item.Size = entry.uncompressedSize;
         item.Name = ToUString(entry.name);
@@ -133,8 +136,6 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         NWindows::NTime::UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], item.CTime);
         NWindows::NTime::UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], item.MTime);
         NWindows::NTime::UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], item.ATime);
-        
-        item.FullPath = us2fs(ToUString(entry.url.path));
         
         archiveItems.Add(item);
     }
@@ -162,7 +163,13 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     SVZ::ArchiveUpdateCallback* updateCallbackImpl = new SVZ::ArchiveUpdateCallback();
     CMyComPtr<IArchiveUpdateCallback2> updateCallback(updateCallbackImpl);
     updateCallbackImpl->PasswordIsDefined = false;
-    updateCallbackImpl->Init(&archiveItems);
+    updateCallbackImpl->Init(&archiveItems, [&] (Int32 itemID) -> CMyComPtr<ISequentialInStream> {
+        @autoreleasepool {
+            SVZArchiveEntry* entry = aEntries[itemID];
+            CMyComPtr<ISequentialInStream> inStream = new SVZ::ForwardingStream(entry.dataStream);
+            return inStream;
+        }
+    });
     
     result = outArchive->UpdateItems(outputStream, archiveItems.Size(), updateCallback);
     

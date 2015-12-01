@@ -86,20 +86,12 @@ namespace SVZ {
             return S_OK;
         }
         
-        {
-            SVZ::InFileStream *inStreamImpl = new SVZ::InFileStream();
-            CMyComPtr<ISequentialInStream> inStreamLoc(inStreamImpl);
-            FString path = DirPrefix + item.FullPath;
-            AString utf8Path;
-            ConvertUnicodeToUTF8(fs2us(path), utf8Path);
-            if (!inStreamImpl->Open(utf8Path.Ptr())) {
-                DWORD sysError = ::GetLastError();
-                FailedCodes.Add(sysError);
-                FailedFiles.Add(path);
-                return sysError;
-            }
-            *inStream = inStreamLoc.Detach();
+        CMyComPtr<ISequentialInStream> inStream = _streamProvider(item.ID);
+        if (!inStream) {
+            return E_FAIL;
         }
+        
+        *aInStream = inStream.Detach();
         return S_OK;
     }
     
