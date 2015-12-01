@@ -17,5 +17,6 @@
 @property (nonatomic, copy, readwrite) NSDate* modificationDate;
 @property (nonatomic, copy, readwrite) NSDate* accessDate;
 @property (nonatomic, assign, readwrite) SVZArchiveEntryAttributes attributes;
+@property (nonatomic, strong, readwrite) NSInputStream* dataStream;
 
 @end
