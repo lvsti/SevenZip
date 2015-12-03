@@ -130,9 +130,9 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
  *
  * @param aError Error information in case of failure. May be NULL.
  *
- * @return The extracted data, or nil for new entries and in case of failure.
+ * @return The extracted data, or nil for new entries, directories, and in case of failure.
  */
-- (SVZ_NULLABLE NSData*)newDataWithError:(NSError**)aError;
+- (SVZ_NULLABLE NSData*)extractedData:(NSError**)aError;
 
 /**
  * Extracts the archive entry data.
@@ -140,10 +140,10 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
  * @param aPassword A password for when the archive is password protected. May be nil.
  * @param aError Error information in case of failure. May be NULL.
  *
- * @return The extracted data, or nil for new entries and in case of failure.
+ * @return The extracted data, or nil for new entries, directories, and in case of failure.
  */
-- (SVZ_NULLABLE NSData*)newDataWithPassword:(NSString* SVZ_NULLABLE_PTR)aPassword
-                                      error:(NSError**)aError;
+- (SVZ_NULLABLE NSData*)extractedDataWithPassword:(NSString* SVZ_NULLABLE_PTR)aPassword
+                                            error:(NSError**)aError;
 
 /**
  * Extracts the archive entry data at the given URL.
@@ -155,6 +155,43 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
  */
 - (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
                           error:(NSError**)aError;
+
+/**
+ * Extracts the archive entry data at the given URL.
+ *
+ * @param aDirURL The URL of the directory this entry should be extracted to.
+ * @param aPassword A password for when the archive is password protected. May be nil.
+ * @param aError Error information in case of failure. May be NULL.
+ *
+ * @return YES on success, NO otherwise.
+ */
+- (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
+                   withPassword:(NSString* SVZ_NULLABLE_PTR)aPassword
+                          error:(NSError**)aError;
+
+/**
+ * Extracts the archive entry data to the given stream.
+ *
+ * @param aOutputStream The output stream to write the data into.
+ * @param aError Error information in case of failure. May be NULL.
+ *
+ * @return YES on success, NO otherwise.
+ */
+- (BOOL)extractToStream:(NSOutputStream*)aOutputStream
+                  error:(NSError**)aError;
+
+/**
+ * Extracts the archive entry data to the given stream.
+ *
+ * @param aOutputStream The output stream to write the data into.
+ * @param aPassword A password for when the archive is password protected. May be nil.
+ * @param aError Error information in case of failure. May be NULL.
+ *
+ * @return YES on success, NO otherwise.
+ */
+- (BOOL)extractToStream:(NSOutputStream*)aOutputStream
+           withPassword:(NSString* SVZ_NULLABLE_PTR)aPassword
+                  error:(NSError**)aError;
 
 @end
 

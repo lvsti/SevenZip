@@ -139,17 +139,57 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
     return self.attributes >> 16;
 }
 
-- (NSData*)newDataWithError:(NSError**)aError {
-    return [self newDataWithPassword:nil error:aError];
+- (NSData*)extractedData:(NSError**)aError {
+    return [self extractedDataWithPassword:nil error:aError];
 }
 
-- (NSData*)newDataWithPassword:(NSString*)aPassword
-                         error:(NSError**)aError {
-    return nil;
+- (NSData*)extractedDataWithPassword:(NSString*)aPassword
+                               error:(NSError**)aError {
+    NSOutputStream* memoryStream = [NSOutputStream outputStreamToMemory];
+    if (![self extractToStream:memoryStream
+                  withPassword:aPassword
+                         error:aError]) {
+        return nil;
+    }
+    
+    NSData* data = [memoryStream propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
+    return data;
 }
 
 - (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
                           error:(NSError**)aError {
+    return [self extractToDirectoryAtURL:aDirURL
+                            withPassword:nil
+                                   error:aError];
+}
+
+- (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
+                   withPassword:(NSString*)aPassword
+                          error:(NSError**)aError {
+    NSURL* entryURL = [aDirURL URLByAppendingPathComponent:self.name];
+    if (![[NSFileManager defaultManager] createDirectoryAtURL:entryURL.URLByDeletingLastPathComponent
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:aError]) {
+        return NO;
+    }
+    
+    NSOutputStream* fileStream = [NSOutputStream outputStreamWithURL:entryURL append:NO];
+    return [self extractToStream:fileStream
+                    withPassword:aPassword
+                           error:aError];
+}
+
+- (BOOL)extractToStream:(NSOutputStream*)aOutputStream
+                  error:(NSError**)aError {
+    return [self extractToStream:aOutputStream
+                    withPassword:nil
+                           error:aError];
+}
+
+- (BOOL)extractToStream:(NSOutputStream*)aOutputStream
+           withPassword:(NSString*)aPassword
+                  error:(NSError**)aError {
     return NO;
 }
 

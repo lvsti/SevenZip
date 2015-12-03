@@ -11,6 +11,7 @@
 #import "SVZArchiveEntry_Private.h"
 #import "SVZArchiveExtractCallback.h"
 #import "SVZOutMemoryStream.h"
+#import "SVZBridgedOutputStream.h"
 #import "SVZUtils.h"
 
 #include "CPP/Windows/PropVariant.h"
@@ -71,21 +72,22 @@
     _archive = nil;
 }
 
-- (NSData*)newDataWithPassword:(NSString*)aPassword
-                         error:(NSError**)aError {
+- (BOOL)extractToStream:(NSOutputStream*)aOutputStream
+           withPassword:(NSString*)aPassword
+                  error:(NSError**)aError {
+    NSParameterAssert(aOutputStream);
     SVZArchive* archive = self.archive;
     if (!archive || !archive.archive) {
-        return nil;
+        return NO;
     }
     
-    SVZ::OutMemoryStream* memoryStreamImpl = new SVZ::OutMemoryStream();
-    CMyComPtr<IOutStream> memoryStream(memoryStreamImpl);
+    SVZ::BridgedOutputStream* outStreamImpl = new SVZ::BridgedOutputStream(aOutputStream);
+    CMyComPtr<ISequentialOutStream> outStream(outStreamImpl);
     
     SVZ::ArchiveExtractCallback* extractCallbackImpl = new SVZ::ArchiveExtractCallback();
     CMyComPtr<IArchiveExtractCallback> extractCallback(extractCallbackImpl);
-    extractCallbackImpl->InitExtractToMemory(archive.archive, [&] (UInt32 index, UInt64 size) -> CMyComPtr<IOutStream> {
-        memoryStreamImpl->SetCapacity(size);
-        return memoryStream;
+    extractCallbackImpl->InitExtractToMemory(archive.archive, [&] (UInt32 index, UInt64 size) -> CMyComPtr<ISequentialOutStream> {
+        return outStream;
     });
     
     if (aPassword) {
@@ -93,45 +95,6 @@
         extractCallbackImpl->Password = ToUString(aPassword);
     }
 
-    UInt32 indices[] = {(UInt32)self.index};
-    HRESULT result = archive.archive->Extract(indices, 1, false, extractCallback);
-    if (result != S_OK) {
-        return nil;
-    }
-    
-    NSData* data = [NSData dataWithBytes:memoryStreamImpl->Buffer()
-                                  length:memoryStreamImpl->Size()];
-    
-    return data;
-}
-
-- (BOOL)extractToDirectoryAtURL:(NSURL*)aDirURL
-                          error:(NSError**)aError {
-    NSParameterAssert([aDirURL isFileURL]);
-    SVZArchive* archive = self.archive;
-    if (!archive || !archive.archive) {
-        return NO;
-    }
-    
-    BOOL isDir = NO;
-    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:aDirURL.path
-                                                       isDirectory:&isDir];
-    if (exists && !isDir) {
-        return NO;
-    }
-    
-    if (![[NSFileManager defaultManager] createDirectoryAtURL:aDirURL
-                                  withIntermediateDirectories:YES
-                                                   attributes:nil
-                                                        error:aError]) {
-        return NO;
-    }
-    
-    SVZ::ArchiveExtractCallback* extractCallbackImpl = new SVZ::ArchiveExtractCallback();
-    CMyComPtr<IArchiveExtractCallback> extractCallback(extractCallbackImpl);
-    extractCallbackImpl->InitExtractToFile(archive.archive, us2fs(ToUString(aDirURL.path)));
-    extractCallbackImpl->PasswordIsDefined = false;
-    
     UInt32 indices[] = {(UInt32)self.index};
     HRESULT result = archive.archive->Extract(indices, 1, false, extractCallback);
     if (result != S_OK) {
