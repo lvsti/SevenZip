@@ -83,7 +83,7 @@ int TestExtractToMemory(int argc, const char * argv[]) {
                                      createIfMissing:NO
                                                error:NULL];
     SVZArchiveEntry* entry = archive.entries.firstObject;
-    NSData* data = [entry newDataWithPassword:nil error:NULL];
+    NSData* data = [entry extractedData:NULL];
     NSLog(@"data: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     
     return 0;
