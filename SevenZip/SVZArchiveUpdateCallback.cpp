@@ -134,11 +134,10 @@ namespace SVZ {
     }
     
     STDMETHODIMP ArchiveUpdateCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password) {
-        if (!PasswordIsDefined) {
-            return E_ABORT;
-        }
-        
         *passwordIsDefined = BoolToInt(PasswordIsDefined);
+        if (!PasswordIsDefined) {
+            return S_OK;
+        }
         return StringToBstr(Password, password);
     }
 
