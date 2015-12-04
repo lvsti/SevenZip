@@ -1,4 +1,4 @@
-# SevenZip
+# SevenZip ![](https://www.bitrise.io/app/4d43df2229198af5.svg?token=upgdQ6LNU-RCnL8rdhsq7A)
 
 SevenZip is an Objective-C wrapper framework around [p7zip](http://p7zip.sourceforge.net/), which in turn is a Unix port of [7zip](http://www.7-zip.org/). 
 
