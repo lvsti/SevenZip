@@ -179,6 +179,9 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         SetError(aError, kSVZArchiveErrorUpdateFailed, nil);
         return NO;
     }
+
+    // explicit close is required to flush the stream to disk before reading it back
+    outFileStreamImpl->Close();
     
     [storedEntries makeObjectsPerformSelector:@selector(invalidate)];
     
