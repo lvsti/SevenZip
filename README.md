@@ -17,24 +17,25 @@ Xcode 6, OSX 10.9, iOS 8.4
     $ scripts/setup.sh
     ```
     
-3. open the Xcode project and build the `SevenZip` (OSX/iOS) target
+3. open the Xcode project and build the `SevenZip (OSX)`/`SevenZip (iOS)` target
 
-If you just want to toy with it, take a look at the `SVZTest`/`SVZTestiOS` apps (separate targets).
+If you just want to toy with it, take a look at the `SVZDemo`/`SVZDemo-iOS` apps (separate targets).
 
 ### Features
 
 - listing the archive contents
-- creating new archives with files/directories inside
+inside
 - extracting all/some files from archives to file/memory
-- adding/removing files to/from existing archives
+- **creating** new archives with files/directories 
+- **adding/removing** files to/from existing archives
 
-Coming soon: password handling, tests, automated builds, documentation, free candy/beer.
+Coming soon: proper password handling, [tests](https://github.com/lvsti/SevenZip/tree/master/SevenZipTests), automated builds, [documentation](https://github.com/lvsti/SevenZip/wiki), free candy/beer. Until then, submit your requests/bug reports as [issues](https://github.com/lvsti/SevenZip/issues).
 
-### Big Fat Warning
+### Disclaimer
 
-At the moment, the project is still in an early stage of development but you can already do all the basic stuff (see below) with 7z archives from code without having to get your hands dirty with the underlying MFC/COM+/OLE/godknowswhat implementation.
+At the moment, the project is still in an early stage of development but you can already do all the usual stuff with 7z archives from code without having to get your hands dirty with the underlying MFC/COM+/OLE/godknowswhat implementation.
 
-Be warned that the code is experimental, has no tests, and is provided as-is. Be prepared for unwanted/undefined behavior, data losses, nazgul attacks etc.
+Be warned that the code is experimental, has few tests, and is provided as-is. Be prepared for unwanted/undefined behavior, data losses, nazgul attacks etc.
 
 ### Credits
 
