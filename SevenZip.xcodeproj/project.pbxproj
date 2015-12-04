@@ -13,6 +13,14 @@
 		E82083A21C0E564C00E42B7C /* SVZBridgedOutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E820839F1C0E564C00E42B7C /* SVZBridgedOutputStream.h */; };
 		E82083A31C0E564C00E42B7C /* SVZBridgedOutputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = E82083A01C0E564C00E42B7C /* SVZBridgedOutputStream.mm */; };
 		E82083A41C0E564C00E42B7C /* SVZBridgedOutputStream.mm in Sources */ = {isa = PBXBuildFile; fileRef = E82083A01C0E564C00E42B7C /* SVZBridgedOutputStream.mm */; };
+		E82083AE1C10D99400E42B7C /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA34411C011B48006BDF06 /* SevenZip.framework */; };
+		E82083B51C10DE6F00E42B7C /* Kiwi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E82083B41C10DE6E00E42B7C /* Kiwi.framework */; };
+		E82083B71C10DEA500E42B7C /* UT_SVZArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E82083B61C10DEA500E42B7C /* UT_SVZArchive.m */; };
+		E82083BB1C10E4CA00E42B7C /* Kiwi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E82083B41C10DE6E00E42B7C /* Kiwi.framework */; };
+		E82083BF1C10E97600E42B7C /* basic.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083BD1C10E97600E42B7C /* basic.7z */; };
+		E82083C01C10E97600E42B7C /* nested.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083BE1C10E97600E42B7C /* nested.7z */; };
+		E82083C21C10EBEA00E42B7C /* protected.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083C11C10EBEA00E42B7C /* protected.7z */; };
+		E82083C41C10FD7700E42B7C /* empty.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083C31C10FD7700E42B7C /* empty.7z */; };
 		E8BA34441C011B48006BDF06 /* SevenZip.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34431C011B48006BDF06 /* SevenZip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8BA34491C011BCE006BDF06 /* 7zBuf2.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D381C00FD0F006BDF06 /* 7zBuf2.c */; };
 		E8BA344A1C011BCE006BDF06 /* 7zCrc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D391C00FD0F006BDF06 /* 7zCrc.c */; };
@@ -341,6 +349,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E82083AF1C10D99400E42B7C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8BA2D1E1C00FCF0006BDF06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8BA34401C011B48006BDF06;
+			remoteInfo = "SevenZip (OSX)";
+		};
 		E8BA34F61C01C3AA006BDF06 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E8BA2D1E1C00FCF0006BDF06 /* Project object */;
@@ -358,6 +373,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E82083BA1C10E4C200E42B7C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				E82083BB1C10E4CA00E42B7C /* Kiwi.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8BA34ED1C01C38A006BDF06 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -373,6 +398,14 @@
 		E820839C1C0E472D00E42B7C /* SVZArchiveEntryAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZArchiveEntryAttribute.h; sourceTree = "<group>"; };
 		E820839F1C0E564C00E42B7C /* SVZBridgedOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZBridgedOutputStream.h; sourceTree = "<group>"; };
 		E82083A01C0E564C00E42B7C /* SVZBridgedOutputStream.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZBridgedOutputStream.mm; sourceTree = "<group>"; };
+		E82083A91C10D99400E42B7C /* SevenZipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SevenZipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E82083AD1C10D99400E42B7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E82083B41C10DE6E00E42B7C /* Kiwi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kiwi.framework; path = Carthage/Build/Mac/Kiwi.framework; sourceTree = "<group>"; };
+		E82083B61C10DEA500E42B7C /* UT_SVZArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UT_SVZArchive.m; sourceTree = "<group>"; };
+		E82083BD1C10E97600E42B7C /* basic.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = basic.7z; sourceTree = "<group>"; };
+		E82083BE1C10E97600E42B7C /* nested.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = nested.7z; sourceTree = "<group>"; };
+		E82083C11C10EBEA00E42B7C /* protected.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = protected.7z; sourceTree = "<group>"; };
+		E82083C31C10FD7700E42B7C /* empty.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = empty.7z; sourceTree = "<group>"; };
 		E8BA2D311C00FD0F006BDF06 /* 7zAsm.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = 7zAsm.asm; sourceTree = "<group>"; };
 		E8BA2D321C00FD0F006BDF06 /* 7zCrcOpt_asm.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = 7zCrcOpt_asm.asm; sourceTree = "<group>"; };
 		E8BA2D331C00FD0F006BDF06 /* AesOpt.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = AesOpt.asm; sourceTree = "<group>"; };
@@ -1939,6 +1972,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E82083A61C10D99400E42B7C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E82083B51C10DE6F00E42B7C /* Kiwi.framework in Frameworks */,
+				E82083AE1C10D99400E42B7C /* SevenZip.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8BA343D1C011B48006BDF06 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1974,12 +2016,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E82083AA1C10D99400E42B7C /* SevenZipTests */ = {
+			isa = PBXGroup;
+			children = (
+				E82083BC1C10E97600E42B7C /* fixtures */,
+				E82083AD1C10D99400E42B7C /* Info.plist */,
+				E82083B61C10DEA500E42B7C /* UT_SVZArchive.m */,
+			);
+			path = SevenZipTests;
+			sourceTree = "<group>";
+		};
+		E82083BC1C10E97600E42B7C /* fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				E82083BD1C10E97600E42B7C /* basic.7z */,
+				E82083C31C10FD7700E42B7C /* empty.7z */,
+				E82083BE1C10E97600E42B7C /* nested.7z */,
+				E82083C11C10EBEA00E42B7C /* protected.7z */,
+			);
+			path = fixtures;
+			sourceTree = "<group>";
+		};
 		E8BA2D1D1C00FCF0006BDF06 = {
 			isa = PBXGroup;
 			children = (
+				E82083B41C10DE6E00E42B7C /* Kiwi.framework */,
 				E8BA34371C0111F4006BDF06 /* CoreFoundation.framework */,
 				E8BA2D2D1C00FD0F006BDF06 /* External */,
 				E8BA34421C011B48006BDF06 /* SevenZip */,
+				E82083AA1C10D99400E42B7C /* SevenZipTests */,
 				E8BA34F01C01C38A006BDF06 /* SVZDemo */,
 				E8BA35BD1C027D6B006BDF06 /* SVZDemo-iOS */,
 				E8BA2D271C00FCF0006BDF06 /* Products */,
@@ -1993,6 +2058,7 @@
 				E8BA34EF1C01C38A006BDF06 /* SVZDemo */,
 				E8BA35B61C0266EE006BDF06 /* SevenZip.framework */,
 				E8BA35BC1C027D6B006BDF06 /* SVZDemo-iOS.app */,
+				E82083A91C10D99400E42B7C /* SevenZipTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4600,6 +4666,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E82083A81C10D99400E42B7C /* SevenZipTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E82083B11C10D99400E42B7C /* Build configuration list for PBXNativeTarget "SevenZipTests" */;
+			buildPhases = (
+				E82083A51C10D99400E42B7C /* Sources */,
+				E82083A61C10D99400E42B7C /* Frameworks */,
+				E82083A71C10D99400E42B7C /* Resources */,
+				E82083BA1C10E4C200E42B7C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E82083B01C10D99400E42B7C /* PBXTargetDependency */,
+			);
+			name = SevenZipTests;
+			productName = SevenZipTests;
+			productReference = E82083A91C10D99400E42B7C /* SevenZipTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E8BA34401C011B48006BDF06 /* SevenZip (OSX) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8BA34461C011B48006BDF06 /* Build configuration list for PBXNativeTarget "SevenZip (OSX)" */;
@@ -4681,6 +4766,9 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Tamas Lustyik";
 				TargetAttributes = {
+					E82083A81C10D99400E42B7C = {
+						CreatedOnToolsVersion = 7.1;
+					};
 					E8BA34401C011B48006BDF06 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -4709,11 +4797,23 @@
 				E8BA35111C0266EE006BDF06 /* SevenZip (iOS) */,
 				E8BA34EE1C01C38A006BDF06 /* SVZDemo */,
 				E8BA35BB1C027D6B006BDF06 /* SVZDemo-iOS */,
+				E82083A81C10D99400E42B7C /* SevenZipTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E82083A71C10D99400E42B7C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E82083C21C10EBEA00E42B7C /* protected.7z in Resources */,
+				E82083BF1C10E97600E42B7C /* basic.7z in Resources */,
+				E82083C41C10FD7700E42B7C /* empty.7z in Resources */,
+				E82083C01C10E97600E42B7C /* nested.7z in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8BA343F1C011B48006BDF06 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -4741,6 +4841,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E82083A51C10D99400E42B7C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E82083B71C10DEA500E42B7C /* UT_SVZArchive.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E8BA343C1C011B48006BDF06 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -5062,6 +5170,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E82083B01C10D99400E42B7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8BA34401C011B48006BDF06 /* SevenZip (OSX) */;
+			targetProxy = E82083AF1C10D99400E42B7C /* PBXContainerItemProxy */;
+		};
 		E8BA34F71C01C3AA006BDF06 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E8BA34401C011B48006BDF06 /* SevenZip (OSX) */;
@@ -5094,6 +5207,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E82083B21C10D99400E42B7C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = SevenZipTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E82083B31C10D99400E42B7C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = SevenZipTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_BUNDLE_IDENTIFIER = me.cocoagrinder.SevenZipTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E8BA2D281C00FCF0006BDF06 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -5385,6 +5536,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E82083B11C10D99400E42B7C /* Build configuration list for PBXNativeTarget "SevenZipTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E82083B21C10D99400E42B7C /* Debug */,
+				E82083B31C10D99400E42B7C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E8BA2D211C00FCF0006BDF06 /* Build configuration list for PBXProject "SevenZip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
