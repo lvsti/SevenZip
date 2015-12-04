@@ -73,7 +73,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     self = [super init];
     if (self) {
         _url = aURL;
-        _fileManager = [NSFileManager defaultManager];
+        _fileManager = [[self class] fileManager];
         _entries = @[];
         
         BOOL isDir = NO;
@@ -232,6 +232,12 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 
     self.archive = archive;
     return YES;
+}
+
+#pragma mark - UT helpers:
+
++ (NSFileManager*)fileManager {
+    return [NSFileManager defaultManager];
 }
 
 @end
