@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E82083A81C10D99400E42B7C"
+               BuildableName = "SevenZipTests.xctest"
+               BlueprintName = "SevenZipTests"
+               ReferencedContainer = "container:SevenZip.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E8BA34401C011B48006BDF06"
+            BuildableName = "SevenZip.framework"
+            BlueprintName = "SevenZip (OSX)"
+            ReferencedContainer = "container:SevenZip.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
