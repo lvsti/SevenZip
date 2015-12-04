@@ -1912,7 +1912,7 @@
 		E8BA34DA1C0123F1006BDF06 /* SVZInFileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZInFileStream.h; sourceTree = "<group>"; };
 		E8BA34DB1C0123F1006BDF06 /* SVZOutFileStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVZOutFileStream.cpp; sourceTree = "<group>"; };
 		E8BA34DC1C0123F1006BDF06 /* SVZOutFileStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZOutFileStream.h; sourceTree = "<group>"; };
-		E8BA34EF1C01C38A006BDF06 /* SVZTest */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SVZTest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8BA34EF1C01C38A006BDF06 /* SVZDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SVZDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BA34F11C01C38A006BDF06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E8BA34FE1C020D45006BDF06 /* SVZPreamble.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVZPreamble.h; sourceTree = "<group>"; };
 		E8BA35001C020F33006BDF06 /* SVZArchiveEntry_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZArchiveEntry_Private.h; sourceTree = "<group>"; };
@@ -1924,7 +1924,7 @@
 		E8BA350D1C026100006BDF06 /* SVZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVZUtils.h; sourceTree = "<group>"; };
 		E8BA350E1C026100006BDF06 /* SVZUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SVZUtils.mm; sourceTree = "<group>"; };
 		E8BA35B61C0266EE006BDF06 /* SevenZip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SevenZip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8BA35BC1C027D6B006BDF06 /* SVZTestiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SVZTestiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8BA35BC1C027D6B006BDF06 /* SVZDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SVZDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8BA35BF1C027D6B006BDF06 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E8BA35C11C027D6B006BDF06 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E8BA35C21C027D6B006BDF06 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1980,8 +1980,8 @@
 				E8BA34371C0111F4006BDF06 /* CoreFoundation.framework */,
 				E8BA2D2D1C00FD0F006BDF06 /* External */,
 				E8BA34421C011B48006BDF06 /* SevenZip */,
-				E8BA34F01C01C38A006BDF06 /* SVZTest */,
-				E8BA35BD1C027D6B006BDF06 /* SVZTestiOS */,
+				E8BA34F01C01C38A006BDF06 /* SVZDemo */,
+				E8BA35BD1C027D6B006BDF06 /* SVZDemo-iOS */,
 				E8BA2D271C00FCF0006BDF06 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1990,9 +1990,9 @@
 			isa = PBXGroup;
 			children = (
 				E8BA34411C011B48006BDF06 /* SevenZip.framework */,
-				E8BA34EF1C01C38A006BDF06 /* SVZTest */,
+				E8BA34EF1C01C38A006BDF06 /* SVZDemo */,
 				E8BA35B61C0266EE006BDF06 /* SevenZip.framework */,
-				E8BA35BC1C027D6B006BDF06 /* SVZTestiOS.app */,
+				E8BA35BC1C027D6B006BDF06 /* SVZDemo-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -4514,15 +4514,15 @@
 			path = SevenZip;
 			sourceTree = "<group>";
 		};
-		E8BA34F01C01C38A006BDF06 /* SVZTest */ = {
+		E8BA34F01C01C38A006BDF06 /* SVZDemo */ = {
 			isa = PBXGroup;
 			children = (
 				E8BA34F11C01C38A006BDF06 /* main.m */,
 			);
-			path = SVZTest;
+			path = SVZDemo;
 			sourceTree = "<group>";
 		};
-		E8BA35BD1C027D6B006BDF06 /* SVZTestiOS */ = {
+		E8BA35BD1C027D6B006BDF06 /* SVZDemo-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				E8BA35C11C027D6B006BDF06 /* AppDelegate.h */,
@@ -4535,7 +4535,7 @@
 				E8BA35CF1C027D6B006BDF06 /* Info.plist */,
 				E8BA35BE1C027D6B006BDF06 /* Supporting Files */,
 			);
-			path = SVZTestiOS;
+			path = "SVZDemo-iOS";
 			sourceTree = "<group>";
 		};
 		E8BA35BE1C027D6B006BDF06 /* Supporting Files */ = {
@@ -4618,9 +4618,9 @@
 			productReference = E8BA34411C011B48006BDF06 /* SevenZip.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E8BA34EE1C01C38A006BDF06 /* SVZTest */ = {
+		E8BA34EE1C01C38A006BDF06 /* SVZDemo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8BA34F31C01C38A006BDF06 /* Build configuration list for PBXNativeTarget "SVZTest" */;
+			buildConfigurationList = E8BA34F31C01C38A006BDF06 /* Build configuration list for PBXNativeTarget "SVZDemo" */;
 			buildPhases = (
 				E8BA34EB1C01C38A006BDF06 /* Sources */,
 				E8BA34EC1C01C38A006BDF06 /* Frameworks */,
@@ -4631,9 +4631,9 @@
 			dependencies = (
 				E8BA34F71C01C3AA006BDF06 /* PBXTargetDependency */,
 			);
-			name = SVZTest;
+			name = SVZDemo;
 			productName = SVZTest;
-			productReference = E8BA34EF1C01C38A006BDF06 /* SVZTest */;
+			productReference = E8BA34EF1C01C38A006BDF06 /* SVZDemo */;
 			productType = "com.apple.product-type.tool";
 		};
 		E8BA35111C0266EE006BDF06 /* SevenZip (iOS) */ = {
@@ -4654,9 +4654,9 @@
 			productReference = E8BA35B61C0266EE006BDF06 /* SevenZip.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		E8BA35BB1C027D6B006BDF06 /* SVZTestiOS */ = {
+		E8BA35BB1C027D6B006BDF06 /* SVZDemo-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8BA35D01C027D6C006BDF06 /* Build configuration list for PBXNativeTarget "SVZTestiOS" */;
+			buildConfigurationList = E8BA35D01C027D6C006BDF06 /* Build configuration list for PBXNativeTarget "SVZDemo-iOS" */;
 			buildPhases = (
 				E8BA35B81C027D6B006BDF06 /* Sources */,
 				E8BA35B91C027D6B006BDF06 /* Frameworks */,
@@ -4667,9 +4667,9 @@
 			dependencies = (
 				E8F424AD1C03C37C004F7D5F /* PBXTargetDependency */,
 			);
-			name = SVZTestiOS;
+			name = "SVZDemo-iOS";
 			productName = SVZTestiOS;
-			productReference = E8BA35BC1C027D6B006BDF06 /* SVZTestiOS.app */;
+			productReference = E8BA35BC1C027D6B006BDF06 /* SVZDemo-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -4707,8 +4707,8 @@
 			targets = (
 				E8BA34401C011B48006BDF06 /* SevenZip (OSX) */,
 				E8BA35111C0266EE006BDF06 /* SevenZip (iOS) */,
-				E8BA34EE1C01C38A006BDF06 /* SVZTest */,
-				E8BA35BB1C027D6B006BDF06 /* SVZTestiOS */,
+				E8BA34EE1C01C38A006BDF06 /* SVZDemo */,
+				E8BA35BB1C027D6B006BDF06 /* SVZDemo-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -5403,7 +5403,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8BA34F31C01C38A006BDF06 /* Build configuration list for PBXNativeTarget "SVZTest" */ = {
+		E8BA34F31C01C38A006BDF06 /* Build configuration list for PBXNativeTarget "SVZDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8BA34F41C01C38A006BDF06 /* Debug */,
@@ -5421,7 +5421,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8BA35D01C027D6C006BDF06 /* Build configuration list for PBXNativeTarget "SVZTestiOS" */ = {
+		E8BA35D01C027D6C006BDF06 /* Build configuration list for PBXNativeTarget "SVZDemo-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8BA35D11C027D6C006BDF06 /* Debug */,
