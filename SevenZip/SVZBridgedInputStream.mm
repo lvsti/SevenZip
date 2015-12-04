@@ -13,13 +13,6 @@ namespace SVZ {
 
     STDMETHODIMP BridgedInputStream::Read(void* data, UInt32 size, UInt32* processedSize) {
         @autoreleasepool {
-            if (!_source.hasBytesAvailable) {
-                if (processedSize) {
-                    *processedSize = 0;
-                }
-                return E_FAIL;
-            }
-            
             NSInteger bytesRead = [_source read:(uint8_t*)data maxLength:size];
             if (bytesRead < 0) {
                 // stream error
