@@ -80,20 +80,22 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
 
 + (instancetype)archiveEntryWithFileName:(NSString*)aFileName
                              streamBlock:(SVZStreamBlock)aStreamBlock {
+    NSDate* now = [NSDate date];
     return [[self alloc] initWithName:aFileName
                            attributes:kSVZDefaultFileAttributes
-                         creationDate:[NSDate date]
-                     modificationDate:[NSDate date]
-                           accessDate:[NSDate date]
+                         creationDate:now
+                     modificationDate:now
+                           accessDate:now
                           streamBlock:aStreamBlock];
 }
 
 + (instancetype)archiveEntryWithDirectoryName:(NSString*)aDirName {
+    NSDate* now = [NSDate date];
     return [[self alloc] initWithName:aDirName
                            attributes:kSVZDefaultDirectoryAttributes
-                         creationDate:[NSDate date]
-                     modificationDate:[NSDate date]
-                           accessDate:[NSDate date]
+                         creationDate:now
+                     modificationDate:now
+                           accessDate:now
                           streamBlock:nil];
 }
 
