@@ -42,6 +42,7 @@ SVZStreamBlock SVZStreamBlockCreateWithFileURL(NSURL* aURL) {
 }
 
 SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
+    NSCParameterAssert(aData);
     return ^NSInputStream*(unsigned long long* size, NSError** error) {
         *size = aData.length;
         return [NSInputStream inputStreamWithData:aData];
@@ -90,12 +91,13 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
                         creationDate:(NSDate*)aCTime
                     modificationDate:(NSDate*)aMTime
                           accessDate:(NSDate*)aATime
-                         streamBlock:(SVZ_NULLABLE_PTR SVZStreamBlock)aStreamBlock {
+                         streamBlock:(SVZStreamBlock)aStreamBlock {
+    NSDate* now = [NSDate date];
     return [[self alloc] initWithName:aName
                            attributes:aAttributes
-                         creationDate:aCTime
-                     modificationDate:aMTime
-                           accessDate:aATime
+                         creationDate:aCTime ?: now
+                     modificationDate:aMTime ?: now
+                           accessDate:aATime ?: now
                           streamBlock:aStreamBlock];
 }
 
@@ -104,7 +106,12 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
                 creationDate:(NSDate*)aCTime
             modificationDate:(NSDate*)aMTime
                   accessDate:(NSDate*)aATime
-                 streamBlock:(SVZ_NULLABLE_PTR SVZStreamBlock)aStreamBlock {
+                 streamBlock:(SVZStreamBlock)aStreamBlock {
+    NSParameterAssert(aName);
+    NSParameterAssert(aCTime);
+    NSParameterAssert(aMTime);
+    NSParameterAssert(aATime);
+    
     uint64_t dataSize = 0;
     NSInputStream* dataStream = nil;
     

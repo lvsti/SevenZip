@@ -95,7 +95,7 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
  * @return An initialized archive entry, or nil on failure.
  */
 + (SVZ_NULLABLE instancetype)archiveEntryWithFileName:(NSString*)aFileName
-                                          streamBlock:(SVZ_NULLABLE_PTR SVZStreamBlock)aStreamBlock;
+                                          streamBlock:(SVZStreamBlock SVZ_NULLABLE_PTR)aStreamBlock;
 
 /**
  * Creates a new directory entry.
@@ -111,19 +111,19 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
  *
  * @param aName The name of the file/directory entry (see remarks for `name`)
  * @param aAttributes The file attributes for this entry
- * @param aCTime File creation date
- * @param aMTime File modification date
- * @param aCTime File access date
+ * @param aCTime File creation date. Pass nil for the current time.
+ * @param aMTime File modification date. Pass nil for the current time.
+ * @param aCTime File access date. Pass nil for the current time.
  * @param aStreamBlock Data stream provider block. Pass nil for 0-byte entries.
  *
  * @return An initialized archive entry, or nil on failure.
  */
 + (SVZ_NULLABLE instancetype)archiveEntryWithName:(NSString*)aName
                                        attributes:(SVZArchiveEntryAttributes)aAttributes
-                                     creationDate:(NSDate*)aCTime
-                                 modificationDate:(NSDate*)aMTime
-                                       accessDate:(NSDate*)aATime
-                                      streamBlock:(SVZ_NULLABLE_PTR SVZStreamBlock)aStreamBlock;
+                                     creationDate:(NSDate* SVZ_NULLABLE_PTR)aCTime
+                                 modificationDate:(NSDate* SVZ_NULLABLE_PTR)aMTime
+                                       accessDate:(NSDate* SVZ_NULLABLE_PTR)aATime
+                                      streamBlock:(SVZStreamBlock SVZ_NULLABLE_PTR)aStreamBlock;
 
 /**
  * Extracts the archive entry data.
