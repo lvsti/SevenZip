@@ -89,6 +89,10 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
 /**
  * Creates a new file entry with the given stream block.
  *
+ * Note: if you are returning a file stream from the stream block, consider 
+ * using `archiveEntryWithFileName:contentsOfURL:` instead in order to
+ * preserve the original file attributes.
+ *
  * @param aFileName The name of the file entry (see remarks for `name`)
  * @param aStreamBlock Data stream provider block. Pass nil for 0-byte entries.
  *

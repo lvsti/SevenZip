@@ -53,17 +53,28 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
 
 + (instancetype)archiveEntryWithFileName:(NSString*)aFileName
                            contentsOfURL:(NSURL*)aURL {
-    NSDictionary* attributes = [[NSFileManager defaultManager] attributesOfItemAtPath:aURL.path
-                                                                                error:NULL];
+    NSParameterAssert(aURL);
+
+    NSDictionary* attributes = [aURL resourceValuesForKeys:@[NSURLCreationDateKey,
+                                                             NSURLContentAccessDateKey,
+                                                             NSURLContentModificationDateKey,
+                                                             NSURLFileSecurityKey]
+                                                     error:NULL];
     if (!attributes) {
+        return nil;
+    }
+    
+    NSFileSecurity* fs = attributes[NSURLFileSecurityKey];
+    mode_t permissions = 0;
+    if (!CFFileSecurityGetMode((__bridge CFFileSecurityRef)fs, &permissions)) {
         return nil;
     }
 
     return [[self alloc] initWithName:aFileName
-                           attributes:[attributes[NSFilePosixPermissions] unsignedIntValue] << 16
-                         creationDate:attributes[NSFileCreationDate]
-                     modificationDate:attributes[NSFileModificationDate]
-                           accessDate:[NSDate date]
+                           attributes:(SVZArchiveEntryAttributes)permissions << 16
+                         creationDate:attributes[NSURLCreationDateKey]
+                     modificationDate:attributes[NSURLContentModificationDateKey]
+                           accessDate:attributes[NSURLContentAccessDateKey]
                           streamBlock:SVZStreamBlockCreateWithFileURL(aURL)];
 }
 
