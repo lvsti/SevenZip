@@ -187,11 +187,15 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
                    withPassword:(NSString*)aPassword
                           error:(NSError**)aError {
     NSURL* entryURL = [aDirURL URLByAppendingPathComponent:self.name];
-    if (![[[self class] fileManager] createDirectoryAtURL:entryURL.URLByDeletingLastPathComponent
+    if (![[[self class] fileManager] createDirectoryAtURL:self.isDirectory? entryURL: entryURL.URLByDeletingLastPathComponent
                               withIntermediateDirectories:YES
                                                attributes:nil
                                                     error:aError]) {
         return NO;
+    }
+    
+    if (self.isDirectory) {
+        return YES;
     }
     
     NSOutputStream* fileStream = [NSOutputStream outputStreamWithURL:entryURL append:NO];
