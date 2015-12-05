@@ -29,6 +29,8 @@
 		E8ABC89F1C124FC800DF1650 /* UT_SVZArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E82083B61C10DEA500E42B7C /* UT_SVZArchive.m */; };
 		E8ABC8A11C12502E00DF1650 /* Kiwi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ABC8A01C12502E00DF1650 /* Kiwi.framework */; };
 		E8ABC8A21C12505300DF1650 /* Kiwi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8ABC8A01C12502E00DF1650 /* Kiwi.framework */; };
+		E8ABC8A81C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A71C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m */; };
+		E8ABC8A91C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A71C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m */; };
 		E8BA34441C011B48006BDF06 /* SevenZip.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34431C011B48006BDF06 /* SevenZip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8BA34491C011BCE006BDF06 /* 7zBuf2.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D381C00FD0F006BDF06 /* 7zBuf2.c */; };
 		E8BA344A1C011BCE006BDF06 /* 7zCrc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D391C00FD0F006BDF06 /* 7zCrc.c */; };
@@ -433,6 +435,8 @@
 		E82083C31C10FD7700E42B7C /* empty.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = empty.7z; sourceTree = "<group>"; };
 		E8ABC88C1C124F0900DF1650 /* SevenZipTests (iOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SevenZipTests (iOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8ABC8A01C12502E00DF1650 /* Kiwi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kiwi.framework; path = Carthage/Build/iOS/Kiwi.framework; sourceTree = "<group>"; };
+		E8ABC8A61C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileSecurity+AsIfItWere2015.h"; sourceTree = "<group>"; };
+		E8ABC8A71C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileSecurity+AsIfItWere2015.m"; sourceTree = "<group>"; };
 		E8BA2D311C00FD0F006BDF06 /* 7zAsm.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = 7zAsm.asm; sourceTree = "<group>"; };
 		E8BA2D321C00FD0F006BDF06 /* 7zCrcOpt_asm.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = 7zCrcOpt_asm.asm; sourceTree = "<group>"; };
 		E8BA2D331C00FD0F006BDF06 /* AesOpt.asm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.asm.asm; path = AesOpt.asm; sourceTree = "<group>"; };
