@@ -97,7 +97,7 @@
 
     UInt32 indices[] = {(UInt32)self.index};
     HRESULT result = archive.archive->Extract(indices, 1, false, extractCallback);
-    if (result != S_OK) {
+    if (result != S_OK || extractCallbackImpl->NumErrors > 0) {
         return NO;
     }
 
