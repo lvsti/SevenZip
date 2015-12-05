@@ -199,9 +199,15 @@ SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData) {
     }
     
     NSOutputStream* fileStream = [NSOutputStream outputStreamWithURL:entryURL append:NO];
-    return [self extractToStream:fileStream
-                    withPassword:aPassword
-                           error:aError];
+    BOOL success = [self extractToStream:fileStream
+                            withPassword:aPassword
+                                   error:aError];
+    if (!success) {
+        [[[self class] fileManager] removeItemAtURL:entryURL
+                                              error:NULL];
+    }
+    
+    return success;
 }
 
 - (BOOL)extractToStream:(NSOutputStream*)aOutputStream
