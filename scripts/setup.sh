@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 mkdir -p External
 
 echo "Downloading p7zip..."

@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E8ABD7981C143DE100DF1650 /* Bootstrap */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E8ABD79B1C143DE100DF1650 /* Build configuration list for PBXAggregateTarget "Bootstrap" */;
+			buildPhases = (
+				E8ABD79C1C143DED00DF1650 /* Setup dependencies */,
+			);
+			dependencies = (
+			);
+			name = Bootstrap;
+			productName = Bootstrap;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		E820839D1C0E472D00E42B7C /* SVZArchiveEntryAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = E820839C1C0E472D00E42B7C /* SVZArchiveEntryAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E820839E1C0E472D00E42B7C /* SVZArchiveEntryAttribute.h in Headers */ = {isa = PBXBuildFile; fileRef = E820839C1C0E472D00E42B7C /* SVZArchiveEntryAttribute.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -374,6 +388,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = E8BA34401C011B48006BDF06;
 			remoteInfo = "SevenZip (OSX)";
+		};
+		E8ABD79D1C143E6F00DF1650 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8BA2D1E1C00FCF0006BDF06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8ABD7981C143DE100DF1650;
+			remoteInfo = Bootstrap;
+		};
+		E8ABD79F1C143E7600DF1650 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E8BA2D1E1C00FCF0006BDF06 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E8ABD7981C143DE100DF1650;
+			remoteInfo = Bootstrap;
 		};
 		E8BA34F61C01C3AA006BDF06 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -4764,6 +4792,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E8ABD79E1C143E6F00DF1650 /* PBXTargetDependency */,
 			);
 			name = "SevenZip (OSX)";
 			productName = SevenZip;
@@ -4800,6 +4829,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E8ABD7A01C143E7600DF1650 /* PBXTargetDependency */,
 			);
 			name = "SevenZip (iOS)";
 			productName = SevenZip;
@@ -4839,6 +4869,9 @@
 					E8ABC88B1C124F0900DF1650 = {
 						CreatedOnToolsVersion = 7.1;
 					};
+					E8ABD7981C143DE100DF1650 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 					E8BA34401C011B48006BDF06 = {
 						CreatedOnToolsVersion = 7.1;
 					};
@@ -4869,6 +4902,7 @@
 				E8BA35BB1C027D6B006BDF06 /* SVZDemo-iOS */,
 				E82083A81C10D99400E42B7C /* SevenZipTests (OSX) */,
 				E8ABC88B1C124F0900DF1650 /* SevenZipTests (iOS) */,
+				E8ABD7981C143DE100DF1650 /* Bootstrap */,
 			);
 		};
 /* End PBXProject section */
@@ -4921,6 +4955,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E8ABD79C1C143DED00DF1650 /* Setup dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Setup dependencies";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -h \"${PROJECT_DIR}/External/p7zip\" ]; then\n    exit 0\nfi\n\ncd \"${PROJECT_DIR}\"\nscripts/setup.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E82083A51C10D99400E42B7C /* Sources */ = {
@@ -5274,6 +5325,16 @@
 			target = E8BA34401C011B48006BDF06 /* SevenZip (OSX) */;
 			targetProxy = E8ABC8971C124F1B00DF1650 /* PBXContainerItemProxy */;
 		};
+		E8ABD79E1C143E6F00DF1650 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8ABD7981C143DE100DF1650 /* Bootstrap */;
+			targetProxy = E8ABD79D1C143E6F00DF1650 /* PBXContainerItemProxy */;
+		};
+		E8ABD7A01C143E7600DF1650 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E8ABD7981C143DE100DF1650 /* Bootstrap */;
+			targetProxy = E8ABD79F1C143E7600DF1650 /* PBXContainerItemProxy */;
+		};
 		E8BA34F71C01C3AA006BDF06 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E8BA34401C011B48006BDF06 /* SevenZip (OSX) */;
@@ -5372,6 +5433,20 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E8ABD7991C143DE100DF1650 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E8ABD79A1C143DE100DF1650 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -5680,6 +5755,15 @@
 			buildConfigurations = (
 				E8ABC8951C124F0900DF1650 /* Debug */,
 				E8ABC8961C124F0900DF1650 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8ABD79B1C143DE100DF1650 /* Build configuration list for PBXAggregateTarget "Bootstrap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8ABD7991C143DE100DF1650 /* Debug */,
+				E8ABD79A1C143DE100DF1650 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

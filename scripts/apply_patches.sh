@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [ ! -f External/p7zip/CPP/include_windows/windows.h ]; then
     echo "error: windows.h not found, make sure you have the p7zip source in place."
     exit 1
