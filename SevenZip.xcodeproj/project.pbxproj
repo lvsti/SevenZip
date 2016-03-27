@@ -47,6 +47,78 @@
 		E8ABC8A51C12D3B900DF1650 /* UT_SVZArchiveEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A31C12D3B900DF1650 /* UT_SVZArchiveEntry.m */; };
 		E8ABC8A81C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A71C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m */; };
 		E8ABC8A91C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A71C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m */; };
+		E8B755701CA81B4F0011B08A /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB51C00FD10006BDF06 /* Bcj2Coder.cpp */; };
+		E8B755711CA81B4F0011B08A /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB71C00FD10006BDF06 /* Bcj2Register.cpp */; };
+		E8B755721CA81B4F0011B08A /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB81C00FD10006BDF06 /* BcjCoder.cpp */; };
+		E8B755731CA81B580011B08A /* Bcj2Coder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB51C00FD10006BDF06 /* Bcj2Coder.cpp */; };
+		E8B755741CA81B580011B08A /* Bcj2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB71C00FD10006BDF06 /* Bcj2Register.cpp */; };
+		E8B755751CA81B580011B08A /* BcjCoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FB81C00FD10006BDF06 /* BcjCoder.cpp */; };
+		E8B755761CA81B5F0011B08A /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FBA1C00FD10006BDF06 /* BcjRegister.cpp */; };
+		E8B755771CA81B600011B08A /* BcjRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FBA1C00FD10006BDF06 /* BcjRegister.cpp */; };
+		E8B755781CA81B820011B08A /* BitlDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FBB1C00FD10006BDF06 /* BitlDecoder.cpp */; };
+		E8B755791CA81B820011B08A /* BZip2Crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC51C00FD10006BDF06 /* BZip2Crc.cpp */; };
+		E8B7557A1CA81B820011B08A /* BZip2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC71C00FD10006BDF06 /* BZip2Decoder.cpp */; };
+		E8B7557B1CA81B820011B08A /* BZip2Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC91C00FD10006BDF06 /* BZip2Encoder.cpp */; };
+		E8B7557C1CA81B820011B08A /* BZip2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FCB1C00FD10006BDF06 /* BZip2Register.cpp */; };
+		E8B7557D1CA81B830011B08A /* BitlDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FBB1C00FD10006BDF06 /* BitlDecoder.cpp */; };
+		E8B7557E1CA81B830011B08A /* BZip2Crc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC51C00FD10006BDF06 /* BZip2Crc.cpp */; };
+		E8B7557F1CA81B830011B08A /* BZip2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC71C00FD10006BDF06 /* BZip2Decoder.cpp */; };
+		E8B755801CA81B830011B08A /* BZip2Encoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC91C00FD10006BDF06 /* BZip2Encoder.cpp */; };
+		E8B755811CA81B830011B08A /* BZip2Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FCB1C00FD10006BDF06 /* BZip2Register.cpp */; };
+		E8B755821CA81BA60011B08A /* Deflate64Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD01C00FD10006BDF06 /* Deflate64Register.cpp */; };
+		E8B755831CA81BA60011B08A /* DeflateDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD21C00FD10006BDF06 /* DeflateDecoder.cpp */; };
+		E8B755841CA81BA60011B08A /* DeflateEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD41C00FD10006BDF06 /* DeflateEncoder.cpp */; };
+		E8B755851CA81BA60011B08A /* DeflateRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD61C00FD10006BDF06 /* DeflateRegister.cpp */; };
+		E8B755861CA81BA60011B08A /* DeltaFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD71C00FD10006BDF06 /* DeltaFilter.cpp */; };
+		E8B755871CA81BA70011B08A /* Deflate64Register.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD01C00FD10006BDF06 /* Deflate64Register.cpp */; };
+		E8B755881CA81BA70011B08A /* DeflateDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD21C00FD10006BDF06 /* DeflateDecoder.cpp */; };
+		E8B755891CA81BA70011B08A /* DeflateEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD41C00FD10006BDF06 /* DeflateEncoder.cpp */; };
+		E8B7558A1CA81BA70011B08A /* DeflateRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD61C00FD10006BDF06 /* DeflateRegister.cpp */; };
+		E8B7558B1CA81BA70011B08A /* DeltaFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FD71C00FD10006BDF06 /* DeltaFilter.cpp */; };
+		E8B7558C1CA81BC30011B08A /* LzOutWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FED1C00FD10006BDF06 /* LzOutWindow.cpp */; };
+		E8B7558D1CA81BC40011B08A /* LzOutWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FED1C00FD10006BDF06 /* LzOutWindow.cpp */; };
+		E8B7558E1CA81BF10011B08A /* ImplodeDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FDB1C00FD10006BDF06 /* ImplodeDecoder.cpp */; };
+		E8B7558F1CA81BF10011B08A /* ImplodeHuffmanDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FDD1C00FD10006BDF06 /* ImplodeHuffmanDecoder.cpp */; };
+		E8B755901CA81BF10011B08A /* LzhDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FDF1C00FD10006BDF06 /* LzhDecoder.cpp */; };
+		E8B755911CA81BF10011B08A /* LzmsDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FEB1C00FD10006BDF06 /* LzmsDecoder.cpp */; };
+		E8B755921CA81BF10011B08A /* ImplodeDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FDB1C00FD10006BDF06 /* ImplodeDecoder.cpp */; };
+		E8B755931CA81BF10011B08A /* ImplodeHuffmanDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FDD1C00FD10006BDF06 /* ImplodeHuffmanDecoder.cpp */; };
+		E8B755941CA81BF10011B08A /* LzhDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FDF1C00FD10006BDF06 /* LzhDecoder.cpp */; };
+		E8B755951CA81BF10011B08A /* LzmsDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FEB1C00FD10006BDF06 /* LzmsDecoder.cpp */; };
+		E8B755961CA81C040011B08A /* LzxDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF01C00FD10006BDF06 /* LzxDecoder.cpp */; };
+		E8B755971CA81C040011B08A /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF31C00FD10006BDF06 /* PpmdDecoder.cpp */; };
+		E8B755981CA81C040011B08A /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF51C00FD10006BDF06 /* PpmdEncoder.cpp */; };
+		E8B755991CA81C040011B08A /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF71C00FD10006BDF06 /* PpmdRegister.cpp */; };
+		E8B7559A1CA81C040011B08A /* LzxDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF01C00FD10006BDF06 /* LzxDecoder.cpp */; };
+		E8B7559B1CA81C040011B08A /* PpmdDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF31C00FD10006BDF06 /* PpmdDecoder.cpp */; };
+		E8B7559C1CA81C040011B08A /* PpmdEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF51C00FD10006BDF06 /* PpmdEncoder.cpp */; };
+		E8B7559D1CA81C040011B08A /* PpmdRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF71C00FD10006BDF06 /* PpmdRegister.cpp */; };
+		E8B7559E1CA81C230011B08A /* PpmdZip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF81C00FD10006BDF06 /* PpmdZip.cpp */; };
+		E8B7559F1CA81C230011B08A /* QuantumDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FFA1C00FD10006BDF06 /* QuantumDecoder.cpp */; };
+		E8B755A01CA81C230011B08A /* Rar1Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30001C00FD10006BDF06 /* Rar1Decoder.cpp */; };
+		E8B755A11CA81C230011B08A /* Rar2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30021C00FD10006BDF06 /* Rar2Decoder.cpp */; };
+		E8B755A21CA81C230011B08A /* Rar3Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30041C00FD10006BDF06 /* Rar3Decoder.cpp */; };
+		E8B755A31CA81C230011B08A /* Rar3Vm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30061C00FD10006BDF06 /* Rar3Vm.cpp */; };
+		E8B755A41CA81C230011B08A /* Rar5Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30081C00FD10006BDF06 /* Rar5Decoder.cpp */; };
+		E8B755A51CA81C230011B08A /* RarCodecsRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300A1C00FD10006BDF06 /* RarCodecsRegister.cpp */; };
+		E8B755A61CA81C230011B08A /* ShrinkDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300B1C00FD10006BDF06 /* ShrinkDecoder.cpp */; };
+		E8B755A71CA81C230011B08A /* XpressDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300D1C00FD10006BDF06 /* XpressDecoder.cpp */; };
+		E8B755A81CA81C230011B08A /* ZDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300F1C00FD10006BDF06 /* ZDecoder.cpp */; };
+		E8B755A91CA81C230011B08A /* ZlibDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30111C00FD10006BDF06 /* ZlibDecoder.cpp */; };
+		E8B755AA1CA81C230011B08A /* ZlibEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30131C00FD10006BDF06 /* ZlibEncoder.cpp */; };
+		E8B755AB1CA81C240011B08A /* PpmdZip.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FF81C00FD10006BDF06 /* PpmdZip.cpp */; };
+		E8B755AC1CA81C240011B08A /* QuantumDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FFA1C00FD10006BDF06 /* QuantumDecoder.cpp */; };
+		E8B755AD1CA81C240011B08A /* Rar1Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30001C00FD10006BDF06 /* Rar1Decoder.cpp */; };
+		E8B755AE1CA81C240011B08A /* Rar2Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30021C00FD10006BDF06 /* Rar2Decoder.cpp */; };
+		E8B755AF1CA81C240011B08A /* Rar3Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30041C00FD10006BDF06 /* Rar3Decoder.cpp */; };
+		E8B755B01CA81C240011B08A /* Rar3Vm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30061C00FD10006BDF06 /* Rar3Vm.cpp */; };
+		E8B755B11CA81C240011B08A /* Rar5Decoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30081C00FD10006BDF06 /* Rar5Decoder.cpp */; };
+		E8B755B21CA81C240011B08A /* RarCodecsRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300A1C00FD10006BDF06 /* RarCodecsRegister.cpp */; };
+		E8B755B31CA81C240011B08A /* ShrinkDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300B1C00FD10006BDF06 /* ShrinkDecoder.cpp */; };
+		E8B755B41CA81C240011B08A /* XpressDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300D1C00FD10006BDF06 /* XpressDecoder.cpp */; };
+		E8B755B51CA81C240011B08A /* ZDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA300F1C00FD10006BDF06 /* ZDecoder.cpp */; };
+		E8B755B61CA81C240011B08A /* ZlibDecoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30111C00FD10006BDF06 /* ZlibDecoder.cpp */; };
+		E8B755B71CA81C240011B08A /* ZlibEncoder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA30131C00FD10006BDF06 /* ZlibEncoder.cpp */; };
 		E8BA34441C011B48006BDF06 /* SevenZip.h in Headers */ = {isa = PBXBuildFile; fileRef = E8BA34431C011B48006BDF06 /* SevenZip.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E8BA34491C011BCE006BDF06 /* 7zBuf2.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D381C00FD0F006BDF06 /* 7zBuf2.c */; };
 		E8BA344A1C011BCE006BDF06 /* 7zCrc.c in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2D391C00FD0F006BDF06 /* 7zCrc.c */; };
@@ -3126,8 +3198,12 @@
 				E8BA35081C02354A006BDF06 /* TimeUtils.cpp in Sources */,
 				E8BA34841C011BF7006BDF06 /* HandlerOut.cpp in Sources */,
 				E8BA34851C011BF7006BDF06 /* InStreamWithCRC.cpp in Sources */,
+				E8B755841CA81BA60011B08A /* DeflateEncoder.cpp in Sources */,
+				E8B755991CA81C040011B08A /* PpmdRegister.cpp in Sources */,
 				E8BA34651C011BCE006BDF06 /* Ppmd8Enc.c in Sources */,
 				E8BA34981C011C35006BDF06 /* OutMemStream.cpp in Sources */,
+				E8B755A41CA81C230011B08A /* Rar5Decoder.cpp in Sources */,
+				E8B755701CA81B4F0011B08A /* Bcj2Coder.cpp in Sources */,
 				E8BA34721C011BDE006BDF06 /* 7zEncode.cpp in Sources */,
 				E8BA34A61C011C55006BDF06 /* LzmaEncoder.cpp in Sources */,
 				E8BA34761C011BDE006BDF06 /* 7zHandler.cpp in Sources */,
@@ -3141,17 +3217,21 @@
 				E8BA34611C011BCE006BDF06 /* Ppmd7Dec.c in Sources */,
 				E8BA34671C011BCE006BDF06 /* Sha256.c in Sources */,
 				E8BA34741C011BDE006BDF06 /* 7zFolderInStream.cpp in Sources */,
+				E8B755A01CA81C230011B08A /* Rar1Decoder.cpp in Sources */,
 				E8BA34521C011BCE006BDF06 /* Bra.c in Sources */,
 				E8BA349A1C011C35006BDF06 /* ProgressUtils.cpp in Sources */,
 				E8BA34621C011BCE006BDF06 /* Ppmd7Enc.c in Sources */,
 				E8BA34AD1C011C68006BDF06 /* HmacSha1.cpp in Sources */,
 				E8BA344C1C011BCE006BDF06 /* 7zStream.c in Sources */,
+				E8B755911CA81BF10011B08A /* LzmsDecoder.cpp in Sources */,
 				E8BA34951C011C35006BDF06 /* MethodProps.cpp in Sources */,
 				E8F424B31C07BF14004F7D5F /* SVZBridgedInputStream.mm in Sources */,
 				E8BA34C31C011DF1006BDF06 /* FileFind.cpp in Sources */,
 				E8BA34BA1C011D4B006BDF06 /* wine_date_and_time.cpp in Sources */,
 				E8BA34591C011BCE006BDF06 /* LzFind.c in Sources */,
+				E8B755901CA81BF10011B08A /* LzhDecoder.cpp in Sources */,
 				E8BA34861C011BF7006BDF06 /* ItemNameUtils.cpp in Sources */,
+				E8B7558C1CA81BC30011B08A /* LzOutWindow.cpp in Sources */,
 				E8BA34891C011BF7006BDF06 /* OutStreamWithSha1.cpp in Sources */,
 				E8BA350B1C023C32006BDF06 /* SVZOutMemoryStream.cpp in Sources */,
 				E8BA34541C011BCE006BDF06 /* BraIA64.c in Sources */,
@@ -3171,15 +3251,20 @@
 				E8BA35051C022B12006BDF06 /* SVZStoredArchiveEntry.mm in Sources */,
 				E8BA34991C011C35006BDF06 /* ProgressMt.cpp in Sources */,
 				E8BA347C1C011BDE006BDF06 /* 7zRegister.cpp in Sources */,
+				E8B755A81CA81C230011B08A /* ZDecoder.cpp in Sources */,
 				E8BA348C1C011C10006BDF06 /* XzHandler.cpp in Sources */,
 				E8BA347A1C011BDE006BDF06 /* 7zOut.cpp in Sources */,
 				E8BA34BD1C011D95006BDF06 /* StringToInt.cpp in Sources */,
 				E8BA34A41C011C44006BDF06 /* CopyRegister.cpp in Sources */,
 				E8BA34731C011BDE006BDF06 /* 7zExtract.cpp in Sources */,
+				E8B755721CA81B4F0011B08A /* BcjCoder.cpp in Sources */,
 				E8BA34881C011BF7006BDF06 /* OutStreamWithCRC.cpp in Sources */,
 				E8BA34CD1C011FD9006BDF06 /* StdOutStream.cpp in Sources */,
+				E8B755821CA81BA60011B08A /* Deflate64Register.cpp in Sources */,
+				E8B7559F1CA81C230011B08A /* QuantumDecoder.cpp in Sources */,
 				E8BA34491C011BCE006BDF06 /* 7zBuf2.c in Sources */,
 				E8BA34871C011BF7006BDF06 /* MultiStream.cpp in Sources */,
+				E8B755A21CA81C230011B08A /* Rar3Decoder.cpp in Sources */,
 				E8BA34AB1C011C68006BDF06 /* 7zAes.cpp in Sources */,
 				E8BA34921C011C35006BDF06 /* LimitedStreams.cpp in Sources */,
 				E8BA34A21C011C44006BDF06 /* CodecExports.cpp in Sources */,
@@ -3188,6 +3273,7 @@
 				E8BA34E11C0123F1006BDF06 /* SVZArchiveOpenCallback.cpp in Sources */,
 				E8BA349D1C011C35006BDF06 /* StreamObjects.cpp in Sources */,
 				E8BA34531C011BCE006BDF06 /* Bra86.c in Sources */,
+				E8B7558F1CA81BF10011B08A /* ImplodeHuffmanDecoder.cpp in Sources */,
 				E8BA347B1C011BDE006BDF06 /* 7zProperties.cpp in Sources */,
 				E8BA34801C011BF7006BDF06 /* CoderMixer2.cpp in Sources */,
 				E8BA34C01C011DC8006BDF06 /* PropVariant.cpp in Sources */,
@@ -3200,19 +3286,28 @@
 				E8BA347D1C011BDE006BDF06 /* 7zSpecStream.cpp in Sources */,
 				E8BA34C21C011DE6006BDF06 /* FileDir.cpp in Sources */,
 				E8BA349B1C011C35006BDF06 /* PropId.cpp in Sources */,
+				E8B755A71CA81C230011B08A /* XpressDecoder.cpp in Sources */,
+				E8B7557A1CA81B820011B08A /* BZip2Decoder.cpp in Sources */,
 				E8BA34B11C011C68006BDF06 /* Pbkdf2HmacSha1.cpp in Sources */,
 				E8BA34781C011BDE006BDF06 /* 7zHeader.cpp in Sources */,
 				E8BA34BC1C011D85006BDF06 /* Wildcard.cpp in Sources */,
+				E8B755761CA81B5F0011B08A /* BcjRegister.cpp in Sources */,
 				E8BA34BE1C011DA4006BDF06 /* IntToString.cpp in Sources */,
 				E8BA347E1C011BDE006BDF06 /* 7zUpdate.cpp in Sources */,
 				E8BA34581C011BCE006BDF06 /* HuffEnc.c in Sources */,
 				E8BA346A1C011BCE006BDF06 /* Xz.c in Sources */,
 				E8BA345D1C011BCE006BDF06 /* LzmaDec.c in Sources */,
+				E8B7558E1CA81BF10011B08A /* ImplodeDecoder.cpp in Sources */,
 				E8BA34F91C01C58D006BDF06 /* CRC.cpp in Sources */,
+				E8B755831CA81BA60011B08A /* DeflateDecoder.cpp in Sources */,
+				E8B755851CA81BA60011B08A /* DeflateRegister.cpp in Sources */,
 				E8BA348E1C011C35006BDF06 /* CWrappers.cpp in Sources */,
 				E8BA34B31C011C68006BDF06 /* Rar20Crypto.cpp in Sources */,
 				E8BA34901C011C35006BDF06 /* InBuffer.cpp in Sources */,
+				E8B755961CA81C040011B08A /* LzxDecoder.cpp in Sources */,
+				E8B755791CA81B820011B08A /* BZip2Crc.cpp in Sources */,
 				E8BA34AC1C011C68006BDF06 /* 7zAesRegister.cpp in Sources */,
+				E8B755711CA81B4F0011B08A /* Bcj2Register.cpp in Sources */,
 				E8BA34BB1C011D59006BDF06 /* MyWindows.cpp in Sources */,
 				E8BA34631C011BCE006BDF06 /* Ppmd8.c in Sources */,
 				E8BA34C41C011E02006BDF06 /* System.cpp in Sources */,
@@ -3221,16 +3316,23 @@
 				E8BA34A01C011C35006BDF06 /* VirtThread.cpp in Sources */,
 				E8BA34B81C011C68006BDF06 /* ZipStrong.cpp in Sources */,
 				E8BA348D1C011C35006BDF06 /* CreateCoder.cpp in Sources */,
+				E8B755971CA81C040011B08A /* PpmdDecoder.cpp in Sources */,
+				E8B755781CA81B820011B08A /* BitlDecoder.cpp in Sources */,
 				E8BA34B21C011C68006BDF06 /* RandGen.cpp in Sources */,
 				E8BA34AA1C011C5C006BDF06 /* Lzma2Register.cpp in Sources */,
 				E8BA345B1C011BCE006BDF06 /* Lzma2Dec.c in Sources */,
 				E8BA34EA1C01C2F0006BDF06 /* DllExports2.cpp in Sources */,
 				E8BA34DE1C0123F1006BDF06 /* SVZArchiveEntry.m in Sources */,
 				E82083A31C0E564C00E42B7C /* SVZBridgedOutputStream.mm in Sources */,
+				E8B7557B1CA81B820011B08A /* BZip2Encoder.cpp in Sources */,
 				E8BA349F1C011C35006BDF06 /* UniqBlocks.cpp in Sources */,
+				E8B7557C1CA81B820011B08A /* BZip2Register.cpp in Sources */,
+				E8B755A91CA81C230011B08A /* ZlibDecoder.cpp in Sources */,
 				E8BA345A1C011BCE006BDF06 /* LzFindMt.c in Sources */,
 				E8BA344F1C011BCE006BDF06 /* Bcj2.c in Sources */,
 				E8BA34831C011BF7006BDF06 /* FindSignature.cpp in Sources */,
+				E8B755861CA81BA60011B08A /* DeltaFilter.cpp in Sources */,
+				E8B755A51CA81C230011B08A /* RarCodecsRegister.cpp in Sources */,
 				E8BA34C51C011E10006BDF06 /* StringConvert.cpp in Sources */,
 				E8BA34711C011BDE006BDF06 /* 7zDecode.cpp in Sources */,
 				E8BA34C11C011DD6006BDF06 /* FileIO.cpp in Sources */,
@@ -3241,16 +3343,20 @@
 				E8BA346D1C011BCE006BDF06 /* XzDec.c in Sources */,
 				E8BA34701C011BDE006BDF06 /* 7zCompressionMode.cpp in Sources */,
 				E8BA34CC1C011EA5006BDF06 /* SVZArchive.mm in Sources */,
+				E8B755981CA81C040011B08A /* PpmdEncoder.cpp in Sources */,
 				E8BA348F1C011C35006BDF06 /* FilterCoder.cpp in Sources */,
 				E8BA34B71C011C68006BDF06 /* ZipCrypto.cpp in Sources */,
 				E8BA344D1C011BCE006BDF06 /* Aes.c in Sources */,
+				E8B755A61CA81C230011B08A /* ShrinkDecoder.cpp in Sources */,
 				E8BA34E71C0123F1006BDF06 /* SVZOutFileStream.cpp in Sources */,
 				E8BA34821C011BF7006BDF06 /* DummyOutStream.cpp in Sources */,
 				E8BA344E1C011BCE006BDF06 /* Alloc.c in Sources */,
 				E8BA349C1C011C35006BDF06 /* StreamBinder.cpp in Sources */,
 				E8BA344A1C011BCE006BDF06 /* 7zCrc.c in Sources */,
+				E8B7559E1CA81C230011B08A /* PpmdZip.cpp in Sources */,
 				E8BA34551C011BCE006BDF06 /* BwtSort.c in Sources */,
 				E8BA344B1C011BCE006BDF06 /* 7zCrcOpt.c in Sources */,
+				E8B755A11CA81C230011B08A /* Rar2Decoder.cpp in Sources */,
 				E8BA34971C011C35006BDF06 /* OutBuffer.cpp in Sources */,
 				E8BA34A31C011C44006BDF06 /* CopyCoder.cpp in Sources */,
 				E8BA34691C011BCE006BDF06 /* Threads.c in Sources */,
@@ -3260,6 +3366,8 @@
 				E8BA346B1C011BCE006BDF06 /* XzCrc64.c in Sources */,
 				E8BA34A81C011C5C006BDF06 /* Lzma2Decoder.cpp in Sources */,
 				E8BA34681C011BCE006BDF06 /* Sort.c in Sources */,
+				E8B755AA1CA81C230011B08A /* ZlibEncoder.cpp in Sources */,
+				E8B755A31CA81C230011B08A /* Rar3Vm.cpp in Sources */,
 				E8BA34941C011C35006BDF06 /* MethodId.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3282,8 +3390,12 @@
 				E8BA35161C0266EE006BDF06 /* TimeUtils.cpp in Sources */,
 				E8BA35171C0266EE006BDF06 /* HandlerOut.cpp in Sources */,
 				E8BA35181C0266EE006BDF06 /* InStreamWithCRC.cpp in Sources */,
+				E8B755891CA81BA70011B08A /* DeflateEncoder.cpp in Sources */,
+				E8B7559D1CA81C040011B08A /* PpmdRegister.cpp in Sources */,
 				E8BA35191C0266EE006BDF06 /* Ppmd8Enc.c in Sources */,
 				E8BA351A1C0266EE006BDF06 /* OutMemStream.cpp in Sources */,
+				E8B755B11CA81C240011B08A /* Rar5Decoder.cpp in Sources */,
+				E8B755731CA81B580011B08A /* Bcj2Coder.cpp in Sources */,
 				E8BA351B1C0266EE006BDF06 /* 7zEncode.cpp in Sources */,
 				E8BA351C1C0266EE006BDF06 /* LzmaEncoder.cpp in Sources */,
 				E8BA351D1C0266EE006BDF06 /* 7zHandler.cpp in Sources */,
@@ -3297,17 +3409,21 @@
 				E8BA35251C0266EE006BDF06 /* Ppmd7Dec.c in Sources */,
 				E8BA35261C0266EE006BDF06 /* Sha256.c in Sources */,
 				E8BA35271C0266EE006BDF06 /* 7zFolderInStream.cpp in Sources */,
+				E8B755AD1CA81C240011B08A /* Rar1Decoder.cpp in Sources */,
 				E8BA35281C0266EE006BDF06 /* Bra.c in Sources */,
 				E8BA35291C0266EE006BDF06 /* ProgressUtils.cpp in Sources */,
 				E8BA352A1C0266EE006BDF06 /* Ppmd7Enc.c in Sources */,
 				E8BA352B1C0266EE006BDF06 /* HmacSha1.cpp in Sources */,
 				E8BA352C1C0266EE006BDF06 /* 7zStream.c in Sources */,
+				E8B755951CA81BF10011B08A /* LzmsDecoder.cpp in Sources */,
 				E8BA352D1C0266EE006BDF06 /* MethodProps.cpp in Sources */,
 				E8F424B41C07BF14004F7D5F /* SVZBridgedInputStream.mm in Sources */,
 				E8BA352E1C0266EE006BDF06 /* FileFind.cpp in Sources */,
 				E8BA352F1C0266EE006BDF06 /* wine_date_and_time.cpp in Sources */,
 				E8BA35301C0266EE006BDF06 /* LzFind.c in Sources */,
+				E8B755941CA81BF10011B08A /* LzhDecoder.cpp in Sources */,
 				E8BA35311C0266EE006BDF06 /* ItemNameUtils.cpp in Sources */,
+				E8B7558D1CA81BC40011B08A /* LzOutWindow.cpp in Sources */,
 				E8BA35321C0266EE006BDF06 /* OutStreamWithSha1.cpp in Sources */,
 				E8BA35331C0266EE006BDF06 /* SVZOutMemoryStream.cpp in Sources */,
 				E8BA35341C0266EE006BDF06 /* BraIA64.c in Sources */,
@@ -3327,15 +3443,20 @@
 				E8BA35421C0266EE006BDF06 /* SVZStoredArchiveEntry.mm in Sources */,
 				E8BA35441C0266EE006BDF06 /* ProgressMt.cpp in Sources */,
 				E8BA35451C0266EE006BDF06 /* 7zRegister.cpp in Sources */,
+				E8B755B51CA81C240011B08A /* ZDecoder.cpp in Sources */,
 				E8BA35461C0266EE006BDF06 /* XzHandler.cpp in Sources */,
 				E8BA35471C0266EE006BDF06 /* 7zOut.cpp in Sources */,
 				E8BA35481C0266EE006BDF06 /* StringToInt.cpp in Sources */,
 				E8BA35491C0266EE006BDF06 /* CopyRegister.cpp in Sources */,
 				E8BA354A1C0266EE006BDF06 /* 7zExtract.cpp in Sources */,
+				E8B755751CA81B580011B08A /* BcjCoder.cpp in Sources */,
 				E8BA354B1C0266EE006BDF06 /* OutStreamWithCRC.cpp in Sources */,
 				E8BA354C1C0266EE006BDF06 /* StdOutStream.cpp in Sources */,
+				E8B755871CA81BA70011B08A /* Deflate64Register.cpp in Sources */,
+				E8B755AC1CA81C240011B08A /* QuantumDecoder.cpp in Sources */,
 				E8BA354D1C0266EE006BDF06 /* 7zBuf2.c in Sources */,
 				E8BA354E1C0266EE006BDF06 /* MultiStream.cpp in Sources */,
+				E8B755AF1CA81C240011B08A /* Rar3Decoder.cpp in Sources */,
 				E8BA354F1C0266EE006BDF06 /* 7zAes.cpp in Sources */,
 				E8BA35501C0266EE006BDF06 /* LimitedStreams.cpp in Sources */,
 				E8BA35511C0266EE006BDF06 /* CodecExports.cpp in Sources */,
@@ -3344,6 +3465,7 @@
 				E8BA35541C0266EE006BDF06 /* SVZArchiveOpenCallback.cpp in Sources */,
 				E8BA35551C0266EE006BDF06 /* StreamObjects.cpp in Sources */,
 				E8BA35561C0266EE006BDF06 /* Bra86.c in Sources */,
+				E8B755931CA81BF10011B08A /* ImplodeHuffmanDecoder.cpp in Sources */,
 				E8BA35571C0266EE006BDF06 /* 7zProperties.cpp in Sources */,
 				E8BA35581C0266EE006BDF06 /* CoderMixer2.cpp in Sources */,
 				E8BA35591C0266EE006BDF06 /* PropVariant.cpp in Sources */,
@@ -3356,19 +3478,28 @@
 				E8BA35601C0266EE006BDF06 /* 7zSpecStream.cpp in Sources */,
 				E8BA35611C0266EE006BDF06 /* FileDir.cpp in Sources */,
 				E8BA35621C0266EE006BDF06 /* PropId.cpp in Sources */,
+				E8B755B41CA81C240011B08A /* XpressDecoder.cpp in Sources */,
+				E8B7557F1CA81B830011B08A /* BZip2Decoder.cpp in Sources */,
 				E8BA35631C0266EE006BDF06 /* Pbkdf2HmacSha1.cpp in Sources */,
 				E8BA35641C0266EE006BDF06 /* 7zHeader.cpp in Sources */,
 				E8BA35651C0266EE006BDF06 /* Wildcard.cpp in Sources */,
+				E8B755771CA81B600011B08A /* BcjRegister.cpp in Sources */,
 				E8BA35661C0266EE006BDF06 /* IntToString.cpp in Sources */,
 				E8BA35671C0266EE006BDF06 /* 7zUpdate.cpp in Sources */,
 				E8BA35681C0266EE006BDF06 /* HuffEnc.c in Sources */,
 				E8BA35691C0266EE006BDF06 /* Xz.c in Sources */,
 				E8BA356A1C0266EE006BDF06 /* LzmaDec.c in Sources */,
+				E8B755921CA81BF10011B08A /* ImplodeDecoder.cpp in Sources */,
 				E8BA356B1C0266EE006BDF06 /* CRC.cpp in Sources */,
+				E8B755881CA81BA70011B08A /* DeflateDecoder.cpp in Sources */,
+				E8B7558A1CA81BA70011B08A /* DeflateRegister.cpp in Sources */,
 				E8BA356C1C0266EE006BDF06 /* CWrappers.cpp in Sources */,
 				E8BA356D1C0266EE006BDF06 /* Rar20Crypto.cpp in Sources */,
 				E8BA356E1C0266EE006BDF06 /* InBuffer.cpp in Sources */,
+				E8B7559A1CA81C040011B08A /* LzxDecoder.cpp in Sources */,
+				E8B7557E1CA81B830011B08A /* BZip2Crc.cpp in Sources */,
 				E8BA356F1C0266EE006BDF06 /* 7zAesRegister.cpp in Sources */,
+				E8B755741CA81B580011B08A /* Bcj2Register.cpp in Sources */,
 				E8BA35701C0266EE006BDF06 /* MyWindows.cpp in Sources */,
 				E8BA35711C0266EE006BDF06 /* Ppmd8.c in Sources */,
 				E8BA35721C0266EE006BDF06 /* System.cpp in Sources */,
@@ -3377,16 +3508,23 @@
 				E8BA35761C0266EE006BDF06 /* VirtThread.cpp in Sources */,
 				E8BA35771C0266EE006BDF06 /* ZipStrong.cpp in Sources */,
 				E8BA35781C0266EE006BDF06 /* CreateCoder.cpp in Sources */,
+				E8B7559B1CA81C040011B08A /* PpmdDecoder.cpp in Sources */,
+				E8B7557D1CA81B830011B08A /* BitlDecoder.cpp in Sources */,
 				E8BA35791C0266EE006BDF06 /* RandGen.cpp in Sources */,
 				E8BA357A1C0266EE006BDF06 /* Lzma2Register.cpp in Sources */,
 				E8BA357B1C0266EE006BDF06 /* Lzma2Dec.c in Sources */,
 				E8BA357C1C0266EE006BDF06 /* DllExports2.cpp in Sources */,
 				E8BA357D1C0266EE006BDF06 /* SVZArchiveEntry.m in Sources */,
 				E82083A41C0E564C00E42B7C /* SVZBridgedOutputStream.mm in Sources */,
+				E8B755801CA81B830011B08A /* BZip2Encoder.cpp in Sources */,
 				E8BA357E1C0266EE006BDF06 /* UniqBlocks.cpp in Sources */,
+				E8B755811CA81B830011B08A /* BZip2Register.cpp in Sources */,
+				E8B755B61CA81C240011B08A /* ZlibDecoder.cpp in Sources */,
 				E8BA357F1C0266EE006BDF06 /* LzFindMt.c in Sources */,
 				E8BA35801C0266EE006BDF06 /* Bcj2.c in Sources */,
 				E8BA35811C0266EE006BDF06 /* FindSignature.cpp in Sources */,
+				E8B7558B1CA81BA70011B08A /* DeltaFilter.cpp in Sources */,
+				E8B755B21CA81C240011B08A /* RarCodecsRegister.cpp in Sources */,
 				E8BA35821C0266EE006BDF06 /* StringConvert.cpp in Sources */,
 				E8BA35831C0266EE006BDF06 /* 7zDecode.cpp in Sources */,
 				E8BA35841C0266EE006BDF06 /* FileIO.cpp in Sources */,
@@ -3397,16 +3535,20 @@
 				E8BA35891C0266EE006BDF06 /* XzDec.c in Sources */,
 				E8BA358A1C0266EE006BDF06 /* 7zCompressionMode.cpp in Sources */,
 				E8BA358B1C0266EE006BDF06 /* SVZArchive.mm in Sources */,
+				E8B7559C1CA81C040011B08A /* PpmdEncoder.cpp in Sources */,
 				E8BA358C1C0266EE006BDF06 /* FilterCoder.cpp in Sources */,
 				E8BA358D1C0266EE006BDF06 /* ZipCrypto.cpp in Sources */,
 				E8BA358E1C0266EE006BDF06 /* Aes.c in Sources */,
+				E8B755B31CA81C240011B08A /* ShrinkDecoder.cpp in Sources */,
 				E8BA358F1C0266EE006BDF06 /* SVZOutFileStream.cpp in Sources */,
 				E8BA35901C0266EE006BDF06 /* DummyOutStream.cpp in Sources */,
 				E8BA35911C0266EE006BDF06 /* Alloc.c in Sources */,
 				E8BA35921C0266EE006BDF06 /* StreamBinder.cpp in Sources */,
 				E8BA35931C0266EE006BDF06 /* 7zCrc.c in Sources */,
+				E8B755AB1CA81C240011B08A /* PpmdZip.cpp in Sources */,
 				E8BA35941C0266EE006BDF06 /* BwtSort.c in Sources */,
 				E8BA35961C0266EE006BDF06 /* 7zCrcOpt.c in Sources */,
+				E8B755AE1CA81C240011B08A /* Rar2Decoder.cpp in Sources */,
 				E8BA35971C0266EE006BDF06 /* OutBuffer.cpp in Sources */,
 				E8BA35981C0266EE006BDF06 /* CopyCoder.cpp in Sources */,
 				E8BA35991C0266EE006BDF06 /* Threads.c in Sources */,
@@ -3416,6 +3558,8 @@
 				E8BA359D1C0266EE006BDF06 /* XzCrc64.c in Sources */,
 				E8BA359E1C0266EE006BDF06 /* Lzma2Decoder.cpp in Sources */,
 				E8BA359F1C0266EE006BDF06 /* Sort.c in Sources */,
+				E8B755B71CA81C240011B08A /* ZlibEncoder.cpp in Sources */,
+				E8B755B01CA81C240011B08A /* Rar3Vm.cpp in Sources */,
 				E8BA35A01C0266EE006BDF06 /* MethodId.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
