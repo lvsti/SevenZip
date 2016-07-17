@@ -15,7 +15,7 @@ bunzip2 -c "${TEMP_BZ2}" > "${TEMP_TAR}"
 tar -xf "${TEMP_TAR}" -C External
 
 rm -rf External/p7zip
-ln -s $(ls External | grep p7zip) External/p7zip
+ln -s $(ls External | grep p7zip | tail -n 1) External/p7zip
 
 rm -f "${TEMP_TAR}" "${TEMP_BZ2}"
 
