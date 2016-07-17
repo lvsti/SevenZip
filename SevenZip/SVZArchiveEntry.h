@@ -117,7 +117,7 @@ extern SVZStreamBlock SVZStreamBlockCreateWithData(NSData* aData);
  * @param aAttributes The file attributes for this entry
  * @param aCTime File creation date. Pass nil for the current time.
  * @param aMTime File modification date. Pass nil for the current time.
- * @param aCTime File access date. Pass nil for the current time.
+ * @param aATime File access date. Pass nil for the current time.
  * @param aStreamBlock Data stream provider block. Pass nil for 0-byte entries.
  *
  * @return An initialized archive entry, or nil on failure.
