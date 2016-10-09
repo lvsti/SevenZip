@@ -11,50 +11,50 @@ import SevenZip
 
 class SwiftDemo: NSObject {
     
-    let fileManager = NSFileManager.defaultManager()
+    let fileManager = FileManager.default
     
     func testCreateArchive() -> Int {
-        if Process.argc < 3 {
+        if CommandLine.argc < 3 {
             return 1
         }
         
-        let archiveName = Process.arguments[1]
+        let archiveName = CommandLine.arguments[1]
         var fileArgs: [String] = []
-        for i in 2..<Int(Process.argc) {
-            fileArgs.append(Process.arguments[i])
+        for i in 2..<Int(CommandLine.argc) {
+            fileArgs.append(CommandLine.arguments[i])
         }
         
         var entries: [SVZArchiveEntry] = []
         
         for fileArg in fileArgs {
             var isDir: ObjCBool = false
-            fileManager.fileExistsAtPath(fileArg, isDirectory: &isDir)
+            fileManager.fileExists(atPath: fileArg, isDirectory: &isDir)
             let fileArgStr = fileArg as NSString
             
-            if isDir {
+            if isDir.boolValue {
                 entries.append(SVZArchiveEntry(directoryName: fileArgStr.lastPathComponent)!)
                 
-                let etor = fileManager.enumeratorAtPath(fileArg)!
+                let etor = fileManager.enumerator(atPath: fileArg)!
 
                 for path in etor {
-                    let fullPath = fileArgStr.stringByAppendingPathComponent(path as! String)
-                    let fullName = (fileArgStr.lastPathComponent as NSString).stringByAppendingPathComponent(path as! String)
+                    let fullPath = fileArgStr.appendingPathComponent(path as! String)
+                    let fullName = (fileArgStr.lastPathComponent as NSString).appendingPathComponent(path as! String)
                     
-                    fileManager.fileExistsAtPath(fullPath, isDirectory: &isDir)
-                    if isDir {
+                    fileManager.fileExists(atPath: fullPath, isDirectory: &isDir)
+                    if isDir.boolValue {
                         entries.append(SVZArchiveEntry(directoryName: fullName)!)
                     }
                     else {
-                        entries.append(SVZArchiveEntry(fileName: fullName, contentsOfURL: NSURL(fileURLWithPath: fullPath))!)
+                        entries.append(SVZArchiveEntry(fileName: fullName, contentsOf: URL(fileURLWithPath: fullPath))!)
                     }
                 }
             }
             else {
-                entries.append(SVZArchiveEntry(fileName: fileArgStr.lastPathComponent, contentsOfURL: NSURL(fileURLWithPath: fileArg))!)
+                entries.append(SVZArchiveEntry(fileName: fileArgStr.lastPathComponent, contentsOf: URL(fileURLWithPath: fileArg))!)
             }
         }
         
-        guard let archive = try? SVZArchive(URL: NSURL(fileURLWithPath: archiveName), createIfMissing: true) else {
+        guard let archive = try? SVZArchive(url: URL(fileURLWithPath: archiveName), createIfMissing: true) else {
             return 1
         }
         
@@ -66,12 +66,12 @@ class SwiftDemo: NSObject {
     }
 
     func testReadArchive() -> Int {
-        if Process.argc < 2 {
+        if CommandLine.argc < 2 {
             return 1
         }
         
-        let archiveName = Process.arguments[1]
-        guard let archive = try? SVZArchive(URL: NSURL(fileURLWithPath: archiveName), createIfMissing: false) else {
+        let archiveName = CommandLine.arguments[1]
+        guard let archive = try? SVZArchive(url: URL(fileURLWithPath: archiveName), createIfMissing: false) else {
             return 1
         }
         NSLog("%@", archive.entries)
@@ -80,40 +80,40 @@ class SwiftDemo: NSObject {
     }
 
     func testExtractToMemory() -> Int {
-        if Process.argc < 2 {
+        if CommandLine.argc < 2 {
             return 1
         }
         
-        let archiveName = Process.arguments[1]
-        guard let archive = try? SVZArchive(URL: NSURL(fileURLWithPath: archiveName), createIfMissing: false) else {
+        let archiveName = CommandLine.arguments[1]
+        guard let archive = try? SVZArchive(url: URL(fileURLWithPath: archiveName), createIfMissing: false) else {
             return 1
         }
         
-        guard let
-            entry = archive.entries.first,
-            data = try? entry.extractedData()
+        guard
+            let entry = archive.entries.first,
+            let data = try? entry.extractedData()
         else {
             return 1
         }
         
-        NSLog("data: %@", NSString(data: data, encoding: NSUTF8StringEncoding)!)
+        NSLog("data: %@", NSString(data: data, encoding: String.Encoding.utf8.rawValue)!)
         
         return 0
     }
 
     func testExtractToFile() -> Int {
-        if Process.argc < 2 {
+        if CommandLine.argc < 2 {
             return 1
         }
         
-        let archiveName = Process.arguments[1]
-        guard let archive = try? SVZArchive(URL: NSURL(fileURLWithPath: archiveName), createIfMissing: false) else {
+        let archiveName = CommandLine.arguments[1]
+        guard let archive = try? SVZArchive(url: URL(fileURLWithPath: archiveName), createIfMissing: false) else {
             return 1
         }
         
         guard let
-            entry = archive.entries.first where
-            (try? entry.extractToDirectoryAtURL(NSURL(fileURLWithPath: archiveName))) != nil
+            entry = archive.entries.first,
+            (try? entry.extractToDirectory(at: URL(fileURLWithPath: archiveName))) != nil
         else {
             return 1
         }
@@ -122,18 +122,18 @@ class SwiftDemo: NSObject {
     }
 
     func testUpdateArchive() -> Int {
-        if Process.argc < 2 {
+        if CommandLine.argc < 2 {
             return 1
         }
 
-        let archiveName = Process.arguments[1]
-        guard let archive = try? SVZArchive(URL: NSURL(fileURLWithPath: archiveName), createIfMissing: false) else {
+        let archiveName = CommandLine.arguments[1]
+        guard let archive = try? SVZArchive(url: URL(fileURLWithPath: archiveName), createIfMissing: false) else {
             return 1
         }
         
         var entries = archive.entries
         entries.removeFirst()
-        entries.append(SVZArchiveEntry(fileName: "stuff.txt", contentsOfURL: NSURL(fileURLWithPath: "/Users/lvsti/stuff.txt"))!)
+        entries.append(SVZArchiveEntry(fileName: "stuff.txt", contentsOf: URL(fileURLWithPath: "/Users/lvsti/stuff.txt"))!)
 
         guard (try? archive.updateEntries(entries)) != nil else {
             return 1
