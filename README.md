@@ -1,13 +1,14 @@
 # SevenZip
 ![](https://www.bitrise.io/app/4d43df2229198af5.svg?token=upgdQ6LNU-RCnL8rdhsq7A) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-SevenZip is an Objective-C wrapper framework around [p7zip](http://p7zip.sourceforge.net/), which in turn is a Unix port of [7zip](http://www.7-zip.org/). 
+SevenZip is an Objective-C wrapper framework around [p7zip](http://p7zip.sourceforge.net/) (v16.02), which in turn is a Unix port of [7zip](http://www.7-zip.org/). 
 
 ### Requirements
 
-Xcode 6, OSX 10.9, iOS 8.4
+To build: Xcode 8, Swift 3<br/>
+To use: OSX 10.9, iOS 8.4
 
-(It probably builds on earlier platform versions as well but I didn't care enough to check.)
+(It probably runs on earlier platform versions as well but I didn't care enough to check.)
 
 ### Building
 
@@ -25,7 +26,6 @@ If you just want to toy with it, take a look at the `SVZDemo`/`SVZDemo-iOS` apps
 ### Features
 
 - listing the archive contents
-inside
 - extracting all/some files from archives to file/memory
 - **creating** new archives with files/directories 
 - **adding/removing** files to/from existing archives
