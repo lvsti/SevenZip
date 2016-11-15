@@ -35,6 +35,10 @@
 		E82083C01C10E97600E42B7C /* nested.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083BE1C10E97600E42B7C /* nested.7z */; };
 		E82083C21C10EBEA00E42B7C /* protected.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083C11C10EBEA00E42B7C /* protected.7z */; };
 		E82083C41C10FD7700E42B7C /* empty.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083C31C10FD7700E42B7C /* empty.7z */; };
+		E88AE7771DDBC73000E8AE09 /* BranchRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC21C00FD10006BDF06 /* BranchRegister.cpp */; };
+		E88AE7781DDBC73500E8AE09 /* BranchRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC21C00FD10006BDF06 /* BranchRegister.cpp */; };
+		E88AE7791DDBC7CE00E8AE09 /* BranchMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC01C00FD10006BDF06 /* BranchMisc.cpp */; };
+		E88AE77A1DDBC7CF00E8AE09 /* BranchMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC01C00FD10006BDF06 /* BranchMisc.cpp */; };
 		E8ABC8911C124F0900DF1650 /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA35B61C0266EE006BDF06 /* SevenZip.framework */; };
 		E8ABC8991C124F4500DF1650 /* basic.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083BD1C10E97600E42B7C /* basic.7z */; };
 		E8ABC89A1C124F4500DF1650 /* empty.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083C31C10FD7700E42B7C /* empty.7z */; };
@@ -3286,6 +3290,7 @@
 				E8BA34DF1C0123F1006BDF06 /* SVZArchiveExtractCallback.cpp in Sources */,
 				E8BA34A71C011C55006BDF06 /* LzmaRegister.cpp in Sources */,
 				E8BA34931C011C35006BDF06 /* MemBlocks.cpp in Sources */,
+				E88AE7771DDBC73000E8AE09 /* BranchRegister.cpp in Sources */,
 				E8BA34D01C012026006BDF06 /* ArchiveExports.cpp in Sources */,
 				E8BA34B41C011C68006BDF06 /* Rar5Aes.cpp in Sources */,
 				E8BA34E51C0123F1006BDF06 /* SVZInFileStream.cpp in Sources */,
@@ -3360,6 +3365,7 @@
 				E8BA349C1C011C35006BDF06 /* StreamBinder.cpp in Sources */,
 				E8BA344A1C011BCE006BDF06 /* 7zCrc.c in Sources */,
 				E8B7559E1CA81C230011B08A /* PpmdZip.cpp in Sources */,
+				E88AE7791DDBC7CE00E8AE09 /* BranchMisc.cpp in Sources */,
 				E8BA34551C011BCE006BDF06 /* BwtSort.c in Sources */,
 				E8BA344B1C011BCE006BDF06 /* 7zCrcOpt.c in Sources */,
 				E8B755A11CA81C230011B08A /* Rar2Decoder.cpp in Sources */,
@@ -3479,6 +3485,7 @@
 				E8BA355A1C0266EE006BDF06 /* SVZArchiveExtractCallback.cpp in Sources */,
 				E8BA355B1C0266EE006BDF06 /* LzmaRegister.cpp in Sources */,
 				E8BA355C1C0266EE006BDF06 /* MemBlocks.cpp in Sources */,
+				E88AE7781DDBC73500E8AE09 /* BranchRegister.cpp in Sources */,
 				E8BA355D1C0266EE006BDF06 /* ArchiveExports.cpp in Sources */,
 				E8BA355E1C0266EE006BDF06 /* Rar5Aes.cpp in Sources */,
 				E8BA355F1C0266EE006BDF06 /* SVZInFileStream.cpp in Sources */,
@@ -3553,6 +3560,7 @@
 				E8BA35921C0266EE006BDF06 /* StreamBinder.cpp in Sources */,
 				E8BA35931C0266EE006BDF06 /* 7zCrc.c in Sources */,
 				E8B755AB1CA81C240011B08A /* PpmdZip.cpp in Sources */,
+				E88AE77A1DDBC7CF00E8AE09 /* BranchMisc.cpp in Sources */,
 				E8BA35941C0266EE006BDF06 /* BwtSort.c in Sources */,
 				E8BA35961C0266EE006BDF06 /* 7zCrcOpt.c in Sources */,
 				E8B755AE1CA81C240011B08A /* Rar2Decoder.cpp in Sources */,
