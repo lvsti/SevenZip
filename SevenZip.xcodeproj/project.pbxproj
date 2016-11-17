@@ -46,7 +46,7 @@
 		E8ABC89C1C124F4500DF1650 /* protected.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083C11C10EBEA00E42B7C /* protected.7z */; };
 		E8ABC89F1C124FC800DF1650 /* UT_SVZArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = E82083B61C10DEA500E42B7C /* UT_SVZArchive.m */; };
 		E8ABC8A11C12502E00DF1650 /* Kiwi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8ABC8A01C12502E00DF1650 /* Kiwi.framework */; };
-		E8ABC8A21C12505300DF1650 /* Kiwi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8ABC8A01C12502E00DF1650 /* Kiwi.framework */; };
+		E8ABC8A21C12505300DF1650 /* Kiwi.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = E8ABC8A01C12502E00DF1650 /* Kiwi.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		E8ABC8A41C12D3B900DF1650 /* UT_SVZArchiveEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A31C12D3B900DF1650 /* UT_SVZArchiveEntry.m */; };
 		E8ABC8A51C12D3B900DF1650 /* UT_SVZArchiveEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A31C12D3B900DF1650 /* UT_SVZArchiveEntry.m */; };
 		E8ABC8A81C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m in Sources */ = {isa = PBXBuildFile; fileRef = E8ABC8A71C13525500DF1650 /* NSFileSecurity+AsIfItWere2015.m */; };
@@ -2952,6 +2952,7 @@
 				E82083A61C10D99400E42B7C /* Frameworks */,
 				E82083A71C10D99400E42B7C /* Resources */,
 				E82083BA1C10E4C200E42B7C /* CopyFiles */,
+				E88AE7761DDBBC6100E8AE09 /* Generate fixtures */,
 			);
 			buildRules = (
 			);
@@ -2971,6 +2972,7 @@
 				E8ABC8891C124F0900DF1650 /* Frameworks */,
 				E8ABC88A1C124F0900DF1650 /* Resources */,
 				E8ABC89D1C124F4C00DF1650 /* CopyFiles */,
+				E88AE77C1DDE5CBC00E8AE09 /* Generate fixtures */,
 			);
 			buildRules = (
 			);
@@ -3071,6 +3073,7 @@
 					};
 					E8ABC88B1C124F0900DF1650 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = DC5QGCDP8K;
 					};
 					E8ABD7981C143DE100DF1650 = {
 						CreatedOnToolsVersion = 7.1;
@@ -3161,6 +3164,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		E88AE7761DDBBC6100E8AE09 /* Generate fixtures */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate fixtures";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FIXTURES_DIR=\"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/codec_fixtures\"\nmkdir -p \"${FIXTURES_DIR}\"\n\n\"${SRCROOT}/scripts/generate_fixtures.sh\" \"Eureka!\" \"${FIXTURES_DIR}\"\n";
+		};
+		E88AE77C1DDE5CBC00E8AE09 /* Generate fixtures */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate fixtures";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FIXTURES_DIR=\"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/codec_fixtures\"\nmkdir -p \"${FIXTURES_DIR}\"\n\n\"${SRCROOT}/scripts/generate_fixtures.sh\" \"Eureka!\" \"${FIXTURES_DIR}\"\n";
+		};
 		E8ABD79C1C143DED00DF1650 /* Setup dependencies */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -3684,6 +3715,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DC5QGCDP8K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -3701,6 +3733,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = DC5QGCDP8K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

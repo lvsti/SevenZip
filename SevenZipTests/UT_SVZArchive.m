@@ -415,6 +415,34 @@ describe(@"Archive", ^{
         
     });
     
+    context(@"codec support", ^{
+        
+        NSString* fixturesDir = [[NSBundle bundleForClass:self].resourcePath
+                                 stringByAppendingPathComponent:@"codec_fixtures"];
+        NSArray* fixtures = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:fixturesDir error:NULL];
+        
+        for (NSString* fixtureName in fixtures) {
+            it([NSString stringWithFormat:@"supports %@", fixtureName], ^{
+                // given
+                NSURL* fixtureURL = [NSURL fileURLWithPath:[fixturesDir stringByAppendingPathComponent:fixtureName]];
+                NSError* error = nil;
+                
+                // when
+                sut = [SVZArchive archiveWithURL:fixtureURL
+                                 createIfMissing:NO
+                                           error:&error];
+                NSData* data = [sut.entries.firstObject extractedData:&error];
+                NSString* str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+                // then
+                [[sut should] beNonNil];
+                [[data should] beNonNil];
+                [[str should] equal:@"Eureka!"];
+            });
+        }
+        
+    });
+    
 });
 
 SPEC_END
