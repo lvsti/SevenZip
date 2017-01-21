@@ -10,6 +10,7 @@
 #import "SVZArchive_Private.h"
 
 #include "CPP/7zip/IDecl.h"
+#include "CPP/Windows/PropVariant.h"
 #include "CPP/Windows/PropVariantConv.h"
 #include "CPP/Windows/TimeUtils.h"
 #include "CPP/Common/UTFConvert.h"
@@ -60,11 +61,23 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
                             createIfMissing:(BOOL)aShouldCreate
                                       error:(NSError**)aError {
     return [[self alloc] initWithURL:aURL
+                            password:nil
+                     createIfMissing:aShouldCreate
+                               error:aError];
+}
+
++ (SVZ_NULLABLE instancetype)archiveWithURL:(NSURL*)aURL
+                                   password:(NSString*)aPassword
+                            createIfMissing:(BOOL)aShouldCreate
+                                      error:(NSError**)aError {
+    return [[self alloc] initWithURL:aURL
+                            password:aPassword
                      createIfMissing:aShouldCreate
                                error:aError];
 }
 
 - (SVZ_NULLABLE instancetype)initWithURL:(NSURL*)aURL
+                                password:(NSString*)aPassword
                          createIfMissing:(BOOL)aShouldCreate
                                    error:(NSError**)aError {
     NSParameterAssert(aURL);
@@ -74,6 +87,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     if (self) {
         _url = aURL;
         _fileManager = [[self class] fileManager];
+        _password = [aPassword copy];
         _entries = @[];
         
         BOOL isDir = NO;
@@ -160,9 +174,25 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         NSAssert(result == S_OK, @"cannot instantiate archiver");
     }
 
+    if (self.usesHeaderEncryption) {
+        CMyComPtr<ISetProperties> setProperties;
+        result = outArchive->QueryInterface(IID_ISetProperties, (void**)&setProperties);
+        NSAssert(result == S_OK, @"archiver object does not support setting properties");
+        
+        const wchar_t* names[] = { L"he" };
+        const unsigned kNumProps = ARRAY_SIZE(names);
+        NWindows::NCOM::CPropVariant values[kNumProps] = { L"on" };
+        
+        setProperties->SetProperties(names, values, kNumProps);
+    }
+    
     SVZ::ArchiveUpdateCallback* updateCallbackImpl = new SVZ::ArchiveUpdateCallback();
     CMyComPtr<IArchiveUpdateCallback2> updateCallback(updateCallbackImpl);
-    updateCallbackImpl->PasswordIsDefined = false;
+    if (self.password) {
+        updateCallbackImpl->PasswordIsDefined = true;
+        updateCallbackImpl->Password = ToUString(self.password);
+    }
+    
     updateCallbackImpl->Init(&archiveItems, [&] (Int32 itemID) -> CMyComPtr<ISequentialInStream> {
         @autoreleasepool {
             SVZArchiveEntry* entry = aEntries[itemID];
@@ -224,12 +254,18 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     
     SVZ::ArchiveOpenCallback* openCallbackImpl = new SVZ::ArchiveOpenCallback();
     CMyComPtr<IArchiveOpenCallback> openCallback(openCallbackImpl);
+    if (self.password) {
+        openCallbackImpl->passwordIsDefined = true;
+        openCallbackImpl->password = ToUString(self.password);
+    }
     
     if (archive->Open(inputStream, nullptr, openCallback) != S_OK) {
         SetError(aError, kSVZArchiveErrorInvalidArchive, nil);
         return NO;
     }
 
+    _usesHeaderEncryption = openCallbackImpl->didAskForPassword;
+    
     self.archive = archive;
     return YES;
 }

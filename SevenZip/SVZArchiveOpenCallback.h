@@ -28,10 +28,11 @@ namespace SVZ {
         
         STDMETHOD(CryptoGetTextPassword)(BSTR *password);
         
-        bool PasswordIsDefined;
-        UString Password;
+        bool passwordIsDefined;
+        UString password;
+        bool didAskForPassword;
         
-        ArchiveOpenCallback() : PasswordIsDefined(false) {}
+        ArchiveOpenCallback() : passwordIsDefined(false) {}
     };
 
 }

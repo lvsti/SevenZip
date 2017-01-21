@@ -18,12 +18,14 @@ namespace SVZ {
         return S_OK;
     }
     
-    STDMETHODIMP ArchiveOpenCallback::CryptoGetTextPassword(BSTR* password) {
-        if (!PasswordIsDefined) {
+    STDMETHODIMP ArchiveOpenCallback::CryptoGetTextPassword(BSTR* aPassword) {
+        didAskForPassword = true;
+        
+        if (!passwordIsDefined) {
             return E_ABORT;
         }
 
-        return StringToBstr(Password, password);
+        return StringToBstr(password, aPassword);
     }
 
 }
