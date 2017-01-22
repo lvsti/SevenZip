@@ -27,12 +27,17 @@ namespace SVZ {
         STDMETHOD(SetCompleted)(const UInt64* files, const UInt64* bytes);
         
         STDMETHOD(CryptoGetTextPassword)(BSTR *password);
-        
+
+    public:
         bool passwordIsDefined;
         UString password;
-        bool didAskForPassword;
         
+    public:
         ArchiveOpenCallback() : passwordIsDefined(false) {}
+        bool DidAskForPassword() const { return _didAskForPassword; }
+        
+    private:
+        bool _didAskForPassword;
     };
 
 }

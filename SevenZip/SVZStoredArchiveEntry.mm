@@ -91,13 +91,13 @@
     });
     
     if (aPassword) {
-        extractCallbackImpl->PasswordIsDefined = true;
-        extractCallbackImpl->Password = ToUString(aPassword);
+        extractCallbackImpl->passwordIsDefined = true;
+        extractCallbackImpl->password = ToUString(aPassword);
     }
 
     UInt32 indices[] = {(UInt32)self.index};
     HRESULT result = archive.archive->Extract(indices, 1, false, extractCallback);
-    if (result != S_OK || extractCallbackImpl->NumErrors > 0) {
+    if (result != S_OK || extractCallbackImpl->NumErrors() > 0) {
         return NO;
     }
 

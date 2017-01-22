@@ -27,8 +27,7 @@ namespace SVZ {
     
     class ArchiveExtractCallback: public IArchiveExtractCallback,
                                   public ICryptoGetTextPassword,
-                                  public CMyUnknownImp
-    {
+                                  public CMyUnknownImp {
     public:
         MY_UNKNOWN_IMP1(ICryptoGetTextPassword)
         
@@ -52,17 +51,18 @@ namespace SVZ {
         bool _extractMode;
         struct CProcessedFileInfo
         {
-            FILETIME MTime;
-            UInt32 Attrib;
+            FILETIME mTime;
+            UInt32 attrib;
             bool isDir;
-            bool AttribDefined;
-            bool MTimeDefined;
+            bool attribDefined;
+            bool mTimeDefined;
         } _processedFileInfo;
         
         bool _extractToFile;
         OutFileStream* _outFileStreamImpl;
         OutStreamProvider _outStreamProvider;
         CMyComPtr<ISequentialOutStream> _outStream;
+        UInt64 _numErrors;
         
         HRESULT ExtractToFile(UInt32 index, ISequentialOutStream **aOutStream);
         HRESULT ExtractToMemory(UInt32 index, ISequentialOutStream **aOutStream);
@@ -73,11 +73,12 @@ namespace SVZ {
         void InitExtractToMemory(IInArchive *archiveHandler,
                                  OutStreamProvider outStreamProvider);
         
-        UInt64 NumErrors;
-        bool PasswordIsDefined;
-        UString Password;
+        const UInt64 NumErrors() const { return _numErrors; }
         
-        ArchiveExtractCallback() : PasswordIsDefined(false) {}
+        bool passwordIsDefined;
+        UString password;
+        
+        ArchiveExtractCallback() : passwordIsDefined(false) {}
     };
     
 }

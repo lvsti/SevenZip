@@ -31,8 +31,8 @@ namespace SVZ {
                                                           Int32 *newData,
                                                           Int32 *newProperties,
                                                           UInt32 *indexInArchive) {
-        const ArchiveItem &item = (*ArchiveItems)[index];
-        bool isNewItem = item.CurrentIndex == ArchiveItem::kNewItemIndex;
+        const ArchiveItem &item = (*_archiveItems)[index];
+        bool isNewItem = item.currentIndex == ArchiveItem::kNewItemIndex;
         
         if (newData) {
             *newData = BoolToInt(isNewItem);
@@ -41,7 +41,7 @@ namespace SVZ {
             *newProperties = BoolToInt(isNewItem);
         }
         if (indexInArchive) {
-            *indexInArchive = (UInt32)item.CurrentIndex;
+            *indexInArchive = (UInt32)item.currentIndex;
         }
         return S_OK;
     }
@@ -55,15 +55,15 @@ namespace SVZ {
             return S_OK;
         }
         
-        const ArchiveItem &item = (*ArchiveItems)[index];
+        const ArchiveItem &item = (*_archiveItems)[index];
         switch (propID) {
-            case kpidPath: prop = item.Name; break;
-            case kpidIsDir: prop = item.IsDir; break;
-            case kpidSize: prop = item.Size; break;
-            case kpidAttrib: prop = item.Attrib; break;
-            case kpidCTime: prop = item.CTime; break;
-            case kpidATime: prop = item.ATime; break;
-            case kpidMTime: prop = item.MTime; break;
+            case kpidPath: prop = item.name; break;
+            case kpidIsDir: prop = item.isDir; break;
+            case kpidSize: prop = item.size; break;
+            case kpidAttrib: prop = item.attrib; break;
+            case kpidCTime: prop = item.cTime; break;
+            case kpidATime: prop = item.aTime; break;
+            case kpidMTime: prop = item.mTime; break;
         }
 
         prop.Detach(value);
@@ -71,8 +71,8 @@ namespace SVZ {
     }
     
     HRESULT ArchiveUpdateCallback::Finalize() {
-        if (m_NeedBeClosed) {
-            m_NeedBeClosed = false;
+        if (_needBeClosed) {
+            _needBeClosed = false;
         }
         return S_OK;
     }
@@ -80,14 +80,17 @@ namespace SVZ {
     STDMETHODIMP ArchiveUpdateCallback::GetStream(UInt32 aIndex, ISequentialInStream **aInStream) {
         RINOK(Finalize());
         
-        const ArchiveItem& item = (*ArchiveItems)[aIndex];
+        const ArchiveItem& item = (*_archiveItems)[aIndex];
         
-        if (item.IsDir) {
+        if (item.isDir) {
             return S_OK;
         }
         
-        CMyComPtr<ISequentialInStream> inStream = _streamProvider(item.ID);
+        CMyComPtr<ISequentialInStream> inStream = _streamProvider(item.id);
         if (!inStream) {
+            _failedFiles.Add(item.name);
+            DWORD sysError = ::GetLastError();
+            _failedCodes.Add(sysError);
             return E_FAIL;
         }
         
@@ -96,18 +99,18 @@ namespace SVZ {
     }
     
     STDMETHODIMP ArchiveUpdateCallback::SetOperationResult(Int32 /* operationResult */) {
-        m_NeedBeClosed = true;
+        _needBeClosed = true;
         return S_OK;
     }
     
     STDMETHODIMP ArchiveUpdateCallback::GetVolumeSize(UInt32 index, UInt64 *size) {
-        if (VolumesSizes.Size() == 0) {
+        if (volumesSizes.Size() == 0) {
             return S_FALSE;
         }
-        if (index >= (UInt32)VolumesSizes.Size()) {
-            index = VolumesSizes.Size() - 1;
+        if (index >= (UInt32)volumesSizes.Size()) {
+            index = volumesSizes.Size() - 1;
         }
-        *size = VolumesSizes[index];
+        *size = volumesSizes[index];
         return S_OK;
     }
     
@@ -118,10 +121,10 @@ namespace SVZ {
         while (res.Len() < 2) {
             res.InsertAtFront(L'0');
         }
-        UString fileName = VolName;
+        UString fileName = volName;
         fileName += L'.';
         fileName += res;
-        fileName += VolExt;
+        fileName += volExt;
         SVZ::OutFileStream *outFileStreamImpl = new SVZ::OutFileStream();
         CMyComPtr<ISequentialOutStream> outStream(outFileStreamImpl);
         AString utf8Path;
@@ -133,12 +136,12 @@ namespace SVZ {
         return S_OK;
     }
     
-    STDMETHODIMP ArchiveUpdateCallback::CryptoGetTextPassword2(Int32 *passwordIsDefined, BSTR *password) {
-        *passwordIsDefined = BoolToInt(PasswordIsDefined);
-        if (!PasswordIsDefined) {
+    STDMETHODIMP ArchiveUpdateCallback::CryptoGetTextPassword2(Int32 *aPasswordIsDefined, BSTR *aPassword) {
+        *aPasswordIsDefined = BoolToInt(passwordIsDefined);
+        if (!passwordIsDefined) {
             return S_OK;
         }
-        return StringToBstr(Password, password);
+        return StringToBstr(password, aPassword);
     }
 
 }

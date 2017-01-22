@@ -23,17 +23,17 @@ namespace SVZ {
     struct ArchiveItem {
         static const Int32 kNewItemIndex = -1;
         
-        Int32 CurrentIndex;
+        Int32 currentIndex;
         
-        Int32 ID;
+        Int32 id;
         
-        UInt64 Size;
-        FILETIME CTime;
-        FILETIME ATime;
-        FILETIME MTime;
-        UString Name;
-        UInt32 Attrib;
-        bool IsDir;
+        UInt64 size;
+        FILETIME cTime;
+        FILETIME aTime;
+        FILETIME mTime;
+        UString name;
+        UInt32 attrib;
+        bool isDir;
     };
     
     class ArchiveUpdateCallback: public IArchiveUpdateCallback2,
@@ -58,39 +58,38 @@ namespace SVZ {
         STDMETHOD(CryptoGetTextPassword2)(Int32 *passwordIsDefined, BSTR *password);
         
     public:
-        CRecordVector<UInt64> VolumesSizes;
-        UString VolName;
-        UString VolExt;
+        CRecordVector<UInt64> volumesSizes;
+        UString volName;
+        UString volExt;
+        FString dirPrefix;
         
-        FString DirPrefix;
-        const CObjectVector<ArchiveItem> *ArchiveItems;
+        bool passwordIsDefined;
+        UString password;
         
-        bool PasswordIsDefined;
-        UString Password;
-        bool AskPassword;
-        
-        bool m_NeedBeClosed;
-        
-        FStringVector FailedFiles;
-        CRecordVector<HRESULT> FailedCodes;
-
     private:
         std::function<CMyComPtr<ISequentialInStream>(Int32)> _streamProvider;
+        bool _needBeClosed;
+        const CObjectVector<ArchiveItem> *_archiveItems;
+        FStringVector _failedFiles;
+        CRecordVector<HRESULT> _failedCodes;
 
     public:
-        ArchiveUpdateCallback(): PasswordIsDefined(false), AskPassword(false), ArchiveItems(0) {};
+        ArchiveUpdateCallback(): passwordIsDefined(false), _archiveItems(nullptr) {}
         
         ~ArchiveUpdateCallback() { Finalize(); }
         HRESULT Finalize();
         
         void Init(const CObjectVector<ArchiveItem> *archiveItems,
                   std::function<CMyComPtr<ISequentialInStream>(Int32)> streamProvider) {
-            ArchiveItems = archiveItems;
+            _archiveItems = archiveItems;
             _streamProvider = streamProvider;
-            m_NeedBeClosed = false;
-            FailedFiles.Clear();
-            FailedCodes.Clear();
+            _needBeClosed = false;
+            _failedFiles.Clear();
+            _failedCodes.Clear();
         }
+        
+        const FStringVector& FailedFiles() const { return _failedFiles; }
+        const CRecordVector<HRESULT>& FailedCodes() const { return _failedCodes; }
     };
 
 }

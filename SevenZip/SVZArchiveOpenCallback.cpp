@@ -19,7 +19,7 @@ namespace SVZ {
     }
     
     STDMETHODIMP ArchiveOpenCallback::CryptoGetTextPassword(BSTR* aPassword) {
-        didAskForPassword = true;
+        _didAskForPassword = true;
         
         if (!passwordIsDefined) {
             return E_ABORT;

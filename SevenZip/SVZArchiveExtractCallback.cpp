@@ -44,7 +44,7 @@ namespace SVZ {
     
     void ArchiveExtractCallback::InitExtractToFile(IInArchive *archiveHandler,
                                                    const FString &directoryPath) {
-        NumErrors = 0;
+        _numErrors = 0;
         _archiveHandler = archiveHandler;
         _directoryPath = directoryPath;
         _extractToFile = true;
@@ -53,7 +53,7 @@ namespace SVZ {
     
     void ArchiveExtractCallback::InitExtractToMemory(IInArchive *archiveHandler,
                                                      OutStreamProvider outStreamProvider) {
-        NumErrors = 0;
+        _numErrors = 0;
         _archiveHandler = archiveHandler;
         _outStreamProvider = outStreamProvider;
         _extractToFile = false;
@@ -122,14 +122,14 @@ namespace SVZ {
             NWindows::NCOM::CPropVariant prop;
             RINOK(_archiveHandler->GetProperty(index, kpidAttrib, &prop));
             if (prop.vt == VT_EMPTY) {
-                _processedFileInfo.Attrib = 0;
-                _processedFileInfo.AttribDefined = false;
+                _processedFileInfo.attrib = 0;
+                _processedFileInfo.attribDefined = false;
             }
             else {
                 if (prop.vt != VT_UI4)
                     return E_FAIL;
-                _processedFileInfo.Attrib = prop.ulVal;
-                _processedFileInfo.AttribDefined = true;
+                _processedFileInfo.attrib = prop.ulVal;
+                _processedFileInfo.attribDefined = true;
             }
         }
         
@@ -139,14 +139,14 @@ namespace SVZ {
             // Get Modified Time
             NWindows::NCOM::CPropVariant prop;
             RINOK(_archiveHandler->GetProperty(index, kpidMTime, &prop));
-            _processedFileInfo.MTimeDefined = false;
+            _processedFileInfo.mTimeDefined = false;
             switch (prop.vt) {
                 case VT_EMPTY:
                     // _processedFileInfo.MTime = _utcMTimeDefault;
                     break;
                 case VT_FILETIME:
-                    _processedFileInfo.MTime = prop.filetime;
-                    _processedFileInfo.MTimeDefined = true;
+                    _processedFileInfo.mTime = prop.filetime;
+                    _processedFileInfo.mTimeDefined = true;
                     break;
                 default:
                     return E_FAIL;
@@ -212,7 +212,7 @@ namespace SVZ {
             case NArchive::NExtract::NOperationResult::kOK:
                 break;
             default: {
-                NumErrors++;
+                ++_numErrors;
             }
         }
         
@@ -225,8 +225,8 @@ namespace SVZ {
                 _outFileStreamImpl = nullptr;
             }
             
-            if (_extractMode && _processedFileInfo.AttribDefined) {
-                NWindows::NFile::NDir::SetFileAttrib(_diskFilePath, _processedFileInfo.Attrib);
+            if (_extractMode && _processedFileInfo.attribDefined) {
+                NWindows::NFile::NDir::SetFileAttrib(_diskFilePath, _processedFileInfo.attrib);
             }
         }
 
@@ -236,11 +236,11 @@ namespace SVZ {
     }
     
     
-    STDMETHODIMP ArchiveExtractCallback::CryptoGetTextPassword(BSTR *password) {
-        if (!PasswordIsDefined) {
+    STDMETHODIMP ArchiveExtractCallback::CryptoGetTextPassword(BSTR *aPassword) {
+        if (!passwordIsDefined) {
             return E_ABORT;
         }
-        return StringToBstr(Password, password);
+        return StringToBstr(password, aPassword);
     }
     
 }

@@ -135,21 +135,21 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
                 return NO;
             }
             
-            item.CurrentIndex = (Int32)storedEntry.index;
+            item.currentIndex = (Int32)storedEntry.index;
             [storedEntries addObject:storedEntry];
         } else {
-            item.CurrentIndex = SVZ::ArchiveItem::kNewItemIndex;
+            item.currentIndex = SVZ::ArchiveItem::kNewItemIndex;
         }
         
-        item.ID = index++;
-        item.Attrib = entry.attributes;
-        item.Size = entry.uncompressedSize;
-        item.Name = ToUString(entry.name);
-        item.IsDir = entry.isDirectory;
+        item.id = index++;
+        item.attrib = entry.attributes;
+        item.size = entry.uncompressedSize;
+        item.name = ToUString(entry.name);
+        item.isDir = entry.isDirectory;
         
-        NWindows::NTime::UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], item.CTime);
-        NWindows::NTime::UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], item.MTime);
-        NWindows::NTime::UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], item.ATime);
+        NWindows::NTime::UnixTimeToFileTime([entry.creationDate timeIntervalSince1970], item.cTime);
+        NWindows::NTime::UnixTimeToFileTime([entry.modificationDate timeIntervalSince1970], item.mTime);
+        NWindows::NTime::UnixTimeToFileTime([entry.accessDate timeIntervalSince1970], item.aTime);
         
         archiveItems.Add(item);
     }
@@ -189,8 +189,8 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     SVZ::ArchiveUpdateCallback* updateCallbackImpl = new SVZ::ArchiveUpdateCallback();
     CMyComPtr<IArchiveUpdateCallback2> updateCallback(updateCallbackImpl);
     if (self.password) {
-        updateCallbackImpl->PasswordIsDefined = true;
-        updateCallbackImpl->Password = ToUString(self.password);
+        updateCallbackImpl->passwordIsDefined = true;
+        updateCallbackImpl->password = ToUString(self.password);
     }
     
     updateCallbackImpl->Init(&archiveItems, [&] (Int32 itemID) -> CMyComPtr<ISequentialInStream> {
@@ -205,7 +205,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     
     updateCallbackImpl->Finalize();
     
-    if (result != S_OK || updateCallbackImpl->FailedFiles.Size() != 0) {
+    if (result != S_OK || updateCallbackImpl->FailedFiles().Size() != 0) {
         SetError(aError, kSVZArchiveErrorUpdateFailed, nil);
         return NO;
     }
@@ -264,7 +264,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         return NO;
     }
 
-    _usesHeaderEncryption = openCallbackImpl->didAskForPassword;
+    _usesHeaderEncryption = openCallbackImpl->DidAskForPassword();
     
     self.archive = archive;
     return YES;
