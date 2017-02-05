@@ -29,8 +29,9 @@ If you just want to toy with it, take a look at the `SVZDemo`/`SVZDemo-iOS` apps
 - extracting all/some files from archives to file/memory
 - **creating** new archives with files/directories 
 - **adding/removing** files to/from existing archives
+- support for password-protected archives
 
-Coming soon: proper password handling, [tests](https://github.com/lvsti/SevenZip/tree/master/SevenZipTests), automated builds, [documentation](https://github.com/lvsti/SevenZip/wiki), free candy/beer. Until then, submit your requests/bug reports as [issues](https://github.com/lvsti/SevenZip/issues).
+Coming soon: [tests](https://github.com/lvsti/SevenZip/tree/master/SevenZipTests), automated builds, [documentation](https://github.com/lvsti/SevenZip/wiki), free candy/beer. Until then, submit your requests/bug reports as [issues](https://github.com/lvsti/SevenZip/issues).
 
 ### Disclaimer
 
