@@ -39,6 +39,8 @@
 		E88AE7781DDBC73500E8AE09 /* BranchRegister.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC21C00FD10006BDF06 /* BranchRegister.cpp */; };
 		E88AE7791DDBC7CE00E8AE09 /* BranchMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC01C00FD10006BDF06 /* BranchMisc.cpp */; };
 		E88AE77A1DDBC7CF00E8AE09 /* BranchMisc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E8BA2FC01C00FD10006BDF06 /* BranchMisc.cpp */; };
+		E8A973E81E351393001ECFBB /* protected_header.7z in Resources */ = {isa = PBXBuildFile; fileRef = E8A973E61E351386001ECFBB /* protected_header.7z */; };
+		E8A973E91E351394001ECFBB /* protected_header.7z in Resources */ = {isa = PBXBuildFile; fileRef = E8A973E61E351386001ECFBB /* protected_header.7z */; };
 		E8ABC8911C124F0900DF1650 /* SevenZip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BA35B61C0266EE006BDF06 /* SevenZip.framework */; };
 		E8ABC8991C124F4500DF1650 /* basic.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083BD1C10E97600E42B7C /* basic.7z */; };
 		E8ABC89A1C124F4500DF1650 /* empty.7z in Resources */ = {isa = PBXBuildFile; fileRef = E82083C31C10FD7700E42B7C /* empty.7z */; };
@@ -537,6 +539,7 @@
 		E82083BE1C10E97600E42B7C /* nested.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = nested.7z; sourceTree = "<group>"; };
 		E82083C11C10EBEA00E42B7C /* protected.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = protected.7z; sourceTree = "<group>"; };
 		E82083C31C10FD7700E42B7C /* empty.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = empty.7z; sourceTree = "<group>"; };
+		E8A973E61E351386001ECFBB /* protected_header.7z */ = {isa = PBXFileReference; lastKnownFileType = file; path = protected_header.7z; sourceTree = "<group>"; };
 		E8ABC88C1C124F0900DF1650 /* SevenZipTests (iOS).xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SevenZipTests (iOS).xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8ABC8A01C12502E00DF1650 /* Kiwi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kiwi.framework; path = Carthage/Build/iOS/Kiwi.framework; sourceTree = "<group>"; };
 		E8ABC8A31C12D3B900DF1650 /* UT_SVZArchiveEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UT_SVZArchiveEntry.m; sourceTree = "<group>"; };
@@ -1537,6 +1540,7 @@
 				E82083C31C10FD7700E42B7C /* empty.7z */,
 				E82083BE1C10E97600E42B7C /* nested.7z */,
 				E82083C11C10EBEA00E42B7C /* protected.7z */,
+				E8A973E61E351386001ECFBB /* protected_header.7z */,
 			);
 			path = fixtures;
 			sourceTree = "<group>";
@@ -3122,6 +3126,7 @@
 				E82083C21C10EBEA00E42B7C /* protected.7z in Resources */,
 				E82083BF1C10E97600E42B7C /* basic.7z in Resources */,
 				E82083C41C10FD7700E42B7C /* empty.7z in Resources */,
+				E8A973E81E351393001ECFBB /* protected_header.7z in Resources */,
 				E82083C01C10E97600E42B7C /* nested.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3133,6 +3138,7 @@
 				E8ABC8991C124F4500DF1650 /* basic.7z in Resources */,
 				E8ABC89A1C124F4500DF1650 /* empty.7z in Resources */,
 				E8ABC89B1C124F4500DF1650 /* nested.7z in Resources */,
+				E8A973E91E351394001ECFBB /* protected_header.7z in Resources */,
 				E8ABC89C1C124F4500DF1650 /* protected.7z in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

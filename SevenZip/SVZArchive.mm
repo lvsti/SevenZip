@@ -68,11 +68,10 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 
 + (SVZ_NULLABLE instancetype)archiveWithURL:(NSURL*)aURL
                                    password:(NSString*)aPassword
-                            createIfMissing:(BOOL)aShouldCreate
                                       error:(NSError**)aError {
     return [[self alloc] initWithURL:aURL
                             password:aPassword
-                     createIfMissing:aShouldCreate
+                     createIfMissing:NO
                                error:aError];
 }
 
@@ -87,7 +86,6 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     if (self) {
         _url = aURL;
         _fileManager = [[self class] fileManager];
-        _password = [aPassword copy];
         _entries = @[];
         
         BOOL isDir = NO;
@@ -97,7 +95,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
                 SetError(aError, kSVZArchiveErrorInvalidArchive, nil);
                 self = nil;
             }
-            else if (![self readEntries:aError]) {
+            else if (![self readEntriesWithPassword:aPassword error:aError]) {
                 self = nil;
             }
         } else {
@@ -117,6 +115,17 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 }
 
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
+                error:(NSError**)aError {
+    NSString* dummyPassword = nil;
+    return [self updateEntries:aEntries
+                  withPassword:dummyPassword
+              headerEncryption:NO
+                         error:aError];
+}
+
+- (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
+         withPassword:(NSString*)aPassword
+     headerEncryption:(BOOL)aEnableHeaderEncryption
                 error:(NSError**)aError {
     CObjectVector<SVZ::ArchiveItem> archiveItems;
     SVZ_GENERIC(NSMutableArray, SVZStoredArchiveEntry*)* storedEntries = [NSMutableArray arrayWithCapacity:aEntries.count];
@@ -174,23 +183,22 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         NSAssert(result == S_OK, @"cannot instantiate archiver");
     }
 
-    if (self.usesHeaderEncryption) {
-        CMyComPtr<ISetProperties> setProperties;
-        result = outArchive->QueryInterface(IID_ISetProperties, (void**)&setProperties);
-        NSAssert(result == S_OK, @"archiver object does not support setting properties");
-        
-        const wchar_t* names[] = { L"he" };
-        const unsigned kNumProps = ARRAY_SIZE(names);
-        NWindows::NCOM::CPropVariant values[kNumProps] = { L"on" };
-        
-        setProperties->SetProperties(names, values, kNumProps);
-    }
+    // update properties
+    CMyComPtr<ISetProperties> setProperties;
+    result = outArchive->QueryInterface(IID_ISetProperties, (void**)&setProperties);
+    NSAssert(result == S_OK, @"archiver object does not support setting properties");
     
+    const wchar_t* names[] = { L"he" };
+    const unsigned kNumProps = ARRAY_SIZE(names);
+    NWindows::NCOM::CPropVariant values[kNumProps] = { aPassword && aEnableHeaderEncryption ? L"on" : L"off" };
+    setProperties->SetProperties(names, values, kNumProps);
+    
+    // update entries
     SVZ::ArchiveUpdateCallback* updateCallbackImpl = new SVZ::ArchiveUpdateCallback();
     CMyComPtr<IArchiveUpdateCallback2> updateCallback(updateCallbackImpl);
-    if (self.password) {
+    if (aPassword) {
         updateCallbackImpl->passwordIsDefined = true;
-        updateCallbackImpl->password = ToUString(self.password);
+        updateCallbackImpl->password = ToUString(aPassword);
     }
     
     updateCallbackImpl->Init(&archiveItems, [&] (Int32 itemID) -> CMyComPtr<ISequentialInStream> {
@@ -215,13 +223,13 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     
     [storedEntries makeObjectsPerformSelector:@selector(invalidate)];
     
-    return [self readEntries:aError];
+    return [self readEntriesWithPassword:aPassword error:aError];
 }
 
 #pragma mark - private methods:
 
-- (BOOL)readEntries:(NSError**)aError {
-    if (![self openArchive:aError]) {
+- (BOOL)readEntriesWithPassword:(NSString*)aPassword error:(NSError**)aError {
+    if (![self openArchiveWithPassword:aPassword error:aError]) {
         return NO;
     }
     
@@ -239,7 +247,7 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     return YES;
 }
 
-- (BOOL)openArchive:(NSError**)aError {
+- (BOOL)openArchiveWithPassword:(NSString*)aPassword error:(NSError**)aError {
     CMyComPtr<IInArchive> archive;
     HRESULT result = CreateArchiver(&CLSIDFormat7z, &IID_IInArchive, (void **)&archive);
     NSAssert(result == S_OK, @"cannot instantiate archiver");
@@ -254,9 +262,9 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     
     SVZ::ArchiveOpenCallback* openCallbackImpl = new SVZ::ArchiveOpenCallback();
     CMyComPtr<IArchiveOpenCallback> openCallback(openCallbackImpl);
-    if (self.password) {
+    if (aPassword) {
         openCallbackImpl->passwordIsDefined = true;
-        openCallbackImpl->password = ToUString(self.password);
+        openCallbackImpl->password = ToUString(aPassword);
     }
     
     if (archive->Open(inputStream, nullptr, openCallback) != S_OK) {
@@ -264,8 +272,6 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
         return NO;
     }
 
-    _usesHeaderEncryption = openCallbackImpl->DidAskForPassword();
-    
     self.archive = archive;
     return YES;
 }

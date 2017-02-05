@@ -33,14 +33,6 @@ typedef NS_ENUM(NSInteger, SVZArchiveError) {
 /// The (future) URL of the file backing this archive
 @property (nonatomic, copy, readonly) NSURL* url;
 
-/// The password used for encryption.
-/// If non-nil, encryption is enabled, otherwise encryption is disabled.
-@property (nonatomic, copy, SVZ_NULLABLE) NSString* password;
-
-/// Indicates whether the archive uses header encryption when encryption is enabled.
-/// When set to YES, listing the archive contents also requires password.
-@property (nonatomic, assign) BOOL usesHeaderEncryption;
-
 /// The entries within this archive.
 @property (nonatomic, copy, readonly) SVZ_GENERIC(NSArray, SVZArchiveEntry*)* entries;
 
@@ -65,21 +57,18 @@ typedef NS_ENUM(NSInteger, SVZArchiveError) {
 /**
  * Opens a 7-zip archive with the given URL.
  *
- * If the file specified by the URL already exists, it is assumed to be a 7-zip archive 
- * and is subsequently opened.
- * If there is no file at the given URL, a new archive object is created in memory 
- * if the `aShouldCreate` flag is set.
+ * This method can only be used to open existing archives. To create a new archive,
+ * use `archiveWithURL:createIfMissing:error:`.
  *
  * @param aURL The location of the 7-zip archive to be created at/read from.
- * @param aPassword The password used for encryption. May be nil.
- * @param aShouldCreate If set, a new archive is created when `aURL` doesn't point to an existing entry.
+ * @param aPassword The password to use for opening the archive (typically when 
+ *                  header encryption is enabled). May be nil.
  * @param aError Error information in case of failure. May be NULL.
  *
  * @return An initialized archive object, or nil in case of any failure.
  */
 + (SVZ_NULLABLE instancetype)archiveWithURL:(NSURL*)aURL
                                    password:(NSString* SVZ_NULLABLE_PTR)aPassword
-                            createIfMissing:(BOOL)aShouldCreate
                                       error:(NSError**)aError;
 
 /**
@@ -89,12 +78,49 @@ typedef NS_ENUM(NSInteger, SVZArchiveError) {
  * To update only part of the archive, make a mutable copy of the `entries` property, apply
  * the necessary changes, then pass it back to this method.
  *
+ * NOTE: If the archive previously had header encryption, calling this method will disable it.
+ * To preserve header encryption, use `updateEntries:withPassword:headerEncryption:error:`.
+ *
  * @param aEntries The entries that should be written to the archive file.
  * @param aError Error information in case of failure. May be NULL.
  *
  * @return YES on success, otherwise NO.
  */
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
+                error:(NSError**)aError;
+
+/**
+ * Commits the given entries to the file backing this archive.
+ *
+ * This method replaces ALL current entries in the receiver with the ones in `aEntries`.
+ * To update only part of the archive, make a mutable copy of the `entries` property, apply
+ * the necessary changes, then pass it back to this method.
+ *
+ * NOTE: Due to the peculiarities of the 7-zip archive, it is possible to create an archive
+ * which uses different passwords for each of its contained entries. This method only applies
+ * the provided password for encrypting newly added entries. If you are updating
+ * an archive that already contained some files, those entries will not be re-encrypted
+ * with the new password. If you still needed that behavior, you'd have to manually extract 
+ * and re-add existing entries.
+ *
+ * WARNING: Setting header encryption with password X for an existing archive whose
+ * entries are encrypted with a different password Y can cause trouble in some 7-zip clients,
+ * so this awkward combination is best to be avoided.
+ *
+ * @param aEntries The entries that should be written to the archive file.
+ * @param aPassword The password to use for encryption
+ * @param aUseHeaderEncryption If set to NO, only the newly added archive entries will be encrypted,
+ *              which means extracting these entries will require the password given in `aPassword`.
+ *              If set to YES, both the newly added entries AND the archive header will be encrypted,
+ *              which means both listing the archive contents and extracting these entries will require 
+ *              the password given in `aPassword`.
+ * @param aError Error information in case of failure. May be NULL.
+ *
+ * @return YES on success, otherwise NO.
+ */
+- (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
+         withPassword:(NSString*)aPassword
+     headerEncryption:(BOOL)aUseHeaderEncryption
                 error:(NSError**)aError;
 
 @end

@@ -66,10 +66,20 @@ describe(@"Archive", ^{
                     [[sut.entries should] haveCountOf:1];
                 });
                 
-                it(@"doesn't care about password protection yet", ^{
+                it(@"doesn't care about password protection if header encryption is off", ^{
                     // when
                     sut = [SVZArchive archiveWithURL:fixtureNamed(@"protected")
                                      createIfMissing:NO
+                                               error:&error];
+                    
+                    // then
+                    [[sut should] beNonNil];
+                });
+                
+                it(@"opens the archive with header encryption with the correct password", ^{
+                    // when
+                    sut = [SVZArchive archiveWithURL:fixtureNamed(@"protected_header")
+                                            password:@"secret"
                                                error:&error];
                     
                     // then
@@ -108,6 +118,26 @@ describe(@"Archive", ^{
                     [[sut should] beNil];
                 });
                 
+                it(@"fails if the archive has encrypted headers and no password is provided", ^{
+                    // when
+                    sut = [SVZArchive archiveWithURL:fixtureNamed(@"protected_header")
+                                            password:nil
+                                               error:&error];
+                    
+                    // then
+                    [[sut should] beNil];
+                });
+
+                it(@"fails if the archive has encrypted headers and a wrong password is provided", ^{
+                    // when
+                    sut = [SVZArchive archiveWithURL:fixtureNamed(@"protected_header")
+                                            password:@"wrong_password"
+                                               error:&error];
+                    
+                    // then
+                    [[sut should] beNil];
+                });
+
             });
             
         });
@@ -343,6 +373,31 @@ describe(@"Archive", ^{
                 [[theValue(oldIdx) shouldNot] equal:theValue(NSNotFound)];
             });
             
+            it(@"removes header encryption", ^{
+                // given
+                prepareReadWriteFixtureNamed(@"protected_header");
+                sut = [SVZArchive archiveWithURL:targetURL
+                                        password:@"secret"
+                                           error:NULL];
+                NSAssert(sut, @"cannot initialize archive");
+                NSAssert(sut.entries.count == 1, @"preconditions fail");
+                
+                SVZArchiveEntry* newEntry = [SVZArchiveEntry archiveEntryWithDirectoryName:@"stuff"];
+                NSArray* newEntries = [sut.entries arrayByAddingObject:newEntry];
+                
+                // when
+                BOOL result = [sut updateEntries:newEntries error:&error];
+                
+                // then
+                [[theValue(result) should] beYes];
+                
+                SVZArchive* probe = [SVZArchive archiveWithURL:targetURL
+                                               createIfMissing:NO
+                                                         error:NULL];
+                [[probe should] beNonNil];
+                [[probe.entries should] haveCountOf:2];
+            });
+            
         });
         
         context(@"failure", ^{
@@ -409,6 +464,145 @@ describe(@"Archive", ^{
                 
                 // then
                 [[theValue(result) should] beNo];
+            });
+            
+        });
+        
+        context(@"with password", ^{
+            
+            it(@"encrypts new entries with the provided password", ^{
+                // given
+                prepareReadWriteFixtureNamed(@"basic");
+                sut = [SVZArchive archiveWithURL:targetURL
+                                 createIfMissing:NO
+                                           error:NULL];
+                NSAssert(sut, @"cannot initialize archive");
+                NSAssert(sut.entries.count == 1, @"preconditions fail");
+                
+                NSData* entryData = [@"bar" dataUsingEncoding:NSUTF8StringEncoding];
+                SVZArchiveEntry* newEntry = [SVZArchiveEntry archiveEntryWithFileName:@"bar.txt"
+                                                                          streamBlock:SVZStreamBlockCreateWithData(entryData)];
+                
+                // when
+                BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
+                                    withPassword:@"secret"
+                                headerEncryption:NO
+                                           error:&error];
+                
+                // then
+                [[theValue(result) should] beYes];
+                
+                SVZArchive* probe = [SVZArchive archiveWithURL:targetURL
+                                               createIfMissing:NO
+                                                         error:NULL];
+                [[probe should] beNonNil];
+                [[probe.entries should] haveCountOf:2];
+                newEntry = [probe.entries.firstObject.name isEqualToString:@"bar.txt"] ?
+                    probe.entries.firstObject : probe.entries.lastObject;
+                
+                NSData* newEntryData = [newEntry extractedData:NULL];
+                [[newEntryData should] beNil];
+                
+                newEntryData = [newEntry extractedDataWithPassword:@"secret"
+                                                          error:NULL];
+                [[newEntryData should] equal:entryData];
+            });
+
+            it(@"does not reencrypt existing entries with the provided password", ^{
+                // given
+                prepareReadWriteFixtureNamed(@"basic");
+                sut = [SVZArchive archiveWithURL:targetURL
+                                 createIfMissing:NO
+                                           error:NULL];
+                NSAssert(sut, @"cannot initialize archive");
+                NSAssert(sut.entries.count == 1, @"preconditions fail");
+                
+                NSData* entryData = [@"bar" dataUsingEncoding:NSUTF8StringEncoding];
+                SVZArchiveEntry* newEntry = [SVZArchiveEntry archiveEntryWithFileName:@"bar.txt"
+                                                                          streamBlock:SVZStreamBlockCreateWithData(entryData)];
+                
+                // when
+                BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
+                                    withPassword:@"secret"
+                                headerEncryption:NO
+                                           error:&error];
+                
+                // then
+                [[theValue(result) should] beYes];
+                
+                SVZArchive* probe = [SVZArchive archiveWithURL:targetURL
+                                               createIfMissing:NO
+                                                         error:NULL];
+                [[probe should] beNonNil];
+                [[probe.entries should] haveCountOf:2];
+                SVZArchiveEntry* oldEntry = [probe.entries.firstObject.name isEqualToString:@"bar.txt"] ?
+                    probe.entries.lastObject : probe.entries.firstObject;
+                
+                NSData* oldEntryData = [oldEntry extractedData:NULL];
+                [[oldEntryData should] beNonNil];
+            });
+
+            it(@"applies header encryption when the flag is set", ^{
+                // given
+                prepareReadWriteFixtureNamed(@"basic");
+                sut = [SVZArchive archiveWithURL:targetURL
+                                 createIfMissing:NO
+                                           error:NULL];
+                NSAssert(sut, @"cannot initialize archive");
+                NSAssert(sut.entries.count == 1, @"preconditions fail");
+                
+                NSData* entryData = [@"bar" dataUsingEncoding:NSUTF8StringEncoding];
+                SVZArchiveEntry* newEntry = [SVZArchiveEntry archiveEntryWithFileName:@"bar.txt"
+                                                                          streamBlock:SVZStreamBlockCreateWithData(entryData)];
+                
+                // when
+                BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
+                                    withPassword:@"secret"
+                                headerEncryption:YES
+                                           error:&error];
+                
+                // then
+                [[theValue(result) should] beYes];
+                
+                SVZArchive* probe = [SVZArchive archiveWithURL:targetURL
+                                               createIfMissing:NO
+                                                         error:NULL];
+                [[probe should] beNil];
+
+                probe = [SVZArchive archiveWithURL:targetURL
+                                          password:@"secret"
+                                             error:NULL];
+                [[probe should] beNonNil];
+                [[probe.entries should] haveCountOf:2];
+            });
+            
+            it(@"removes header encryption when the flag is not set", ^{
+                // given
+                prepareReadWriteFixtureNamed(@"protected_header");
+                sut = [SVZArchive archiveWithURL:targetURL
+                                        password:@"secret"
+                                           error:NULL];
+                NSAssert(sut, @"cannot initialize archive");
+                NSAssert(sut.entries.count == 1, @"preconditions fail");
+                
+                NSData* entryData = [@"bar" dataUsingEncoding:NSUTF8StringEncoding];
+                SVZArchiveEntry* newEntry = [SVZArchiveEntry archiveEntryWithFileName:@"bar.txt"
+                                                                          streamBlock:SVZStreamBlockCreateWithData(entryData)];
+                
+                // when
+                BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
+                                    withPassword:@"secret"
+                                headerEncryption:NO
+                                           error:&error];
+                
+                // then
+                [[theValue(result) should] beYes];
+                
+                SVZArchive* probe = [SVZArchive archiveWithURL:targetURL
+                                               createIfMissing:NO
+                                                         error:NULL];
+                [[probe should] beNonNil];
+                [[probe.entries should] haveCountOf:2];
             });
             
         });
