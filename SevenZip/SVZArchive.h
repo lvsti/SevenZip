@@ -129,14 +129,15 @@ typedef NS_ENUM(NSUInteger, SVZCompressionLevel) {
  * so this awkward combination is best to be avoided.
  *
  * @param aEntries The entries that should be written to the archive file.
- * @param aPassword The password to use for encryption (optional). If nil, no encryption is applied.
+ * @param aPassword The password to use for encryption (both new entries and header).
+ *              If nil, no encryption is applied.
  * @param aUseHeaderEncryption Controls header encryption when a password is provided, as follows:
  *              If set to NO, only the newly added archive entries will be encrypted,
  *              which means extracting these entries will require the password given in `aPassword`.
  *              If set to YES, both the newly added entries AND the archive header will be encrypted,
  *              which means both listing the archive contents and extracting these entries will require 
  *              the password given in `aPassword`.
- *              If `aPassword` is empty, this flag is ignored.
+ *              If `aPassword` is empty, this flag is ignored and header encryption (if any) is removed.
  * @param aCompressionLevel Compression level to use
  * @param aError Error information in case of failure. May be NULL.
  *
