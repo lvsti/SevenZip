@@ -116,17 +116,22 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
 
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
                 error:(NSError**)aError {
-    NSString* dummyPassword = nil;
     return [self updateEntries:aEntries
-                  withPassword:dummyPassword
+                  withPassword:nil
               headerEncryption:NO
+              compressionLevel:kSVZCompressionLevelNormal
                          error:aError];
 }
 
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
          withPassword:(NSString*)aPassword
      headerEncryption:(BOOL)aEnableHeaderEncryption
+     compressionLevel:(SVZCompressionLevel)aCompressionLevel
                 error:(NSError**)aError {
+    if (!aPassword) {
+        aEnableHeaderEncryption = NO;
+    }
+    
     CObjectVector<SVZ::ArchiveItem> archiveItems;
     SVZ_GENERIC(NSMutableArray, SVZStoredArchiveEntry*)* storedEntries = [NSMutableArray arrayWithCapacity:aEntries.count];
     
@@ -188,9 +193,21 @@ static void SetError(NSError** aError, SVZArchiveError aCode, NSDictionary* user
     result = outArchive->QueryInterface(IID_ISetProperties, (void**)&setProperties);
     NSAssert(result == S_OK, @"archiver object does not support setting properties");
     
-    const wchar_t* names[] = { L"he" };
+    const UInt32 kRawLevelValue[] = {
+        [kSVZCompressionLevelNone] = 0,
+        [kSVZCompressionLevelLowest] = 1,
+        [kSVZCompressionLevelLow] = 3,
+        [kSVZCompressionLevelNormal] = 5,
+        [kSVZCompressionLevelHigh] = 7,
+        [kSVZCompressionLevelHighest] = 9,
+    };
+    
+    const wchar_t* names[] = { L"he", L"x" };
     const unsigned kNumProps = ARRAY_SIZE(names);
-    NWindows::NCOM::CPropVariant values[kNumProps] = { aPassword && aEnableHeaderEncryption ? L"on" : L"off" };
+    NWindows::NCOM::CPropVariant values[kNumProps] = {
+        aPassword && aEnableHeaderEncryption ? L"on" : L"off",
+        kRawLevelValue[aCompressionLevel]
+    };
     setProperties->SetProperties(names, values, kNumProps);
     
     // update entries

@@ -24,6 +24,27 @@ typedef NS_ENUM(NSInteger, SVZArchiveError) {
     kSVZArchiveErrorForeignEntry = -6
 };
 
+/// Compression level for archive update operations (higher is slower)
+typedef NS_ENUM(NSUInteger, SVZCompressionLevel) {
+    /// no compression, copy only
+    kSVZCompressionLevelNone = 0,
+    
+    //  (Method, Dictionary, FastBytes, MatchFinder, Filter)
+    /// LZMA2, 64 KB, 32, HC4, BCJ
+    kSVZCompressionLevelLowest,
+    
+    /// LZMA2, 1 MB, 32, HC4, BCJ
+    kSVZCompressionLevelLow,
+    
+    /// LZMA2, 16 MB, 32, BT4, BCJ
+    kSVZCompressionLevelNormal,
+
+    /// LZMA2, 32 MB, 64, BT4, BCJ
+    kSVZCompressionLevelHigh,
+
+    /// LZMA2, 64 MB, 64, BT4, BCJ2
+    kSVZCompressionLevelHighest
+};
 
 /**
  * Class representing a 7-zip archive file.
@@ -108,19 +129,23 @@ typedef NS_ENUM(NSInteger, SVZArchiveError) {
  * so this awkward combination is best to be avoided.
  *
  * @param aEntries The entries that should be written to the archive file.
- * @param aPassword The password to use for encryption
- * @param aUseHeaderEncryption If set to NO, only the newly added archive entries will be encrypted,
+ * @param aPassword The password to use for encryption (optional). If nil, no encryption is applied.
+ * @param aUseHeaderEncryption Controls header encryption when a password is provided, as follows:
+ *              If set to NO, only the newly added archive entries will be encrypted,
  *              which means extracting these entries will require the password given in `aPassword`.
  *              If set to YES, both the newly added entries AND the archive header will be encrypted,
  *              which means both listing the archive contents and extracting these entries will require 
  *              the password given in `aPassword`.
+ *              If `aPassword` is empty, this flag is ignored.
+ * @param aCompressionLevel Compression level to use
  * @param aError Error information in case of failure. May be NULL.
  *
  * @return YES on success, otherwise NO.
  */
 - (BOOL)updateEntries:(SVZ_GENERIC(NSArray, SVZArchiveEntry*)*)aEntries
-         withPassword:(NSString*)aPassword
+         withPassword:(NSString* SVZ_NULLABLE_PTR)aPassword
      headerEncryption:(BOOL)aUseHeaderEncryption
+     compressionLevel:(SVZCompressionLevel)aCompressionLevel
                 error:(NSError**)aError;
 
 @end

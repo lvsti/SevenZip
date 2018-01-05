@@ -487,6 +487,7 @@ describe(@"Archive", ^{
                 BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
                                     withPassword:@"secret"
                                 headerEncryption:NO
+                                compressionLevel:kSVZCompressionLevelNormal
                                            error:&error];
                 
                 // then
@@ -525,6 +526,7 @@ describe(@"Archive", ^{
                 BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
                                     withPassword:@"secret"
                                 headerEncryption:NO
+                                compressionLevel:kSVZCompressionLevelNormal
                                            error:&error];
                 
                 // then
@@ -559,6 +561,7 @@ describe(@"Archive", ^{
                 BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
                                     withPassword:@"secret"
                                 headerEncryption:YES
+                                compressionLevel:kSVZCompressionLevelNormal
                                            error:&error];
                 
                 // then
@@ -593,6 +596,7 @@ describe(@"Archive", ^{
                 BOOL result = [sut updateEntries:[sut.entries arrayByAddingObject:newEntry]
                                     withPassword:@"secret"
                                 headerEncryption:NO
+                                compressionLevel:kSVZCompressionLevelNormal
                                            error:&error];
                 
                 // then
