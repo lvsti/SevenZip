@@ -29,3 +29,6 @@ if [ ! -f External/p7zip/CPP/Windows/FileDir.h ]; then
 fi
 
 patch -p1 < scripts/FileDir_h_patch.diff
+
+# Not checking if the files exist, since a prior error will already exited this script
+patch -p1 < scripts/Xcode-10.diff
