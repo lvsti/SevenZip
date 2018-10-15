@@ -1,0 +1,165 @@
+diff --git a/External/p7zip/C/7zTypes.h b/External/p7zip/C/7zTypes.h
+index 52ffa6b..7fa2e36 100644
+--- a/External/p7zip/C/7zTypes.h
++++ b/External/p7zip/C/7zTypes.h
+@@ -5,7 +5,7 @@
+ #define __7Z_TYPES_H
+ 
+ #ifdef _WIN32
+-/* #include <windows.h> */
++/* #include "windows.h" */
+ #endif
+ 
+ #include <stddef.h>
+diff --git a/External/p7zip/C/Alloc.c b/External/p7zip/C/Alloc.c
+index 2706ec0..bae0803 100644
+--- a/External/p7zip/C/Alloc.c
++++ b/External/p7zip/C/Alloc.c
+@@ -4,7 +4,7 @@
+ #include "Precomp.h"
+ 
+ #ifdef _WIN32
+-#include <windows.h>
++#include "windows.h"
+ #endif
+ #include <stdio.h>
+ #include <stdlib.h>
+diff --git a/External/p7zip/C/Bcj2Enc.c b/External/p7zip/C/Bcj2Enc.c
+index 0ea3646..6ae2b3c 100644
+--- a/External/p7zip/C/Bcj2Enc.c
++++ b/External/p7zip/C/Bcj2Enc.c
+@@ -12,7 +12,7 @@
+ #define PRF(x)
+ #endif
+ 
+-#include <windows.h>
++#include "windows.h"
+ #include <string.h>
+ 
+ #include "Bcj2.h"
+diff --git a/External/p7zip/C/CpuArch.c b/External/p7zip/C/CpuArch.c
+index c119c4d..bf711d6 100644
+--- a/External/p7zip/C/CpuArch.c
++++ b/External/p7zip/C/CpuArch.c
+@@ -175,7 +175,7 @@ Bool CPU_Is_InOrder()
+ }
+ 
+ #if !defined(MY_CPU_AMD64) && defined(_WIN32)
+-#include <windows.h>
++#include "windows.h"
+ static Bool CPU_Sys_Is_SSE_Supported()
+ {
+   OSVERSIONINFO vi;
+diff --git a/External/p7zip/CPP/Common/MyWindows.h b/External/p7zip/CPP/Common/MyWindows.h
+index 3376dd6..5d60bce 100644
+--- a/External/p7zip/CPP/Common/MyWindows.h
++++ b/External/p7zip/CPP/Common/MyWindows.h
+@@ -5,7 +5,7 @@
+ 
+ #ifdef _WIN32
+ 
+-#include <windows.h>
++#include "windows.h"
+ 
+ #else
+ 
+diff --git a/External/p7zip/CPP/Common/StdInStream.cpp b/External/p7zip/CPP/Common/StdInStream.cpp
+index 6550537..2126a8b 100644
+--- a/External/p7zip/CPP/Common/StdInStream.cpp
++++ b/External/p7zip/CPP/Common/StdInStream.cpp
+@@ -2,7 +2,7 @@
+ 
+ #include "StdAfx.h"
+ 
+-#include <tchar.h>
++#include "tchar.h"
+ 
+ #include "StdInStream.h"
+ #include "StringConvert.h"
+diff --git a/External/p7zip/CPP/Common/StdOutStream.cpp b/External/p7zip/CPP/Common/StdOutStream.cpp
+index 6aed31a..0968e7c 100644
+--- a/External/p7zip/CPP/Common/StdOutStream.cpp
++++ b/External/p7zip/CPP/Common/StdOutStream.cpp
+@@ -2,7 +2,7 @@
+ 
+ #include "StdAfx.h"
+ 
+-#include <tchar.h>
++#include "tchar.h"
+ 
+ #include "IntToString.h"
+ #include "StdOutStream.h"
+diff --git a/External/p7zip/CPP/Windows/Shell.h b/External/p7zip/CPP/Windows/Shell.h
+index f116b77..c7cd7e8 100644
+--- a/External/p7zip/CPP/Windows/Shell.h
++++ b/External/p7zip/CPP/Windows/Shell.h
+@@ -3,7 +3,7 @@
+ #ifndef __WINDOWS_SHELL_H
+ #define __WINDOWS_SHELL_H
+ 
+-#include <windows.h>
++#include "windows.h"
+ // #include <shlobj.h>
+ 
+ #include "Common/MyString.h"
+diff --git a/External/p7zip/CPP/include_windows/windows.h b/External/p7zip/CPP/include_windows/windows.h
+index 7b6bb5e..ed7ea85 100644
+--- a/External/p7zip/CPP/include_windows/windows.h
++++ b/External/p7zip/CPP/include_windows/windows.h
+@@ -180,7 +180,7 @@ DWORD WINAPI GetTickCount(VOID);
+ #define CP_UTF8  65001
+ 
+ /* #include <unknwn.h> */
+-#include <basetyps.h>
++#include "basetyps.h"
+ 
+ #ifdef __cplusplus
+ extern "C" const IID IID_ISequentialStream;
+diff --git a/External/p7zip/CPP/myWindows/StdAfx.h b/External/p7zip/CPP/myWindows/StdAfx.h
+index 0a72949..1f6c07a 100644
+--- a/External/p7zip/CPP/myWindows/StdAfx.h
++++ b/External/p7zip/CPP/myWindows/StdAfx.h
+@@ -19,12 +19,12 @@
+ #include "Common/MyTypes.h"
+ #include "Common/MyString.h" // FIXME
+ 
+-#include <windows.h>
++#include "windows.h"
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <time.h>
+-#include <tchar.h>
++#include "tchar.h"
+ #include <wchar.h>
+ #include <stddef.h>
+ #include <ctype.h>
+diff --git a/External/p7zip/CPP/myWindows/myAddExeFlag.cpp b/External/p7zip/CPP/myWindows/myAddExeFlag.cpp
+index 6bdc34a..abb5184 100644
+--- a/External/p7zip/CPP/myWindows/myAddExeFlag.cpp
++++ b/External/p7zip/CPP/myWindows/myAddExeFlag.cpp
+@@ -3,7 +3,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+-#include <windows.h>
++#include "windows.h"
+ 
+ #define NEED_NAME_WINDOWS_TO_UNIX
+ #include "myPrivate.h"
+diff --git a/External/p7zip/CPP/myWindows/wine_date_and_time.cpp b/External/p7zip/CPP/myWindows/wine_date_and_time.cpp
+index 52cf1b0..e8af7ec 100644
+--- a/External/p7zip/CPP/myWindows/wine_date_and_time.cpp
++++ b/External/p7zip/CPP/myWindows/wine_date_and_time.cpp
+@@ -25,7 +25,7 @@
+ #include <unistd.h>
+ #include <time.h>
+ 
+-#include <windows.h>
++#include "windows.h"
+ 
+ // #define TRACEN(u) u;
+ #define TRACEN(u)  /* */
+-- 
+2.17.1
+
