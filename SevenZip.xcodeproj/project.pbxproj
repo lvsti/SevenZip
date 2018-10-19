@@ -3807,6 +3807,7 @@
 					"$(SRCROOT)/External/p7zip",
 					"$(SRCROOT)/External/p7zip/C",
 					"$(SRCROOT)/External/p7zip/CPP",
+					"$(SRCROOT)/External/p7zip/CPP/include_windows",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -3850,6 +3851,7 @@
 					"$(SRCROOT)/External/p7zip",
 					"$(SRCROOT)/External/p7zip/C",
 					"$(SRCROOT)/External/p7zip/CPP",
+					"$(SRCROOT)/External/p7zip/CPP/include_windows",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
